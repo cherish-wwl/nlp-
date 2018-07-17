@@ -1,0 +1,22 @@
+{
+  
+  "datalist":[{
+      "imgUrl":"static/index/image/banner_1.jpg",
+      "link":""
+    },{
+      "imgUrl":"static/index/image/banner_03.jpg",
+      "link":""
+    },{
+      "imgUrl":"static/index/image/banner_4.jpg",
+      "link":""
+    },{
+      "imgUrl":"static/index/image/banner_5.jpg",
+      "link":""
+    },{
+      "imgUrl":"static/index/image/banner_3.jpg",   
+      "link":"http://www.cipsc.org.cn"
+    },{
+      "imgUrl":"static/index/image/banner_freeapi.jpg",
+      "link":"serviceList"
+    }]
+}

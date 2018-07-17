@@ -1,0 +1,69 @@
+$bgc:rgba(245, 245, 246, 1);
+$hoverc:#409eff;
+$borderc:rgba(208, 214, 225, 1);
+html, body, #app{
+  height: 100%;
+  background-color: $bgc;
+}
+.console-container{
+  aside.el-aside{
+    background-color: $bgc;
+    .el-menu{
+      background-color: $bgc;
+      height: 100%;
+      border-right: solid 5px $borderc;
+      li:hover,li.is-active{
+        background-color: #fff;
+        border-right: 4px solid $hoverc;
+        transition: unset;
+        &::after{
+          content: '';
+          width: 0;
+          height: 0;
+          overflow: hidden;
+          font-size: 0;
+          line-height: 0;
+          border-width: 6px;
+          border-style: dashed solid dashed dashed;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          border-color: transparent $hoverc transparent transparent;
+        }
+       
+      }
+    }
+  }
+  .inputwidth1.el-input {
+    width: 240px;
+    .el-input__inner {
+      border-radius: 41px;
+    }
+  }
+  
+  // 自定义按钮1
+  .selfbutton1{
+    background-color: rgba(234, 234, 234, 1);
+    border: none;
+    border-radius:0; 
+    &:hover,&.active{
+      background-color: $hoverc;
+      color: #fff;
+      &::after{
+        content: "";
+        width: 0;
+        height: 0;
+        border-width: 7px;
+        border-style: solid dashed dashed dashed;
+        border-color: $hoverc transparent transparent transparent;
+        bottom: -14px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+      }
+    }
+  }
+}

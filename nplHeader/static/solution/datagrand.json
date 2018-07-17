@@ -1,0 +1,110 @@
+{
+  "titleData":{
+    "img":"static/solution/datagrand/u4689.png",
+    "title":"文本智能处理专家",
+    "desrc":"达观数据文本智能处理平台为企业提供文本挖掘引擎、文档智能审阅、智能推荐与用户画像、垂直搜索与知识图谱等人工智能产品，协助企业自动化处理海量文档信息，提升企业对各类文字内容处理的准确率和效率，加速企业智能化转型进程。",
+    "bgimg":"static/solution/datagrand/u4580.jpg",
+    "url":"http://www.datagrand.com/"
+  },
+  "featureData":
+    {
+    "name":"服务特色",
+    "width":"25%",
+    "data":[
+    { "name":"文档智能审阅",
+      "descr":"为企业自动化抽取文档的关键信息、对比不同版本的文档差异、智能纠正错误文字内容，以及发现文书中潜在的法律风险",
+      "img":"static/solution/datagrand/u4588.png"
+    },
+    { "name":"用户意见分析",
+      "descr":"全方位洞察消费者的意见，从海量数据中挖掘用户观点，辅助客户进行运营决策，提升产品实力",
+      "img":"static/solution/datagrand/u4594.png"},
+    { "name":"文本智能纠错",
+      "descr":"根据达观数据积累的亿级文本语料库，实现对文档中错别字和句法错误的自动纠错提示，为企业有效规避风险",
+      "img":"static/solution/datagrand/u4600.png"},
+    { "name":"文本黄反智能审核",
+      "descr":"利用智能算法对文本内容进行整体分析，判断其是否含有涉政、涉黄、反动、广告等敏感内容，并呈现违规权重判断",
+      "img":"static/solution/datagrand/u4665.png"},
+    { "name":"搜索和知识图谱",
+      "descr":"利用知识图谱和语义分析技术，帮助用户从海量信息中快速准确搜索到目标内容，为客户搭建出高效精准的智能搜索系统",
+      "img":"static/solution/datagrand/u4629.png"},
+    { "name":"人事简历智能匹配",
+      "descr":"对简历进行关键信息提取，构建人才画像，匹配精准岗位，协助HR完成招聘流程，提升工作效率",
+      "img":"static/solution/datagrand/u4635.png"},
+    { "name":"推荐和用户画像",
+      "descr":"根据不同用户的喜好，生成用户画像，为每位用户提供“千人千面”的个性化内容，帮助企业有效提升点击率、转化率及用户粘性",
+      "img":"static/solution/datagrand/u4695.png"}
+  ]},
+  "propertyData":
+  {"name":"产品优势",
+    "width":"23%",
+    "data":[
+    {"title":"充足的数据积累",
+    "descr":"核心团队在文本挖掘领域近10年的挖掘经验，已积累数百亿语料和庞大的文本数据库，并进行了大规模的标注和训练",
+    "img":"static/solution/datagrand/u4639.jpg"},
+    {"title":"优异的算法模型",
+    "descr":"产品融合了多种算法模型，算法能力多次斩获国际数据挖掘最高级别竞赛ACM KDD 和CIKM的世界冠亚军大奖",
+    "img":"static/solution/datagrand/u4641.jpg"},
+    {"title":"丰富的业务经验",
+    "descr":"已积累华为、海尔、长虹、招商银行、浦发银行、华泰证券、京东等上百家科技、制造、金融、电商、法律等领域的成功服务经验",
+    "img":"static/solution/datagrand/u4643.jpg"},
+    {"title":"完善的服务体系",
+    "descr":"在基础服务之上，为客户提供定制化的服务和文本模型，珍视客户反馈并设有完善的技术服务体系",
+    "img":"static/solution/datagrand/u4701.jpg"}
+  ]},
+  "industryData":{
+    "name":"行业解决方案",
+    "bgUrl":"static/solution/datagrand/u4559.jpg",
+    "data":[
+      {
+        "title":"金融行业",
+        "desrc":["合同智能审阅","知识管理系统","信息自动抽取比对"],
+        "iconUrl":"static/solution/datagrand/u4708.png",
+        "linkUrl":"http://www.datagrand.com/financial-solutions.html"
+      },
+      {
+        "title":"制造行业",
+        "desrc":["企业级文档检索","电视节目个性化推荐","车载语音智能问答系统"],
+        "iconUrl":"static/solution/datagrand/u4736.png"
+      },
+      {
+        "title":"法律行业",
+        "desrc":["合同审核","垂直搜索","建立行业知识图谱","案件信息标签化处理"],
+        "iconUrl":"static/solution/datagrand/u4713.png",
+        "linkUrl":"http://www.datagrand.com/law-solutions.html"
+      },
+      {
+        "title":"科技行业",
+        "desrc":["文档语义提取","智能问答系统","资料精准推荐","构建行业知识图谱"],
+        "iconUrl":"static/solution/datagrand/u4757.png",
+        "linkUrl":"http://www.datagrand.com/technology-solutions.html"
+      },
+      {
+        "title":"传媒行业",
+        "desrc":["智能纠错","内容搜索","自动打标签","评论审核过滤","媒体资讯个性化推荐"],
+        "iconUrl":"static/solution/datagrand/u4725.png",
+        "linkUrl":"http://www.datagrand.com/mediasln.html"
+      },
+      {
+        "title":"电商行业",
+        "desrc":["商品推荐系统","应用内搜索","用户评论分析","消费者画像建模"],
+        "iconUrl":"static/solution/datagrand/u4731.png",
+        "linkUrl":"http://www.datagrand.com/elebusinesssln.html"
+      }
+    ]
+  
+  },
+  "cooperationData":
+  { 
+    "col":4,
+    "data":[
+    "static/solution/datagrand/u4653.png","static/solution/datagrand/u4655.png","static/solution/datagrand/u4657.png",
+    "static/solution/datagrand/u4659.png","static/solution/datagrand/u4783.png","static/solution/datagrand/u4667.png",
+    "static/solution/datagrand/u4669.png","static/solution/datagrand/u4671.png","static/solution/datagrand/u4673.png",
+    "static/solution/datagrand/u4675.png","static/solution/datagrand/u4677.png","static/solution/datagrand/u4679.png",
+    "static/solution/datagrand/u4681.png","static/solution/datagrand/u4785.png","static/solution/datagrand/u4787.png",
+    "static/solution/datagrand/u4789.png"
+    ]
+  }
+}
+
+

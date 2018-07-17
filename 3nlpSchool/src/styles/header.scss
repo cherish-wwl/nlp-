@@ -1,0 +1,90 @@
+#app {
+  $headerHeight:60px;
+    // 主体区域
+    .main-container {
+      min-height: 100%;
+      // margin-top: $headerHeight;
+      // margin-bottom: 50px;
+    } 
+    // header
+    .header-container {
+      padding: 0;
+      // position: fixed;
+      // top: 0;
+      // z-index: 999;
+      // left: 0;
+      // right: 0;
+      .el-menu--horizontal .el-submenu{
+        position: static;
+      }
+      .el-menu--horizontal .el-submenu>.el-menu {
+        // position: fixed;
+        // background-color: rgba(9, 9, 9, 0.98)!important;
+        background-color: #0d0d0d !important;
+        top:$headerHeight;
+        padding-top:25px;
+        padding-bottom: 25px;
+        left: 0;
+        right: 0; 
+      }
+      // .el-submenu__title,.el-menu-item{
+        
+      // }
+      .el-menu--horizontal{
+        border-bottom-color: #000;
+        .el-submenu .el-submenu__title, .el-menu-item{
+          height: $headerHeight;
+          line-height: $headerHeight;
+          font-size: 16px;
+        }  
+        
+      }
+      .sub-meun-panel{
+          color: #fff;
+          ul{
+              list-style: none;
+              display: inline-table;
+          }
+      }    
+      .el-menu {
+        padding: 0 4%;
+        min-width: 1240px;
+        // display: -webkit-box;
+        .loginItem{
+          background-color: #2b9eeb !important;
+        }
+        .rightPanel {
+          position: absolute;
+          right: 4%;
+          top: 0;
+        }
+      } 
+      .el-input-group {
+        width: auto;
+        .el-input-group__append {
+          background-color: #1b1b1b;
+          border: none;
+          padding: 0;
+        }
+        input.el-input__inner {
+          background-color: #1b1b1b;
+          border: none;
+        }
+      }
+      .el-menu-item.is-active:not(.loginItem ),.el-menu-item:not(.loginItem ):hover,
+      .el-submenu.is-active .el-submenu__title{
+        color: #2b9eeb!important;
+        border-color: #000!important;
+      }
+      .userInfoItem.el-submenu {
+        position: relative;
+        ul.el-menu{
+          min-width:auto;
+          li.el-menu-item{
+            min-width: auto;
+          }
+        }
+      }
+    }
+  }
+  

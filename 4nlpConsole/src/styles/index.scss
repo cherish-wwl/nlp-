@@ -1,0 +1,198 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+// @import './sidebar.scss';
+@import './header.scss';
+@import './css-animate.scss';
+@import './console.scss';
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  // font-family: Microsoft YaHei;
+  // overflow-x: hidden;
+  min-width: 1240px;
+  margin: 0;
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+div:focus{
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+//main-container全局样式
+.app-main{
+  min-height: 100%
+}
+
+.app-container {
+  padding: 20px;
+}
+footer {
+  line-height: 60px;
+  height: 60px;
+  color: #888;
+  background-color: #EAEAEA;
+  text-align: center;
+}
+
+.text_center{
+  text-align: center;
+}
+.text_right {
+  text-align: right;
+}
+.text_left {
+  text-align: left;
+}
+.float_right{
+  float: right;
+}
+.float_left{
+  float: left;
+}
+
+
+.small{
+  font-size: small;
+}
+.smaller{
+  font-size: smaller;
+}
+.font_color_grey{
+  color: #7c7a7a;
+}
+.font_color_grey2{
+  color: #9d9a96;
+}
+
+.font_color_grey3{
+  color: #494747;
+}
+.font14{
+  font-size: 14px;
+  line-height: 22px;
+}
+.font15{
+  font-size: 15px;
+}
+.font16{
+  font-size: 16px;
+}
+.font17{
+  font-size: 17px;
+}
+.font18{
+  font-size: 18px;
+}
+.font19{
+  font-size: 19px;
+}
+.font20{
+  font-size: 20px;
+}
+.font36{
+  font-size: 36px;
+}
+.font28{
+  font-size: 28px;
+}
+.font29{
+  font-size: 29px;
+}
+.font30{
+  font-size: 30px;
+}
+.font32{
+  font-size: 32px;
+}
+
+.inline_flex{
+  display: inline-flex;
+}
+.nowrap{
+  white-space: nowrap;
+}
+
+.nomargin{
+  margin: 0;
+}
+img{
+  width: 100%;
+}
+ol, ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+//自定义button样式
+.custom_button_blue{
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+.rcs-chat-wrapper {
+  z-index: 1003;
+}
+// 文档页面展示 json字符串
+.JSONhtmlStyle {
+  outline: 1px solid #ccc; 
+  background-color: #fff;
+  padding: 5px;
+  margin: 5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  .string { color: green; }
+  .number { color: darkorange; }
+  .boolean { color: blue; }
+  .null { color: magenta; }
+  .key { color: red; }
+}
+
+
+.zc-advice-icon-btn-title{
+  border: 1px solid #000 !important;
+  font-size: 16px !important;
+  color: #000 !important;
+}
