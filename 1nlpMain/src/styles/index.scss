@@ -13,13 +13,23 @@ body {
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
   // font-family: Microsoft YaHei;
   // overflow-x: hidden;
-  min-width: 1240px;
+  // min-width: 1240px;
   margin: 0;
 }
 
+@media  screen and (min-width: 1280px) {
+  html {
+    box-sizing: border-box;
+    font-size:62.5%; // 10÷16=62.5%
 
-html {
-  box-sizing: border-box;
+  }
+}
+@media  screen and (max-width: 1280px) {
+  html {
+    box-sizing: border-box;
+    font-size:50%; // 10÷20=62.5%
+
+  }
 }
 
 *,
@@ -82,10 +92,10 @@ footer {
   text-align: left;
 }
 .float_right{
-  float: right;
+  float: right !important;
 }
 .float_left{
-  float: left;
+  float: left !important;
 }
 
 
@@ -107,40 +117,56 @@ footer {
 }
 .font14{
   font-size: 14px;
+  font-size: 1.4rem;
   line-height: 22px;
 }
 .font15{
   font-size: 15px;
+  font-size: 1.5rem;
 }
 .font16{
   font-size: 16px;
+  font-size: 1.6rem;
 }
 .font17{
   font-size: 17px;
+  font-size: 1.7rem;
 }
 .font18{
   font-size: 18px;
+  font-size: 1.8rem;
 }
 .font19{
   font-size: 19px;
+  font-size: 1.9rem;
 }
 .font20{
   font-size: 20px;
+  font-size: 2.0rem;
+}
+.font25{
+  font-size: 25px;
+  font-size: 2.5rem;
 }
 .font36{
   font-size: 36px;
+  font-size: 3.6rem;
 }
 .font28{
   font-size: 28px;
+  font-size: 2.8rem;
 }
 .font29{
   font-size: 29px;
+  font-size: 2.9rem;
 }
 .font30{
   font-size: 30px;
+  font-size: 3.0rem;
 }
 .font32{
   font-size: 32px;
+  font-size: 3.2rem;
 }
 
 .inline_flex{
@@ -152,6 +178,9 @@ footer {
 
 .nomargin{
   margin: 0;
+}
+.f-bold{
+  font-weight: bold;
 }
 img{
   width: 100%;
@@ -194,4 +223,19 @@ li {
   border: 1px solid #000 !important;
   font-size: 16px !important;
   color: #000 !important;
+}
+
+.nlp-cont{
+  min-height: 900px;
+}
+.dataset-container .service_class{
+
+  min-height: 700px;
+}
+
+.overUnderLine{
+  cursor: pointer;
+  &:hover{
+    text-decoration:underline;
+  }
 }

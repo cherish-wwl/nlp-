@@ -8,7 +8,6 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
-import consoleLayout from '../views/console/layout/index'
 
 
 
@@ -25,17 +24,15 @@ import consoleLayout from '../views/console/layout/index'
   }
 **/
 export const constantRouterMap = [
-  { path: '/register',name:'register', component: () => import('@/views/register/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
-
   {
     path: '/',
     component: Layout,
     redirect: '/home',
-    name: 'home',
     hidden: true,
     children: [{
         path: 'home',
+        name: 'home',
         component: () => import('@/views/home/index')
       },
       {
@@ -115,6 +112,12 @@ export const constantRouterMap = [
         name:"datagrand",
         component:() =>import('@/views/solution/datagrand/index'),
         meta: { title: '达观数据' }
+      },
+      {
+        path:"multran",
+        name:"multran",
+        component:() =>import('@/views/solution/multran/index'),
+        meta: { title: '迈创' }
       }
     ]
   },
@@ -128,7 +131,6 @@ export const constantRouterMap = [
     path:"/nlpschool",
     name:'nlpschool',
     component:() =>import('@/views/nlpschool/index'),
-
   },
   {
     path:"/nlpDetails",
@@ -136,62 +138,6 @@ export const constantRouterMap = [
     component:() =>import('@/views/nlpschool/details/index'),
     
   },
-  {
-    path: '/console',
-    component: consoleLayout,
-    redirect: '/console/myService',
-    children: [
-      {
-        path: 'myService',
-        name: 'consoleService',
-        component: () => import('@/views/console/myService'),
-        meta:{
-          title:'我的服务'
-        }
-      },
-      {
-        path: 'myServiceDetail',
-        name: 'consoleServiceDetail',
-        component: () => import('@/views/console/myServiceDetail'),
-        meta:{
-          title:'详情信息'
-        }
-      },
-      {
-        path: 'techDocument',
-        name: 'consoleTechDocument',
-        component: () => import('@/views/console/techDocument'),
-        meta:{
-          title:'技术文档'
-        }
-      },
-      {
-        path: 'myApplicantion',
-        name: 'consoleMyApplicantion',
-        component: () => import('@/views/console/myApplicantion'),
-        meta:{
-          title:'我的应用'
-        }
-      },
-      {
-        path: 'myDataSet',
-        name: 'consoleMyDataSet',
-        component: () => import('@/views/console/myDataSet'),
-        meta:{
-          title:'我的数据集'
-        }
-      },
-      {
-        path: 'mine',
-        name: 'consoleMine',
-        component: () => import('@/views/console/mine'),
-        meta:{
-          title:'帐号信息'
-        }
-      }
-    ]
-  },
-
   { path: '*', redirect: '/404', hidden: true }
 ]
 

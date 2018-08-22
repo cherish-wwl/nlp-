@@ -4,7 +4,7 @@
         <img src="../../../../assets/innovation/u2303.png"/>
       </el-row>
       <el-row class="content content_feather">
-        <el-col class="inline_flex item" :span="6" v-for="item in featherData" :key="item.id">
+        <el-col class="item" :lg="6" :xl="6" :md="12" :xs="12" :sm="12"   v-for="item in featherData" :key="item.id">
           <div class="dateDiv">
             <div class="md font28">{{ item.date}}</div>
             <div class="year font18">{{ item.year}}</div>
@@ -18,32 +18,32 @@
       <br />
       <el-row class="content content_support" id="innovation_support">
         <h2 class="text_center font30">扶持计划</h2>
-        <p class="text_center" style="color:#666666;">集平台合作伙伴优势，为自然语言处理技术创新团队提供优质的研究资源；为业务创新团队提供全面的自然语言处理技术支撑</p>
+        <p class="text_center font16" style="color:#666666;">集平台合作伙伴优势，为自然语言处理技术创新团队提供优质的研究资源；为业务创新团队提供全面的自然语言处理技术支撑</p>
         <el-row class="item">
-          <el-col :span="12">
+          <el-col :lg="12" :xl="12" :md="24" :xs="24" :sm="24">
             <ul class="font-desc-ul">
               <span class="font20">为技术创新团队提供研究资源支持</span>
-              <li>多样的自然语言处理基础服务</li>
-              <li>丰富的自然语言处理相关数据资源</li>
-              <li>随需提供的计算力资源</li>
-              <li>创新成果的产业实践、效果评估及迭代优化</li>
+              <li class="font16">多样的自然语言处理基础服务</li>
+              <li class="font16">丰富的自然语言处理相关数据资源</li>
+              <li class="font16">随需提供的计算力资源</li>
+              <li class="font16">创新成果的产业实践、效果评估及迭代优化</li>
             </ul>
           </el-col>
-          <el-col :span="12">
+          <el-col :lg="12" :xl="12" :md="24" :xs="24" :sm="24" class="hidden-md-and-down">
             <img src="../../../../assets/innovation/u2491.png"/>
           </el-col>
         </el-row>
         <el-row class="item">
-          <el-col :span="12" style="width:450px;height:450px;">
+          <el-col :lg="12" :xl="12" :md="24" :xs="24" :sm="24" class="hidden-md-and-down" style="width:450px;height:450px;">
             <img src="../../../../assets/innovation/u2527.png"/>
           </el-col>
-          <el-col :span="12">
+          <el-col :lg="12" :xl="12" :md="24" :xs="24" :sm="24">
             <ul class="font-desc-ul">
               <span class="font20">为业务创新团队提供自然语言处理技术支撑</span>
-              <li>全面、成熟、领先的中文信息处理技术</li>
-              <li>技术专家团队线上线下指导</li>
-              <li>随需提供的技术实验环境</li>
-              <li>神州泰岳广泛丰富的行业经验与项目实施经验</li>
+              <li class="font16">全面、成熟、领先的中文信息处理技术</li>
+              <li class="font16">技术专家团队线上线下指导</li>
+              <li class="font16">随需提供的技术实验环境</li>
+              <li class="font16">神州泰岳广泛丰富的行业经验与项目实施经验</li>
             </ul>
           </el-col>
         </el-row>
@@ -92,7 +92,7 @@
               <img :src="item.img" onerror="this.src='/static/default.png'"/>
               <figcaption>
                 <h4>
-                  <span>
+                  <span class="font25">
                     {{ item.title }}
                     <br>
                     {{item.descr4}}
@@ -270,6 +270,9 @@ export default {
       }
     }
   }
+  
+// pc
+// @media screen and (min-width: 1280px){
   .colums-3{
     width: 30%;
     display: inline-block;
@@ -382,30 +385,32 @@ export default {
       }
     }
   }
-  // .colums-3{
-  //   width: 30%;
-  //   display: inline-block;
-  //   position: relative;
-  //   .example-panel{
-  //     position: absolute;
-  //     top: 20%;
-  //     color: #fff;
-  //     .hidden-panel{
-  //       display: none;
-  //     }
-      
-  //   }
-  //   &:hover{
-     
-  //      .example-panel{
-  //       top: 0;
-  //       bottom:0;
-  //       background-color: #2b9eeb;
-  //       .hidden-panel{
-  //         display: block;
-  //       }
-  //     }
-  //   }
-  // }
+// }
+// mb
+@media screen and (max-width: 1280px){
+  .innovation{
+    padding-top: 60px;
+    .content_feather{
+      .item{
+        border-top: 1px solid #ddd;
+        min-height: 15rem;
+        &:nth-child(2){
+          border-right: 1px solid #DDD;
+        }
+      }
+    }
+    .content_support .font-desc-ul {
+      margin-top: 0; 
+      margin-left: 0;
   
+    }
+    .colums-3{
+      width: 100% !important;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+ 
+}
 </style>

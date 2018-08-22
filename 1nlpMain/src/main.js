@@ -13,13 +13,21 @@ import App from './App'
 import router from './router'
 import store from './store'
 import 'font-awesome/css/font-awesome.css'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import 'babel-polyfill'
+// 引用轮播图
+import  VueAwesomeSwiper from 'vue-awesome-swiper'
+import  'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
 import promise from 'es6-promise'
 promise.polyfill()
 import '@/icons' // icon
+// 自适应element样式
+import 'element-ui/lib/theme-chalk/display.css';
 import '@/styles/index.scss' // global css
 // import '@/permission' // permission control
+
 
 Vue.use(ElementUI, { locale })
 

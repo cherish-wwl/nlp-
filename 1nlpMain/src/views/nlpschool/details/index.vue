@@ -24,15 +24,13 @@
         </el-col>
       </el-row>
     </div>
-    <el-footer>Copyright 版权©所有神州泰岳 UltraPower 京ICP备15013685号-1</el-footer>
-    <login :visible="loginVisible" @login="login"></login>
+    <el-footer>{{ footerText }}</el-footer>
 		<contact-us></contact-us>
   </div>
 </template>
 
 <script>
 import HeaderPanel from '@/views/nlpschool/components/Header'
-import Login from '@/components/Login'// 登录组件
 import vue from 'vue'
 import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
@@ -40,11 +38,11 @@ require('vue-video-player/src/custom-theme.css')
 vue.use(VideoPlayer)
 import ContactUs from "@/components/ContactUs"
 import { getNlpSchoolData } from '@/api/localData.js'
+import { getCommonData } from "@/api/localData"
 export default {
   name: 'layout',
   components: {
     HeaderPanel,
-    Login,
 		ContactUs
   },
   data () {
@@ -53,6 +51,7 @@ export default {
       title:'',
       titleDetail:'',
       // videoPath:'./static/nlpschool/ai-school-1.flv',
+      footerText:"Copyright 版权©所有神州泰岳 UltraPower 京ICP备15013685号-1",
       introduction:'',
 			playerOptions : {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
@@ -112,7 +111,11 @@ export default {
       }
       this.playerOptions.sources.push(currentVideo)
     })
-    
+    getCommonData().then( res => {
+      if(res.footerText){
+        this.footerText = res.footerText
+      }
+    })
   },
   methods:{
     login(msg){
@@ -125,6 +128,10 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import "src/styles/mixin.scss";
+  html, body, #app, .nlp-cont{
+    height: 100% !important;
+    min-height: auto;
+  }
 .app-wrapper {
   @include clearfix;
   position: relative;
@@ -132,7 +139,9 @@ export default {
   width: 100%;
 }
 .nlp-cont {
-  width: 1200px;
+  // width: 1200px;
+
+  padding: 2% 11%;
   margin: 0 auto;
 /deep/ .el-icon-arrow-right {
     font-size: 14px;
@@ -144,5 +153,12 @@ export default {
 .nlpschool-detail .nlp-cont{
 	padding-bottom: 100px;
 }
+// mb
+  @media screen and (max-width: 1280px){
+   
+    .nlp-cont{
+      padding-bottom:0 !important;
+    }
+  }
 
 </style>

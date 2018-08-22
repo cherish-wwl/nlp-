@@ -5,8 +5,8 @@ const user = {
   state: {
     token: getToken(),
     name: '',
-    avatar: '',
-    roles: []
+    tel:'',
+    email:''
   },
 
   mutations: {
@@ -16,44 +16,24 @@ const user = {
     SET_NAME: (state, name) => {
       state.name = name
     },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
+    SET_TEL: (state, tel) => {
+      state.tel = tel
     },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
-    }
+    SET_EMAIL: (state, email) => {
+      state.email = email
+    },
   },
 
   actions: {
-    // 登录
-    Login({ commit }, userInfo) {
-      const username = userInfo.username.trim()
-      setToken("74167dsafuhdfadfiopweuqoer")
-      setUserName("wwl")
-      commit('SET_TOKEN', "74167dsafuhdfadfiopweuqoer")
-      commit('SET_NAME', "wwl")
-      // return new Promise((resolve, reject) => {
-      //   login(username, userInfo.password).then(response => {
-      //     const data = response.data
-      //     setToken(data)
-      //     setUserName(username)
-      //     commit('SET_TOKEN', data)
-      //     commit('SET_NAME', username)
-      //     resolve()
-      //   }).catch(error => {
-      //     reject(error)
-      //   })
-      // })
-    },
 
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
           const data = response.data
-          commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
+          commit('SET_NAME', data.userName)
+          commit('SET_TEL', data.tel)
+          commit('SET_EMAIL', data.email)
           resolve(response)
         }).catch(error => {
           reject(error)
@@ -63,19 +43,16 @@ const user = {
 
     // 登出
     LogOut({ commit, state }) {
-      commit('SET_TOKEN', '')
-      commit('SET_ROLES', [])
-      removeToken()
-      // return new Promise((resolve, reject) => {
-      //   logout(state.token).then(() => {
-      //     commit('SET_TOKEN', '')
-      //     commit('SET_ROLES', [])
-      //     removeToken()
-      //     resolve()
-      //   }).catch(error => {
-      //     reject(error)
-      //   })
-      // })
+      return new Promise((resolve, reject) => {
+        logout().then(() => {
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          removeToken()
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
     },
 
     // 前端 登出

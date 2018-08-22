@@ -82,7 +82,8 @@
   background-color: #fff;
   .temp_title {
     font-weight: 500;
-    margin: 45px 0;
+    font-size: 2.8rem;
+    margin: 4.5rem 0;
   }
 }
 
@@ -131,21 +132,54 @@ table.el-table__header{
   } 
 }
 
-
-// carousel 箭头
-.el-icon-arrow-left,.el-icon-arrow-right{
-  font-size: 30px;
-}
-// carousel 分页样式
-.el-carousel__indicator {
-  padding: 27px 4px;
-  .el-carousel__button {
-    width: 60px;
-    height: 5px;
-    opacity: 0.2;
+// pc
+@media  screen and (min-width: 1280px) {
+  // carousel 箭头
+  .el-icon-arrow-left,.el-icon-arrow-right{
+    font-size: 30px;
   }
+  // carousel 分页样式
+  .el-carousel__indicator {
+    padding: 27px 4px;
+    .el-carousel__button {
+      width: 60px;
+      height: 5px;
+      opacity: 0.2;
+    }
 
+  }
+  .el-carousel__indicator.is-active button {
+    opacity: 0.6;
+  }
 }
-.el-carousel__indicator.is-active button {
-  opacity: 0.6;
+// mb
+@media  screen and (max-width: 1280px) {
+  .el-carousel__button{
+    width: 2rem;
+  }
+  .swiper-button-prev, .swiper-button-next{
+    height: 20px;
+  }
+  // // 服务列表页面隐藏每页显示条数按钮
+  // .serviceLists-container{
+  //   .el-pagination__sizes{
+  //     display: none !important;
+  //   }
+  // }
+  // // 专家学者列表页面\科研机构列表页面隐藏每页显示条数按钮和总条数按钮
+  // .specialist-content,.universities-content{
+  //   .el-pagination__sizes, .el-pagination__jump, .el-pagination__total{
+  //     display: none !important;
+  //   }
+  // }
+}
+
+
+// 解决在safari 浏览器上  数据集页面的 上按钮的选中默认样式问题
+.el-radio-button:focus:not(.is-focus):not(:active){
+  box-shadow: none;
+} 
+.el-footer{
+  font-size: 1.4rem;
+  white-space: nowrap;
 }

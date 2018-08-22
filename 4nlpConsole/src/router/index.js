@@ -5,7 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-import consoleLayout from '../views/console/layout/index'
+const consoleLayout = () => require.ensure([], () => (require('@/views/Layout/index')), 'layout')
 import { WSAENETUNREACH } from 'constants';
 
 export const constantRouterMap = [
@@ -13,7 +13,7 @@ export const constantRouterMap = [
 
   {
     path: '/',
-    redirect: '/myService',
+    redirect: '/myService', //重定向
     hidden: true 
   },
   {
@@ -23,34 +23,33 @@ export const constantRouterMap = [
       {
         path: '',
         name: 'consoleService',
-        component: () => import('@/views/console/myService'),
+        component: ()=> require.ensure([], () => (require('@/views/MyService/myService')), 'consoleService'),
         meta:{
-          title:'概览',
-          search:false,
-          show:true,
-          icon:"el-icon-goods",
+          title:'概览',//左侧栏名称
+          search:false,//titleTool组件是否使用搜索框
+          icon:"el-icon-goods", //左侧栏 图标
 
         }
       },
       {
         path: 'detail',
         name: 'consoleServiceDetail',
-        component: () => import('@/views/console/myServiceDetail'),
+        component:resolve =>{require(['@/views/MyService/myServiceDetail'],resolve)},
         meta:{
-          title:'详情信息',
-          attr:"consoleService",
-          search:false
+          title:'详情信息',//titleTool组件的title
+          attr:"consoleService",//隶属于哪个左边栏
+          search:false//titleTool组件是否使用搜索框
           
         }
       },
       {
         path: 'techDocument',
         name: 'consoleTechDocument',
-        component: () => import('@/views/console/techDocument'),
+        component: () => import('@/views/MyService/techDocument'),
         meta:{
-          title:'技术文档',
-          attr:"consoleService",
-          search:false
+          title:'技术文档',//titleTool组件的title
+          attr:"consoleService", //隶属于哪个左边栏
+          search:false//titleTool组件是否使用搜索框
         }
       },
     ]
@@ -62,65 +61,65 @@ export const constantRouterMap = [
       {
         path: '',
         name: 'consoleMyApplicantion',
-        component: () => import('@/views/console/myApplicantion'),
+        component: () => import('@/views/MyApplicantion/myApplicantion'),
         meta:{
-          title:'应用管理',
-          search:true,
+          title:'应用管理',//左侧栏名称
+          search:true,//titleTool组件是否使用搜索框
           show:true,
-          icon:"el-icon-tickets"
+          icon:"el-icon-tickets" //左侧栏 图标
         }
       },
       {
         path: 'detail',
         name: 'consoleMyApplicantionDetail',
-        component: () => import('@/views/console/myApplicantionDetail'),
+        component: () => import('@/views/MyApplicantion/myApplicantionDetail'),
         meta:{
-          title:'应用详情',
-          attr:"consoleMyApplicantion",
-          search:false
+          title:'应用详情', //titleTool组件的title
+          attr:"consoleMyApplicantion",//隶属于哪个左边栏
+          search:false //titleTool组件是否使用搜索框
         }
       },
       {
         path: 'add',
         name: 'consoleMyApplicantionAdd',
-        component: () => import('@/views/console/myApplicantipnEditAdd'),
+        component: () => import('@/views/MyApplicantion/myApplicantipnEditAdd'),
         meta:{
-          title:'创建应用',
-          attr:"consoleMyApplicantion",
-          search:false
+          title:'创建应用',//titleTool组件的title
+          attr:"consoleMyApplicantion",//隶属于哪个左边栏
+          search:false //titleTool组件是否使用搜索框
         }
         
       },
       {
         path: 'edit',
         name: 'consoleMyApplicantionEdit',
-        component: () => import('@/views/console/myApplicantipnEditAdd'),
+        component: () => import('@/views/MyApplicantion/myApplicantipnEditAdd'),
         meta:{
-          title:'编辑详情',
-          attr:"consoleMyApplicantion",
-          search:false
+          title:'编辑详情', //titleTool组件的title
+          attr:"consoleMyApplicantion",//隶属于哪个左边栏
+          search:false //titleTool组件是否使用搜索框
         }
         
       }
     ]
   },
-  // {
-  //   path: '/myDataSet',
-  //   component: consoleLayout,
-  //   children:[
-  //     {
-  //       path: '',
-  //       name: 'consoleMyDataSet',
-  //       component: () => import('@/views/console/myDataSet'),
-  //       meta:{
-  //         title:'我的数据集',
-  //         search:true,
-  //         show:true,
-  //         icon:"el-icon-news"
-  //       }
-  //     },
-  //   ]
-  // },
+  {
+    path: '/myDataSet',
+    component: consoleLayout,
+    children:[
+      {
+        path: '',
+        name: 'consoleMyDataSet',
+        component: () => import('@/views/MyDataSet/myDataSet'),
+        meta:{
+          title:'我的数据集',//左侧栏名称
+          search:true, //titleTool组件是否使用搜索框
+          show:true,
+          icon:"el-icon-news" //左侧栏 图标
+        }
+      },
+    ]
+  },
   {
     path: '/mine',
     component: consoleLayout,
@@ -128,12 +127,12 @@ export const constantRouterMap = [
       {
         path: '',
         name: 'consoleMine',
-        component: () => import('@/views/console/mine'),
+        component: () => import('@/views/Mine/mine'),
         meta:{
-          title:'帐号信息',
-          search:false,
+          title:'帐号信息',//左侧栏名称
+          search:false, //titleTool组件是否使用搜索框
           show:true,
-          icon:"el-icon-setting"
+          icon:"el-icon-setting" //左侧栏 图标
         }
       }
     ]

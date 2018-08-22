@@ -1,5 +1,5 @@
 <template>
-  <div class="contactUS-container" id="contactUS">
+  <div class="contactUS-container hidden-sm-and-down" id="contactUS">
     <div class="phone-btn contactBox" > 
       <div class="btnbox" id="contact-phone">
         <div class="iconBox">
@@ -43,7 +43,7 @@ export default {
       let width = dom.offsetWidth
       let height = dom.offsetHeight
       let backgroundColor = dom.style.backgroundColor 
-      console.log(backgroundColor)
+      // console.log(backgroundColor)
 
       document.getElementById("contact-email").style.width = width + "px"
       document.getElementById("contact-email").style.height = height + "px"

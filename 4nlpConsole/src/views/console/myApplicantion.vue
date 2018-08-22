@@ -11,8 +11,8 @@
     <el-row>
       <el-table :data="tableData" :max-height="tableHeight" border style="width: 100%">
         <el-table-column prop="appName" label="应用名称" min-width="120"></el-table-column>
-        <el-table-column prop="appId" label="APLKEY" min-width="180"></el-table-column>
-        <el-table-column prop="appSecret" label="SecretKey" min-width="180"></el-table-column>
+        <el-table-column prop="appKey" label="App Key" min-width="180"></el-table-column>
+        <el-table-column prop="appSecret" label="App Secret" min-width="180"></el-table-column>
         <el-table-column prop="platforms" label="应用平台" :formatter="arrayToString">
         </el-table-column>
         <el-table-column prop="creatTime" label="创建时间" min-width="180"></el-table-column>

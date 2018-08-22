@@ -6,17 +6,17 @@
       <el-select v-model="classId" @change="changClass" placeholder="请选择">
         <el-option
           v-for="item in classList"
-          :key="item.id"
+          :key="item.classId"
           :label="item.name"
-          :value="item.id">
+          :value="item.classId">
         </el-option>
       </el-select>
       <el-select v-model="serivceId" @change="triggerChartData" placeholder="请选择">
         <el-option
           v-for="item in serviceList"
-          :key="item.id"
+          :key="item.serviceId"
           :label="item.serviceName"
-          :value="item.id">
+          :value="item.serviceId">
         </el-option>
       </el-select>
       <el-date-picker
@@ -178,7 +178,7 @@ export default {
       }
       getServicesListByCId(params).then(res => {
         this.serviceList = res.data
-        this.serivceId =  this.serviceList[0].id
+        this.serivceId =  this.serviceList[0].serviceId
         this.triggerChartData()   
       })
       

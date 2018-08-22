@@ -7,7 +7,7 @@
         <el-input name="userName" type="text" v-model="loginForm.userName" autoComplete="on" placeholder="请输入用户名" />
       </el-form-item>
       <el-form-item prop="email">
-        <el-input name="email" type="text" v-model="loginForm.email" autoComplete="on" placeholder="请输入邮箱地址" />
+        <el-input name="email" type="text" v-model="loginForm.email" autoComplete="on" placeholder="请输入有效邮箱地址" />
       </el-form-item>
       <el-form-item prop="pass">
         <el-input name="password" :type="pwdType" v-model="loginForm.pass" autoComplete="on"
@@ -25,7 +25,7 @@
         </span>
       </el-form-item>
       <el-form-item prop="tel">
-        <el-input name="phone" type="text" v-model="loginForm.tel" placeholder="手机号码" autoComplete="on"></el-input>
+        <el-input name="phone" type="number" v-model="loginForm.tel" placeholder="手机号码（选填）" autoComplete="on"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="font16" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
@@ -77,11 +77,10 @@ export default {
     const validateEmail =(rule, value, callback) => {
       checkedEmail({email:value}).then( res => {
         if(res.code == "0003"){
-          callback(new Error("邮箱已被注册"))
+          callback(new Error("此邮箱已被注册"))
         }else{
           callback()
         }
-        
       })
       
     }
@@ -107,7 +106,7 @@ export default {
             { required: true, trigger: 'blur', validator: validateRePass }
           ],
         email:[
-          { required: true, message: '请输入邮箱地址', trigger: 'blur'},
+          { required: true, message: '请输入有效邮箱地址', trigger: 'blur'},
           { type:'email', message: '请输入正确的邮箱地址', trigger: 'blur'},
           { trigger: 'blur', validator: validateEmail }
 
@@ -149,7 +148,7 @@ export default {
             this.$alert('注册成功！请您到邮箱里激活该帐号！', '提示：', {
               confirmButtonText: '确定',
               callback: action => {
-                this.$emit("rebackPage")
+                this.$router.push({name:"login"})
               }
             });
             this.loading = false
@@ -184,9 +183,10 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-// html, body, #app{
-//   height: 100%;
-// }
+html, body, #app{
+  height: 100%;width: 100%;
+}
+ 
 .register-container{
   background-color: rgb(241, 243, 245);
   background-image: url('../../../../assets/registerBg.jpg');
@@ -214,7 +214,7 @@ export default {
     // margin: auto;
     padding: 20px 100px;
     .el-input__inner{
-      width: 400px;
+      width: 367px;
     }
   }
   .tips{
@@ -224,4 +224,71 @@ export default {
     }
   }
  }
+  // @media screen and (max-width: 425px){
+  //   form.el-form{
+  //     width: 100%!important;
+  //     position: absolute!important;
+  //     left: -97px!important;
+  //     right: 0!important;
+  //     width: 570px!important;
+  //     top:30px!important;
+  //     margin: 0 auto!important;
+  //     background-color: #fff!important;
+  //   }
+  //   }
+     @media screen and (max-width: 414px){
+      form.el-form{
+        width: 100%!important;
+        position: absolute!important;
+        left: -77px!important;
+        right: 0!important;
+        width: 570px!important;
+        top:30px!important;
+        margin: 0 auto!important;
+        background-color: #fff!important;
+      }
+    }
+    @media screen and (max-width: 400px){
+        form.el-form{
+          width: 100%!important;
+          position: absolute!important;
+          left: -96px!important;
+          right: 0!important;
+          width: 570px!important;
+          top:30px!important;
+          margin: 0 auto!important;
+          background-color: #fff!important;
+        }
+    }
+    
+    @media screen and (max-width: 340px){
+        form.el-form{
+          width: 100%!important;
+          position: absolute!important;
+          left: -90px!important;
+          right: 0!important;
+          width: 500px!important;
+          top:30px!important;
+          margin: 0 auto!important;
+          background-color: #fff!important;
+        }
+      .el-input__inner {
+           width: 299px!important;
+      }
+    }
+     @media screen and (max-width: 360px){
+        form.el-form{
+          width: 100%!important;
+          position: absolute!important;
+          left: -90px!important;
+          right: 0!important;
+          width: 540px!important;
+          top:30px!important;
+          margin: 0 auto!important;
+          background-color: #fff!important;
+        }
+      .el-input__inner {
+           width: 340px!important;
+      }
+    }
 </style>

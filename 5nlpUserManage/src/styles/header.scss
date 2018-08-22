@@ -1,3 +1,8 @@
+body,html{
+  width: 100%;
+  height: 100%;
+}
+
 #app {
   $headerHeight:60px;
     // 主体区域
@@ -22,9 +27,6 @@
         left: 0;
         right: 0; 
       }
-      // .el-submenu__title,.el-menu-item{
-        
-      // }
       .el-menu--horizontal{
         border-bottom-color: #000;
         .el-submenu .el-submenu__title, .el-menu-item{
@@ -43,7 +45,8 @@
       }    
       .el-menu {
         padding: 0 4%;
-        min-width: 1240px;
+        
+        // min-width: 1240px;
         // display: -webkit-box;
         .loginItem{
           background-color: #2b9eeb !important;
@@ -68,6 +71,7 @@
       }
       .el-menu-item.is-active:not(.loginItem ),.el-menu-item:not(.loginItem ):hover,
       .el-submenu.is-active .el-submenu__title{
+
         color: #2b9eeb!important;
         border-color: #000!important;
       }

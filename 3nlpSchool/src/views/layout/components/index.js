@@ -1,3 +1,3 @@
 
-export { default as HeaderPanel } from './Header'
-export { default as AppMain } from './AppMain'
+export { default as headerPanel} from './headerPanel'
+export { default as mainPanel} from './mainPanel'

@@ -12,14 +12,20 @@
           <br/>
           <span>接入服务({{item.serviceCount}}) </span>
         </el-button>
-        <el-button         
+        <!-- <el-button         
           class="selfbutton2"
-         >
+          @click="clickTool($event)"
+         > -->
+        <div class="selfbutton2 text_center">
+          <br/>
           <span class="font18"><i class="el-icon-circle-plus-outline"></i></span>
-          <span class="underline" @click="jumpApplicationPage('add')" >创建应用 </span>
-           <br/>
-          <span class="underline"   @click="jumpApplicationPage">查看更多应用 </span>
-        </el-button>
+          <a class="underline font14" v-on:click.prevent="jumpApplicationPage('add')" >创建应用 </a>
+          <br/>
+          <a class="underline font14"   v-on:click.prevent="jumpApplicationPage">查看更多应用 </a>
+        
+          
+        </div>
+        <!-- </el-button> -->
     </el-row>
     <br />
     <br />
@@ -140,12 +146,16 @@ export default {
     },
     // 跳转到应用页面
     jumpApplicationPage(val){
+      console.log("!1111111111111111111111")
       if(val == "add"){
         this.$router.push({name:"consoleMyApplicantionAdd"})
       }else{
         this.$router.push({path:"/myApplicantion"})
       }
      
+    },
+    clickTool(e){
+      console.log(e)
     },
     handleCurrentChange(val){
       this.currentPage = val

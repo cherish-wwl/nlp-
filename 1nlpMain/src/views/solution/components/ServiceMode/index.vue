@@ -5,7 +5,7 @@
         <h2 class="temp_title">服务模式</h2>     
       </el-col>
     </el-row>
-    <el-table :data="list"  border  highlight-current-row style="width: 100%">
+    <el-table class="hidden-md-and-down" :data="tableData.data"  border  highlight-current-row style="width: 100%">
       <el-table-column 
       align="center"  
       v-for="(item,index) in tableData.headList" 
@@ -13,6 +13,29 @@
       :key="index" 
       :label="item.name"> 
       </el-table-column>
+    </el-table>
+    <el-table class="hidden-lg-and-up" :data="tableData.data" border highlight-current-row style="width:100%;">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item   
+              v-for="(item,index) in tableData.headList" 
+              :key="index" 
+              :label="item.name+'：'">
+              <span>{{ props.row[item.id] }}</span>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
+      <el-table-column 
+        align="center"  
+        v-for="(item,index) in tableData.headList" 
+        v-if="index<2"
+        :prop="item.id" 
+        :key="index" 
+        :label="item.name"> 
+        </el-table-column>
+
     </el-table>
     <p class="smaller font_color_grey">注：每套翻译引擎部署在一张GPU卡上，一个语言方向的机器翻译引擎为1套机器翻译引擎，比如中译英为一套机器翻译引擎，英译中为另一套机器翻译引擎。</p>
     <el-row class="text_center">

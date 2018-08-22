@@ -6,25 +6,25 @@
       </el-col>
     </el-row>
     <el-row class="icon_panel">
-      <el-col :span="12">
-        <p>沈阳雅译网络技术有限公司</p>
+      <el-col :lg="12" :xl="12" :md="24" :sm="24" :xs="24">
+        <p class="font16">沈阳雅译网络技术有限公司</p>
   
-        <p class="small">网址：<a href="http://www.yatrans.com" target='_blank'>http://www.yatrans.com</a></p>
-        <p class="small">联系人：宁义明 </p>
+        <p class="font14">网址：<a href="http://www.yatrans.com" target='_blank'>http://www.yatrans.com</a></p>
+        <p class="font14">联系人：宁义明 </p>
         <br />
     
-        <p class="small">电话：15009885010</p>
-        <p class="small">Email: business@yatrans.com</p>
+        <p class="font14">电话：15009885010</p>
+        <p class="font14">Email: business@yatrans.com</p>
       </el-col>
-      <el-col :span="12">
-        <el-col :span="12" class="text_center">
+      <el-col :lg="12" :xl="12" :md="24" :sm="24" :xs="24">
+        <el-col :lg="12" :xl="12" :md="12" :sm="12" :xs="24" class="text_center">
           <img src="static/solution/xiaoniu/u1764.png"/>
-          <p >小牛翻译微信公众号</p>
+          <p class="font16">小牛翻译微信公众号</p>
         </el-col>
-        <el-col :span="12" class="text_center">
+        <el-col :lg="12" :xl="12" :md="12" :sm="12" :xs="24" class="text_center">
           <img src="static/solution/xiaoniu/u1766.png"/>
-          <p>扫描下载</p>
-          <p>小牛翻译APP安卓版</p>
+          <p class="font16">扫描下载</p>
+          <p class="font16">小牛翻译APP安卓版</p>
         </el-col>
       </el-col>
     </el-row>

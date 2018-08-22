@@ -3,18 +3,18 @@
      <!-- 合作院校列表页面 -->
     <el-row>
       <div class="back-img">
-        <img  src="/static/index/bgImg/u574.jpg" />
+        <img  src="static/index/bgimg/u574.jpg" />
       </div>
       <div class="dispaly-font">
-        <a v-on:click="returnBack">{{title1}}</a> &nbsp;
+        <a class="font16" v-on:click="returnBack">{{title1}}</a> &nbsp;
         <span> > </span> &nbsp;&nbsp;
         <a class="font32" style="margin-bottom: 20px;">{{title2}}</a>
       </div>
     </el-row>
     <br >
     <!-- 合作院校列表展示页面 -->
-    <div class="content" v-if="!isDetail">
-     <el-row class="col">
+    <div class="content " v-if="!isDetail">
+      <el-row class="col hidden-md-and-down">
         <el-select v-model="currentUnversite" placeholder="请选择" @change="querySearch">
           <el-option value="" label="全部"  key="全部"> </el-option>
           <el-option
@@ -24,7 +24,7 @@
             :value="item.academyId">
           </el-option>
         </el-select>
-         <el-input
+        <el-input
           class="ellipse_input"
           placeholder="输入想要检索的关键字"
           v-model="search_word" style="margin-left:15px;"
@@ -34,7 +34,7 @@
           </el-input> 
       </el-row>
       <el-row>
-        <el-col :span="8" class="col" v-for="(item,index) in listData" :key="index" >
+        <el-col :lg="8" :xl="8" :md="24" :xs="24" :sm="24" class="col" v-for="(item,index) in listData" :key="index" >
           <div class="item line-animate-content" v-on:click="seeDetails(item.groupId)">
             <div class="line"></div>
             <div class="img-line">
@@ -43,15 +43,15 @@
             </div>
             <div class="info-line">
               <h3 class="font18 specialistName"><span class="dot"></span>{{item.groupName}}</h3>
-              <p class="font14 specialistDesrc height90">{{ item.groupBriefIntroduction | subStringNoMore3line}}<p>
-              <div class="text_right"><a>>查看详情</a></div>
+              <p class="font14 specialistDesrc height90 hidden-md-and-down">{{ item.groupBriefIntroduction | subStringNoMore3line}}<p>
+              <div class="font16 text_right hidden-md-and-down"><a>>查看详情</a></div>
             </div>
             
           </div>
         </el-col>
       </el-row>
-       <el-row>
-        <div class="block text_center">
+      <el-row>
+        <div class="block text_center" id="pagination_tools">
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
@@ -66,8 +66,8 @@
     </div>
     <!-- 合作院校详情展示页面 -->
     <div class="content" v-else>
-      <el-row  :gutter="20">
-        <el-col :span="18">
+      <el-row  :gutter="20" >
+        <el-col :lg="18" :xl="18" :sm="24" :md="24" :xs="24">
           <div class="bordertopbule item1">
               <div class="item1-info">
                 <span class="font20 item1-name"> {{ listData.groupName }}</span>
@@ -84,7 +84,7 @@
             </article>
           </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="6" class="hidden-md-and-down">
           <div class="specialist-contact bordertopbule">
             <div class="font16">相关专家</div>
             <el-row>
@@ -92,7 +92,7 @@
                   <el-col :key="index" :span="8" class="specialist-content-item text_center" @click.native="seeSpecialistDetails(item.professorId)">
                     <div class="item3">
                     <img :src="item.imageUrl?item.imageUrl:'/static/nlp_head2.jpg'" onerror="this.src='/static/nlp_head2.jpg'">
-                    <p class="text_center"><span>{{ item.professorName }}</span></p>
+                    <p class="font14 text_center"><span>{{ item.professorName }}</span></p>
                     </div>
                   </el-col>
               
@@ -109,7 +109,7 @@
   </div>
 </template>
 <script>
-import { subStringNoMore3line } from '@/utils/index'
+import { subStringNoMore3line, isMobile } from '@/utils/index'
 import { getAcademyList, getGroupList, getGroupDetail} from '@/api/universities'
 export default {
   data () {
@@ -173,8 +173,20 @@ export default {
        
     },
     getGroupList(){
+     
+      var params= {
+        keyword:this.search_word,
+        academyId:this.currentUnversite,
+        pageNow:this.currentPage,
+        pageSize:this.pageSize
+      }
+      // 判断是否为移动端访问
+      if(isMobile() == true){
+        params = {}
+        document.getElementById("pagination_tools").style.display = "none"
+      }
       // 获取学院列表
-      getGroupList({keyword:this.search_word,academyId:this.currentUnversite,pageNow:this.currentPage,pageSize:this.pageSize}).then( res => {
+      getGroupList(params).then( res => {
         this.listData = res.data
         this.totalsNums = res.total
       })
@@ -246,30 +258,30 @@ export default {
       }
   }
   .back-img {
-      min-width: 1240px;
-      min-height: 100px;
+      // min-width: 1240px;
+      // min-height: 100px;
       position: relative;
   }
   .content {
-    padding: 0px 10%;
+    // padding: 0px 10%;
     .col{
       padding: 0 15px 30px 15px;
       // height: 280px;
     }
-    .bordertopbule{
-      border-top: 4px solid #2b9eeb;
-    }
+    
     .item{
       background-color: #fff;
       padding: 0 24px 12px 24px;
       .img-line{
         // width: 280px;
-        height: 200px;
+        height: 13rem;
         display: flex;
         img{
-          height: fit-content;
           margin: auto;
+          width: auto;
+	        height: auto;
           max-width: 100%;
+          max-height: 100%;
         }
       }
       .info-line{
@@ -354,6 +366,40 @@ export default {
    
   }
   
+}
+// pc
+@media screen and (min-width: 1024px){
+  .universities-content{
+    .back-img {
+      min-width: 1240px;
+      min-height: 100px;
+    } 
+    .content{
+      padding: 0px 10%;
+      .bordertopbule{
+        border-top: 4px solid #2b9eeb;
+      }
+    }
+  }
+}
+// mb
+@media screen and (max-width: 1024px){
+  .universities-content{
+    .back-img {
+      img{
+        height: 160px;
+      }
+    }
+    .content{
+      
+      .item .info-line .specialistName{
+        height: auto;
+      }
+      .item1 .item1-info{
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 </style>
 

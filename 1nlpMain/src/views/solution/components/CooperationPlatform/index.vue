@@ -3,9 +3,10 @@
     <el-row class="text_center">
       <h2 class="temp_title temp_title_line">合作伙伴</h2>
     </el-row>
-    <el-row class="display_panel">
+    <el-row class="display_panel text_center">
    
-      <el-col :span="cooperationData.col" class="item" v-for="(item,index) in cooperationData.data" :key="index">
+      <el-col :lg="cooperationData.col" :xl="cooperationData.col" :md="12" :xs="12" :sm="12"
+      class="item" v-for="(item,index) in cooperationData.data" :key="index">
          <img  :src='item'/>
       </el-col>
       
@@ -28,7 +29,9 @@ export default {
   display: block;
   
   .display_panel{
-   
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     .item{
       padding: 5px;
       img{

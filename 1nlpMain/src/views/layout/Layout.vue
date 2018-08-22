@@ -1,37 +1,38 @@
 <template>
   <div class="app-wrapper">
+    <top-festival></top-festival>
     <header-panel @login="login" class="header-container"></header-panel>
     <div class="main-container">
-      <!-- <navbar></navbar> -->
       <app-main></app-main>
     </div>
-    <el-footer>Copyright 版权©所有神州泰岳 UltraPower 京ICP备15013685号-1</el-footer>
-    <login :visible="loginVisible" @login="login"></login>
+    <el-footer v-html="footerText">{{ footerText }}</el-footer>
     <contact-us></contact-us>
-
   </div>
 </template>
 
 <script>
 import { HeaderPanel, AppMain } from '@/views/layout/components'
 import  ContactUs from '@/components/ContactUs' //悬浮框联系我们组件
-import Login from '@/components/Login'// 登录组件
+import TopFestival from "@/components/TopFestival"  //顶层悬浮广告
+import { mapGetters } from "vuex"
 export default {
   name: 'layout',
   components: {
     HeaderPanel,
     AppMain,
-    Login,
-    ContactUs
+    ContactUs,
+    TopFestival
   },
   data () {
     return{
-      loginVisible:false
+      loginVisible:false,
     }
   },
   computed: {
-   
-  },
+      ...mapGetters([
+        'footerText',
+      ])
+    },
   methods:{
     login(msg){
       console.log("++++++++++++++++++++登录+++++++++++++++++++++++++++")
@@ -39,6 +40,8 @@ export default {
       console.log(msg)
       this.loginVisible = msg
     }
+  },
+  mounted(){
   }
 }
 </script>
@@ -51,4 +54,5 @@ export default {
   height: 100%;
   width: 100%;
 }
+
 </style>

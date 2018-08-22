@@ -3,12 +3,16 @@
     <el-row class='service_info'>
       <img class='service_bg_img' :src="service_bg_img" onerror="this.src='/static/sevice_banner_default.jpg';return false;" />
       <div class='title_desc'>
-        <h1> {{ serviceInfo.service_title }} </h1>
-        <p> {{ serviceInfo.service_desc }} </p>
+       <div class="info">
+          <router-link :to="{name:'home'}"><span class="overUnderLine font18">首页</span></router-link>
+          <i class="el-icon-arrow-right font16"></i>
+          <h1 > {{ serviceInfo.service_title }} </h1>
+        </div>
+        <p class="font18 hidden-md-and-down"> {{ serviceInfo.service_desc }} </p>
       </div>
     </el-row>
     <el-container class='service_class'>
-      <el-aside width="200px" class='aside_style'>
+      <el-aside width="200px" class='aside_style hidden-md-and-down'>
         <el-collapse v-model="activeNames" @change="handleChange" >
           <el-collapse-item  v-for='item in collapseData' :key='item.id'  :name="item.id">
              <template slot="title">
@@ -29,7 +33,7 @@
         </el-collapse>
       </el-aside>
       <el-main class='service_content' >
-        <el-row class='service_tools' >
+        <el-row class='service_tools hidden-md-and-down' >
           <el-col :span='12' class='font16 nowarp'>
             <i class="fa fa-paper-plane" aria-hidden="true"></i>
             <span >{{ serviceInfo.service_title | noMoreThenFonts}}</span>
@@ -51,13 +55,13 @@
         </el-row>
         <el-row class='service_list' >
             <el-row class='item' v-for="item in thridList" :key='item.id'>
-              <el-col :span='8' class='item_img' style="width:330px;"> 
+              <el-col :span='8' class='item_img' > 
                 <img 
                   :src="item.serviceIcon && item.serviceIcon != '' ?item.serviceIcon:'/static/default.png'" 
                   onerror="this.src='/static/default.png';return false;" />
               </el-col>
               <el-col :span='16' class='item_info'>
-                <h3>
+                <h3 class="font18">
                   {{ item.serviceName }}
                 </h3>
                 <div class='f_c_grey'>
@@ -82,10 +86,11 @@
               </el-col>
             </el-row> 
         </el-row>
-        <el-row class="text_center">
+        <el-row class="text_center service_pager" id="pagination_tools">
           <el-pagination
             layout="sizes,prev, pager, next"
             :total="paginationTotal"
+            :pager-count="5"
             :page-sizes="[2, 5, 10, 20]"
             :page-size="paginationPageSize"
             :current-page="paginationCurrentPage"
@@ -100,6 +105,7 @@
 
 <script>
 import { getMenus } from '@/api/header'
+import { isMobile } from '@/utils/index'
 import { getThirdServiceList } from '@/api/serviceLists'
 import Cookies from 'js-cookie'
 export default {
@@ -261,7 +267,7 @@ export default {
       }) 
     },
     refrushThridList(){
-      var data ={
+      var data = {
         class_id:this.currentServiceId, //id
         pageNow:this.paginationCurrentPage, //当前页
         pageSize:this.paginationPageSize,//每页条数
@@ -285,11 +291,16 @@ export default {
         }
         data.useNum = ""
       }
-      console.log(this.sortType)
+      // console.log(this.sortType)
       if( this.showFreeCharge == "012001"){
         data.isCharge = this.showFreeCharge
       }
-      console.log(data)
+      // 判断是否为移动端访问
+      if(isMobile() == true){
+        data = { class_id:this.currentServiceId }
+        document.getElementById("pagination_tools").style.display = "none"
+      }
+      // console.log(data)
       getThirdServiceList(data).then(responce =>{
         this.thridList = responce.data 
         this.paginationTotal = responce.total
@@ -346,15 +357,18 @@ export default {
     position: relative;
     .service_bg_img{
       width: 100%;
-      max-height: 300px;
       background-color: #9d9a96;
-      min-height: 300px;
+  
     }
     .title_desc {
       position: absolute;
       top: 22%;
       color: #fff;
       left: 10%;
+      h1{
+        font-size: 4rem;
+        display: inline-block;
+      }
     }
   }
   .service_class{
@@ -454,6 +468,64 @@ export default {
         }
         
       }
+    }
+  }
+}
+// pc
+@media screen  and (min-width: 1280px){
+  .serviceLists-container {
+    .service_info{
+      .service_bg_img{     
+        height: 30rem;
+      }
+    }
+    .service_class{    
+      .service_list{
+        .item{
+          .item_img{
+            width: 33rem;
+          }
+        }
+      }
+    }
+  }
+}
+// iphone
+@media screen  and (max-width: 1280px){
+  .serviceLists-container {
+    .service_info{
+      .service_bg_img{
+        min-height: 12rem;
+      }
+      .title_desc{  
+        .info{
+          // white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }   
+        h1{
+          font-size: 3rem;
+          margin: 0;
+        }
+      }
+    }
+    .service_class{
+      padding: 0;
+      .service_list{
+        .item{
+          flex-direction: column;
+          align-items: flex-start;
+          .item_info {
+            width: 100%
+          }
+          .item_img{
+            width: 100%;
+          }
+        }
+      }
+    }
+    .service_pager{
+      margin-left: -1.5rem;
     }
   }
 }

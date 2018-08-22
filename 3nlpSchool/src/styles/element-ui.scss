@@ -74,63 +74,6 @@
   border-color:#409EFF !important;
 }
 
-// 解决方案 -模板
-.container_80{
-  display: block;
-  padding: 0 10% 60px;
-  display: block;
-  background-color: #fff;
-  .temp_title {
-    font-weight: 500;
-    margin: 45px 0;
-  }
-}
-
-// 文本超过3行 出现省略号
-// .no_more_line_3 {
-//   // display: -webkit-box;
-//   // -webkit-box-orient: vertical;
-//   // -webkit-line-clamp: 3;
-//   overflow: hidden;
-//   height: 44px;
-//   position: relative;
-//   &:after{
-//     content: "...";
-//     position: absolute;
-//     bottom: 0;
-//     right: -1px;
-//   }
-// }
-
-
-// xiaoniu
-table.el-table__body {
-  
-  tr td:not(:first-child){
-    color: #888;
-    font-size: small;
-  }
-}
-.el-table__body-wrapper{
-  overflow: hidden;
-}
-table.el-table__header{
-  thead.has-gutter tr th{
-    background-color: #f7f7f7;
-    font-weight: 500;
-    color: #575656;
-    font-size: small;
-  }
-}
-
-.ellipse_input.el-input {
-  width: 200px;
-  input.el-input__inner {
-    border: none;
-    border-radius: 30px;
-  } 
-}
-
 
 // carousel 箭头
 .el-icon-arrow-left,.el-icon-arrow-right{

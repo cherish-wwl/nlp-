@@ -41,27 +41,46 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-   .technicalFeatures {
-     display: block;
-     background-color: #fff;
-      h2{
-        font-weight:500;
-        margin: 45px 0;
-      }
-      .icon_panel{
-        display: flex;
-        justify-content: space-around;
-        .icon_panel_item {
-          position: relative;
-          width: 20%;
-          text-align: center;
-          img{
-            width: 32%;
-          }
+.technicalFeatures {
+  display: block;
+  background-color: #fff;
+  h2{
+    font-weight:500;
+    margin: 45px 0;
+  }
+  
+}
+// pc
+@media screen and (min-width: 1024px){
+  .technicalFeatures {
+    .icon_panel{
+      display: flex;
+      justify-content: space-around;
+      .icon_panel_item {
+        position: relative;
+        text-align: center;
+        img{
+          width: 32%;
         }
-        
-      }
-      
-   }
+      } 
+    }
+  }
+}
+// mb
+@media screen and (max-width: 1024px){
+  .technicalFeatures {
+    .icon_panel{
+      .icon_panel_item {
+        width: 100%;
+        text-align: center;
+        img{
+          width: 32%;
+        }
+      } 
+    }
+  }
+}
+
+
 </style>
 

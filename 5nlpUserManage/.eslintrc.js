@@ -4,6 +4,9 @@ module.exports = {
   parserOptions: {
     sourceType: 'module'
   },
+  globals:{
+    "commonData":true
+  },
   env: {
     browser: true,
     node: true,

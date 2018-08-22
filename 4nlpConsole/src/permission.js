@@ -3,13 +3,15 @@ import store from './store'
 // import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import { Message } from 'element-ui'
-import { getToken, getUserName} from '@/utils/auth' // 验权
-import { getCommonData } from "@/api/localData" //获取路径
-
+import { getToken } from '@/utils/auth' // 验权
 const whiteList = ['/login'] // 不重定向白名单
+
 router.beforeEach((to, from, next) => {
   // NProgress.start()
-  console.log(to)
+
+  // 初始化公共参数
+  store.dispatch('initCommonData')
+ 
   if (getToken()) {
     // 接口文档页面
     if(to.name == "consoleTechDocument"){
@@ -23,10 +25,8 @@ router.beforeEach((to, from, next) => {
     }
 
   } else {
-    Message.error('验证失败,请重新登录')
-    getCommonData().then(res => {
-      window.location.href = res.userManageBaseUrL
-    })
+    // Message.error('验证失败,请重新登录')
+    window.location.href = store.getters.userManageBaseUrL
   }
   // NProgress.done()
 })

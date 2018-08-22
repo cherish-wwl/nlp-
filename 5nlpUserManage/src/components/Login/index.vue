@@ -55,4 +55,5 @@ export default {
   fill: currentColor;
   overflow: hidden;
 }
+
 </style>

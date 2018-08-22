@@ -6,7 +6,7 @@
       </el-col>
     </el-row>
     <el-row class='panel'>
-      <div class='item' v-for="(item,index) in sceneData" :key="index" v-if="item.relateType=='006002'">
+      <el-col class='item' :lg="8" :md="8" :sm="24" :xl="24" :xs="24" v-for="(item,index) in sceneData" :key="index" v-if="item.relateType=='006002'">
         <el-col :span="5">
           <img class="img " :src="item.banner">
         </el-col>
@@ -14,7 +14,7 @@
           <label class="font18">{{ item.title }}</label>
           <p class="font16">{{ item.content }}</p>
         </el-col>
-      </div>
+      </el-col>
     </el-row>
    </el-container>
 </template>
@@ -32,22 +32,18 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .applicationScene2 {
     display: block;
-    background:url('../../../../../assets/sevice_details/u513.jpg') no-repeat; 
     background-size: 100% 100%;  
-    color: #fff;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
+    
+    
     h2{
       font-weight:500;
       margin: 35px 0;
     }
     .panel{
-      display: flex;
-      justify-content: center;
-      
+     
       .item {
-        width: 24%;
-        display: flex;
+        // width: 24%;
+        // display: flex;
         background-color:#f2f2f238;
         cursor: pointer;
         padding: 20px;
@@ -69,5 +65,35 @@
     
     
   }
+// pc
+@media screen and ( min-width: 1024px){
+  .applicationScene2 {
+    color: #fff;
+    background:url('../../../../../assets/sevice_details/u513.jpg') no-repeat; 
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    .panel{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0 19rem;
+    }
+  }
+}
+// mb
+@media screen and ( max-width: 1023px){
+  .applicationScene2 {
+    color: #000;
+    .panel{
+      color: #fff;
+      .item{
+        margin-bottom: 1rem;
+        background:url('../../../../../assets/sevice_details/u513.jpg');    
+        background-size: cover;   
+      }
+    }
+  }
+}
 </style>
 

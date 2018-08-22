@@ -1,11 +1,15 @@
 <template>
+<el-row :gutter="20">
+  <el-col :span="6">
+
+ 
   <div class="login-container">
     <div class="bg-img">
-      <img src="../../assets/regist_bg.jpg" />
+      <img class="bg-img1" src="../../assets/regist_bg.jpg" />
     </div>
     <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px"
       class="card-box login-form">
-      <h3 class="title">中文信息深度处理开放创新平台</h3>
+      <h3 class="title">登录</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="email" />
@@ -33,16 +37,18 @@
     </el-form>
     
   </div>
+   </el-col>
+</el-row>
 </template>
+
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
-import { getCommonData }  from "@/api/localData"
+import { mapGetters } from "vuex"
 import md5 from 'js-md5';
 export default {
   name: 'login',
   data() {
-  
     const validatePass = (rule, value, callback) => {
       if (value.length < 5) {
         callback(new Error('密码不能小于5位'))
@@ -66,6 +72,11 @@ export default {
       pwdType: 'password'
     }
   },
+  computed:{
+    ...mapGetters([
+      "consoleBaseUrl"
+    ])
+  },
   methods: {
     showPwd() {
       if (this.pwdType === 'password') {
@@ -75,23 +86,18 @@ export default {
       }
     },
     jumpPage(params){
-      // let routeData = this.$router.resolve(params)
-      // window.open(routeData.href, "_blank")
       this.$router.push(params)
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          console.log(this.loginForm)
           let params = {
               username: this.loginForm.username,
               password:md5(this.loginForm.password)
           }
           this.$store.dispatch('Login', params).then((res) => {
-            getCommonData().then( res => { 
-              window.location.href = res.consoleUrl            
-            })
+            window.location.href = this.consoleBaseUrl
             this.loading = false
           }).catch((e) => {
             this.loading = false
@@ -182,5 +188,64 @@ export default {
       right: 35px;
       bottom: 28px;
     }
+    ul.el-menu.el-menu-demo.el-menu--horizontal{
+      position: fixed;
+      top:0;
+      left: 0;
+      right: 0;
+      
+    }
   }
+.bg-img1{height: 100%;}
+   
+    @media screen and (max-width: 414px){
+   .login-form{
+      width: 100%!important;
+      position: absolute!important;
+      left: -96px!important;
+      right: 0!important;
+      width: 610px!important;
+      top:30px!important;
+      margin: 0 auto!important;
+      background-color: #fff!important;
+    }
+    }
+     @media screen and (max-width: 400px){
+      .login-form{
+          width: 100%!important;
+          position: absolute!important;
+          left: -117px!important;
+          right: 0!important;
+          width: 610px!important;
+          top:30px!important;
+          margin: 0 auto!important;
+          background-color: #fff!important;
+        }
+    }
+
+     @media screen and (max-width: 360px){
+      .login-form{
+          width: 100%!important;
+          position: absolute!important;
+          left: -108px!important;
+          right: 0!important;
+          width: 576px!important;
+          top:30px!important;
+          margin: 0 auto!important;
+          background-color: #fff!important;
+        }
+    }
+    @media screen and (max-width: 320px){
+        .login-form{
+            width: 100%!important;
+            position: absolute!important;
+            left: -111px!important;
+            right: 0!important;
+            width: 543px!important;
+            top:30px!important;
+            margin: 0 auto!important;
+            background-color: #fff!important;
+        }
+    }
+    
 </style>

@@ -3,6 +3,7 @@
   "datalist":[{
       "imgUrl":"static/index/image/banner_1.jpg",
       "link":""
+      
     },{
       "imgUrl":"static/index/image/banner_03.jpg",
       "link":""
@@ -17,6 +18,7 @@
       "link":"http://www.cipsc.org.cn"
     },{
       "imgUrl":"static/index/image/banner_freeapi.jpg",
-      "link":"serviceList"
+      "link":"serviceLists",
+      "type":1
     }]
 }

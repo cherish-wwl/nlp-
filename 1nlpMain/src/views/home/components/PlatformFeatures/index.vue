@@ -1,7 +1,7 @@
 <template>
   <el-container class='platform_features'>
     <el-row style="width: 100%;">
-      <el-col :span="6" class="item" >
+    <el-col  :xs="12" :sm="12" :md="12" :lg="6" :xl="6" class="item" >
         <div class="grid-content" @click="jumpPage({name:'specialist'})">
           <label class="font18">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -12,7 +12,7 @@
           </p>
         </div>
       </el-col>
-      <el-col :span="6" class="item">
+      <el-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" class="item">
         <div class="grid-content" @click="jumpPage({name:'universities'})">
           <label class="font18">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
           </p>
         </div>
       </el-col>  
-      <el-col :span="6" class="item">
+      <el-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" class="item">
         <div class="grid-content" @click="jumpCCIC">
           <label class="font18">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
           </p>
         </div>
       </el-col>
-      <el-col :span="6" class="item" >
+      <el-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" class="item" >
         <div class="grid-content" @click="jumpSZTY">
           <label class="font18">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -67,25 +67,31 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.platform_features {
+.platform_features{
+  .el-col:last-child {
+    border-right: 1px solid rgba(255,255,255,0.5);;
+  }
+  .el-col:last-child {
+    padding-right:0;
+    
+  }
+  .el-col{
+      p{
+        color:rgb(153, 153, 153)
+      }
+      label{
+        font-weight:700;
+        color: rgb(51, 51, 51);
+      }
+  }
+}
+  
+@media  screen and (min-width: 1200px) {
+  .platform_features {
     background-color: #f5f5f5;
     padding: 0 8%;
-    .el-col:last-child {
-      border-right: 1px solid rgba(255,255,255,0.5);;
-    }
-    .el-col:last-child {
-      padding-right:0;
-     
-    }
     .el-col{
-       padding: 15px 30px;
-       p{
-         color:rgb(153, 153, 153)
-       }
-       label{
-         font-weight:700;
-         color: rgb(51, 51, 51);
-       }
+      padding: 15px 30px;  
     }
     .item{
       z-index: 10;
@@ -153,8 +159,23 @@ export default {
           -o-transition: all 0.5s;
           transition: all 0.5s;
       }
+    }   
+  }
+}
+@media  screen and (max-width: 1280px) {
+  .platform_features {
+    margin-top: .5rem;
+    .item{
+      padding:  0.5rem;
+      
+      .grid-content{
+        background-color: #f5f5f5;
+        padding: 1rem;
+        height: 9rem;
+      }
     }
    
+  }
 }
 </style>
 

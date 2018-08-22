@@ -4,7 +4,7 @@
       <img src="../../../../assets/nlpschool/u4199.jpg"/>
     </el-row>
     <el-row class="classroomContent" :gutter="20">
-      <el-col :span="18" >
+      <el-col :lg="18" :xl="18" :md="24" :xs="24" :sm="24" >
         <div class="classroomDiv">
           <div class="title_line">
             <img class="icon" src="../../../../assets/nlpschool/u4538.png">
@@ -12,7 +12,7 @@
             <!-- <span class="seeMore c999 font14"> 更多 >></span> -->
           </div>
           <el-row class="lesson_content" :gutter="30">
-            <el-col  :span="8" v-for=" item in lessonData" :key="item.id">
+            <el-col  :lg="8" :xl="8" :md="24" :xs="24" :sm="24" v-for=" item in lessonData" :key="item.id">
               <div  class="lesson-item" @click="jumpDetails(item)">
                 <img class="lesson-img" :src="item.img" />
                 <p class="c333 font16">
@@ -59,7 +59,7 @@
           </el-row>
         </div> -->
       </el-col>
-      <el-col :span="6" class="lecturer">
+      <el-col :lg="6" :xl="6" :md="24" :xs="24" :sm="24" class="lecturer">
         <div class="title_line">
             <img class="icon" src="../../../../assets/nlpschool/u4542.png">
             <span class="font28 c333">学院介绍</span>
@@ -186,6 +186,13 @@ export default {
       }
     }
     
+  }
+  // mb
+  @media screen and (max-width: 1280px){
+    .classroomContent{
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
   
   

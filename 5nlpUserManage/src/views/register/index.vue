@@ -1,6 +1,6 @@
 <template>
   <div class="register app-wrapper">
-    <content-panel @rebackPage="rebackPage"></content-panel>
+    <content-panel ></content-panel>
   </div>
 </template>
 
@@ -13,26 +13,14 @@ export default {
   },
   data () {
     return{
-      loginVisible:false
+      
     }
   },
   computed: {
    
   },
   methods:{
-    login(msg){
-      console.log(msg)
-      this.loginVisible = msg
-    },
-    rebackPage(){
-      console.log("---------------")
-      if(this.$route.params.serviceId && this.$route.params.serviceId != ""){
-        this.$router.go(-1)
-      }else{
-        this.$router.push({name:"home"})
-      }
-        
-    }
+    
   }
 }
 </script>

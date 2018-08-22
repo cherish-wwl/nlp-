@@ -12,12 +12,12 @@
             <div class="bg other-bg"></div>
             <div class="content text_center">
               <div class="mask-content">
-                <div class='title'>
+                <div class='title'  @click="seeDetails(item.id)">
                   <!-- <img src='../../../../assets/home/news02.png'> -->
                   <svg-icon :icon-class="item.icon"></svg-icon>
                   <h2>{{ item.name }}</h2>
                 </div>
-                <div class='content_text'>
+                <div class='content_text hidden-sm-and-down' >
                   <p>{{ item.descr}}</p>
                   <!-- <div><a>新闻分类</a>|<a>其他</a></div> -->
                   <div><el-button class="custom-animate-btn1" @click="seeDetails(item.id)">查看详情</el-button></div>
@@ -68,13 +68,52 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .applicatin_scene {
-    display: block;
-    margin-bottom: 50px;
-    h2{
-      font-weight: 500;
-      margin: 45px 0;
+.applicatin_scene {
+  display: block;
+  h2{
+    font-weight: 500;
+    margin: 3.5rem 0;
+  }
+}
+@media screen and (max-width:1000px){
+  .applicatin_scene { 
+    .display_panel{
+      .item{
+        height: 11.4rem;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        margin-bottom: 1rem;
+        .normol_panel{
+          position: relative;
+          .mask{
+            position: absolute;
+            top: 0;
+            height: 11.4rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .svg-icon{
+              font-size: 6.0rem;
+              margin-right: 2rem;
+            }
+
+            h2{
+              display: inline-block;
+              font-weight: 500;
+              font-size: 3.0rem;
+              margin: 1.5rem 0;
+            }
+          }
+        }
+      }  
     }
+  }
+}
+@media screen and (min-width:1000px){
+  .applicatin_scene {
+    margin-bottom: 5rem;
     .display_panel{
       padding: 0 8%;
       display: flex;   
@@ -198,6 +237,8 @@
       // min-width: 150px;
       // height: 330px;
     // }
-  }
+  } 
+}
+ 
 </style>
 

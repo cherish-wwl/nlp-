@@ -10,15 +10,6 @@
       <el-menu-item index='0'>
         <img src='../../../../assets/nlpschool/u4309.png'/>
       </el-menu-item>
-      <el-menu-item index='5' >
-        <!-- <a>AI课程</a> -->
-      </el-menu-item>
-      <!-- <el-menu-item index='4' >
-        智能问答
-      </el-menu-item> -->
-      <el-menu-item index='3' >
-        <!-- <a >专家互动</a> -->
-      </el-menu-item>
       <div class="rightPanel">
         <el-menu-item index="10" @click="jumpPage({name:'home'})">
           >>返回开放平台首页
@@ -63,12 +54,19 @@
 
   .loginDiv{
     color: #9f9696;
-    display: inline-block;
+    // display: inline-block;
     float: right;
     line-height: 50px;
     font-size: small;
     a{
       color: #409eff;
+    }
+  }
+  // mb
+  @media screen and (max-width: 1280px){
+    ul.el-menu.el-menu-demo.el-menu--horizontal {
+      display: flex;
+      justify-content: space-between;
     }
   }
 </style>

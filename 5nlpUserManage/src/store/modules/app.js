@@ -1,24 +1,28 @@
-import Cookies from 'js-cookie'
 
 const app = {
   state: {
-    sidebar: {
-      opened: !+Cookies.get('sidebarStatus')
-    }
+    mainsiteBaseUrL:commonData.mainsiteBaseUrL,
+    consoleBaseUrl:commonData.consoleBaseUrl,
+    footerText:commonData.footerText
   },
   mutations: {
-    TOGGLE_SIDEBAR: state => {
-      if (state.sidebar.opened) {
-        Cookies.set('sidebarStatus', 1)
-      } else {
-        Cookies.set('sidebarStatus', 0)
-      }
-      state.sidebar.opened = !state.sidebar.opened
+    SET_mainsiteBaseUrL: (state, mainsiteBaseUrL) => {
+      state.mainsiteBaseUrL = mainsiteBaseUrL
+    },
+    SET_consoleBaseUrl: (state, consoleBaseUrl) => {
+      state.consoleBaseUrl = consoleBaseUrl
+    }, 
+    SET_footerText: (state, footerText) => {
+      state.footerText = footerText
     }
   },
   actions: {
-    ToggleSideBar: ({ commit }) => {
-      commit('TOGGLE_SIDEBAR')
+    initCommonData:({commit})=>{
+      commonData.init()
+      // console.log(commonData)
+      commit('SET_mainsiteBaseUrL', commonData.mainsiteBaseUrL)
+      commit('SET_consoleBaseUrl', commonData.consoleBaseUrl)
+      commit('SET_footerText', commonData.footerText) 
     }
   }
 }

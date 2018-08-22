@@ -9,8 +9,8 @@
       <div class="icon_panel_item" :style="'width:'+featureData.width+';'" v-for="(item,index) in featureData.data" :key="index">
         <div class="grid-content">
           <img class='activeimg' :src='item.img'/>
-          <p>{{ item.name }}</p>
-          <p class="small font_color_grey">
+          <p class="font16">{{ item.name }}</p>
+          <p class="font14 font_color_grey">
             {{ item.descr }}
           </p>
         </div>
@@ -31,16 +31,17 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-   .feature_panel {
+  .feature_panel {
     .icon_panel{
-      // display: flex;
+      display: flex;
       // justify-content: space-around;
+      flex-wrap: wrap;
       .grid-content {
         width: 100%;
       }
       .icon_panel_item {
         text-align: center;
-        display: inline-flex;
+        // display: inline-flex;
         padding: 12px;
         p{
           word-break: break-all;
@@ -53,6 +54,18 @@
       
     }
       
-   }
+  }
+  // mb
+  @media screen and (max-width: 1280px){
+    .feature_panel {
+      .icon_panel{
+        display: flex;
+        flex-direction: column;
+        .icon_panel_item{
+          width: 100% !important;
+        }
+      }
+    }
+  }
 </style>
 

@@ -4,11 +4,11 @@
   </h1> -->
 <div class="detail">
     <el-row>
-      <div class="">
-        <el-row class="font26">
+      <div class="brief">
+        <el-row class="font20">
           <h3>简介：</h3>
         </el-row>
-        <el-row class="font18" >
+        <el-row class="font16" >
           <article v-html="techDocmentGlobalDesrc"></article>
         </el-row>
         <br>
@@ -17,29 +17,29 @@
         <el-row class="font20">
           <h3>{{ classtype == '001'?'基础':'应用'}}服务接口：</h3> <!-- 数据 -->
         </el-row>
-        <el-row class="font18">
+        <el-row class="font16">
           {{data.serviceName}} <!-- 数据 -->
         </el-row>
         <el-row class="font20">
           <h3>接口描述：</h3>
-          <span class="font18">
+          <span class="font16">
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.interfacetext }}
           </span>
         </el-row>
       </div>
       <div>
         <el-row class="font20">
-          <h4>请求说明：</h4>
-          <h5>请求示例：</h5>
+          <h3>请求说明：</h3>
+          <h4>请求示例：</h4>
         </el-row>
         <el-row>
-          <span class="font18">HTTP方法：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="qwe">{{data.httpmethod}}</span><br><br>
-          <span class="font18">HTTP方法路径:&nbsp;&nbsp;</span><span class="qwe">{{data.globalurl}}</span><br>
+          <span class="font16">HTTP方法：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="Method">{{data.httpmethod}}</span><br><br>
+          <span class="font16">HTTP方法路径:&nbsp;&nbsp;</span><span class="Method">{{data.globalurl}}</span><br>
         </el-row>
 
           <div>
           <el-row>
-            <h3><span>Body请求实例:</span></h3>
+            <h3><span>Body请求示例:</span></h3>
               <pre class="JSONhtmlStyle" v-html="bodyexample"> </pre>
           </el-row>
           </div>
@@ -47,12 +47,11 @@
             <el-row>
               <h3>请求参数：</h3>
               <el-col>
-                <el-table :data="tableData1"  border style="width: 100%" >
+                <el-table :data="tableData1"  border style="width: 100%" class="table">
                   <el-table-column prop="paraname" label="参数"> </el-table-column>
                   <el-table-column prop="needorno" label="是否必填"> </el-table-column>
                   <el-table-column prop="type" label="类型"> </el-table-column>
                   <el-table-column prop="explain_" label="说明"> </el-table-column>
-                  <el-table-column prop="value" label="值"> </el-table-column>
                 </el-table>
               </el-col>
             </el-row>
@@ -65,13 +64,12 @@
                   <el-table-column prop="paraname" label="参数"> </el-table-column>
                   <el-table-column prop="type" label="类型"> </el-table-column>
                   <el-table-column prop="explain_" label="说明"> </el-table-column>
-                  <el-table-column prop="value" label="值"> </el-table-column>
                 </el-table>
               </el-col>
             </el-row>
           </div>
           <div>
-            <h3>返回实例：</h3>
+            <h3>返回示例：</h3>
             <el-col>
               <pre class="JSONhtmlStyle" v-html="backexample"></pre>
               <br><br><br>
@@ -97,7 +95,13 @@ import { techDocument } from '@/api/techDocument'
 import { getServiceDetails } from '@/api/serviceLists'
 import { syntaxHighlight } from '@/utils/index'
 import { getCommonData } from "@/api/localData"
+import { mapGetters } from "vuex"
 export default {
+  computed:{
+    ...mapGetters([
+      "techDocmentGlobalDesrc"
+    ])
+  },
   data () {
     return {
       data: '',
@@ -107,10 +111,11 @@ export default {
       backexample:{},
       bodyexample:{},
       classtype:'001',
-      techDocmentGlobalDesrc:""
+      // techDocmentGlobalDesrc:""
     }
   },
   methods:{ 
+    // 初始化
     init() {
       if(this.$route.params.serviceId){
         techDocument({serviceId:this.$route.params.serviceId}).then( res => {
@@ -126,7 +131,7 @@ export default {
             }
             if(backexample && backexample != ""){
               this.backexample = this.disposeData(backexample) 
-            }         
+            }
             
           }
         })
@@ -139,6 +144,7 @@ export default {
       }
       
     },
+    // json数据 结构化展示
     disposeData(str){
       if(typeof str == 'string'){
         try {
@@ -157,14 +163,14 @@ export default {
     }
   },
   mounted() {
-    this.init();
-    getCommonData().then( res=>{
-      if((typeof res) == "object"){
-          this.techDocmentGlobalDesrc = res.techDocmentGlobalDesrc
-        }else{
-          console.log("未加载到数据")
-        }
-    })
+    this.init()
+    // getCommonData().then( res=>{
+    //   if((typeof res) == "object"){
+    //       this.techDocmentGlobalDesrc = res.techDocmentGlobalDesrc
+    //     }else{
+    //       console.log("未加载到数据")
+    //     }
+    // })
   }
 }
 </script>
@@ -172,15 +178,25 @@ export default {
   .detail {
     padding: 40px 10%
   }
-  .qwe{
+  .Method{
     border: solid 1px;
-    border-color: rgb(189, 189, 189);
+    border-color: #EAEAEA;
     padding: 5px 10px;
-    background-color: rgb(243, 241, 241)
+    background-color: #f5f5f5
   }
   .doc_contact{
     text-align: center; 
     color: rgb(165, 164, 164)
+  }
+  .brief{
+    line-height: 26px
+  }
+  .JSONhtmlStyle{
+    font-size: medium;
+    line-height: normal
+  }
+  .table{
+    color: #333
   }
 
 </style>

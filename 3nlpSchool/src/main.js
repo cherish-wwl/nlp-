@@ -12,14 +12,14 @@ import App from './App'
 
 import router from './router'
 import store from './store'
-import 'font-awesome/css/font-awesome.css'
+// import 'font-awesome/css/font-awesome.css'
 import Cookies from 'js-cookie'
 import 'babel-polyfill'
 import promise from 'es6-promise'
 promise.polyfill()
 import '@/icons' // icon
 import '@/styles/index.scss' // global css
-// import '@/permission' // permission control
+
 
 Vue.use(ElementUI, { locale })
 
@@ -32,13 +32,3 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
-// router.beforeEach((to, from, next) => {
-//   console.log("+++++++++++++++++++++++++++++++++")
-//   console.log(from)
-//   if(from.name == "register"){
-
-//   }else{
-//     next()
-//   }
-// })

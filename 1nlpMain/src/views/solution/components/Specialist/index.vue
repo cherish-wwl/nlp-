@@ -16,9 +16,9 @@
           <img :src="item.img"/>
         </div>
         <div class="right">
-          <label class="font_color_grey3"> <span>{{ item.teamname }}负责人：{{item.principal}}</span></label>
-          <p class="small font_color_grey2">{{item.detail}}</p>
-          <div class="smaller font_color_grey2 float_right" >
+          <label class="font_color_grey3"> <span class="font16">{{ item.teamname }}负责人：{{item.principal}}</span></label>
+          <p class="font14 font_color_grey2">{{item.detail}}</p>
+          <div class="font14 font_color_grey2 float_right" >
             <a  href="javaScript:void(0)">
               >> 了解更多
             </a>
@@ -51,42 +51,59 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-   .specialist_panel {  
+  .specialist_panel {      
+    .icon_panel{
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .icon_panel_item {
+        position: relative;
+        width: 48%;
     
-      .icon_panel{
+        background-color: #fff;
         display: flex;
-        justify-content: space-around;
-       
-        .icon_panel_item {
-          position: relative;
-          max-width: 48%;
-          min-width: 30%;
-          background-color: #fff;
-          display: flex;
-          cursor: pointer;
-          align-items: center;
-          border: 1px solid #ededed;
-          &:hover{
-            -moz-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-            -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-          }
-          .left {
-            padding: 20px;
-            img{
-              width: 145px;
-            }  
-          }
-          .right{
-            padding-right: 20px;
-            a{
-              text-decoration: underline;
-            }
+        cursor: pointer;
+        align-items: center;
+        border: 1px solid #ededed;
+        &:hover{
+          -moz-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        .left {
+          padding: 20px;
+          img{
+            width: 145px;
+          }  
+        }
+        .right{
+          padding-right: 20px;
+          a{
+            text-decoration: underline;
           }
         }
-        
       }
       
-   }
+    }
+      
+  }
+  // mb
+  @media screen and(max-width: 1280px) {
+    .specialist_panel {     
+      .icon_panel{
+        flex-direction: column;
+        .icon_panel_item {
+          flex-direction: column;
+          width:100%;
+          margin-bottom: 2rem;
+          .right{
+            padding: 0 1rem;
+            
+          }
+        }
+      }
+    }
+  }
+
 </style>
 

@@ -8,6 +8,7 @@ html, body, #app{
 .console-container{
   aside.el-aside{
     background-color: $bgc;
+    overflow: hidden;
     .el-menu{
       background-color: $bgc;
       height: 100%;
@@ -42,7 +43,24 @@ html, body, #app{
       border-radius: 41px;
     }
   }
-  
+  // 应用编辑 /添加页面样式
+  .myApplicantipnEditAdd{
+    .serviceBox{
+      
+      overflow: hidden;
+      ul,li{
+        margin: 0;
+        padding: 0;
+      }
+      .el-checkbox__label{
+        white-space: pre-wrap;
+        word-break: break-all;
+        word-wrap: break-word;
+        vertical-align: text-top;
+      }
+    }
+   
+  }
   // 自定义按钮1
   .selfbutton1{
     background-color: rgba(234, 234, 234, 1);
@@ -65,5 +83,38 @@ html, body, #app{
         position: absolute;
       }
     }
+  }
+  // 自定义按钮2
+  .selfbutton2{
+    height: 115px;
+    width: 155px;
+    margin-right: 20px;
+    vertical-align: middle;
+    border: 1px solid #409eff;
+    background: #fff;
+    display: inline-block;
+    span{
+      display: block;
+    }
+    a{
+      color: #606266;
+    }
+    span:first-child{
+      margin-bottom: 5px;
+    }
+    &:hover:not(:last-child),&.active:not(:last-child){
+      background-color: $hoverc;
+      color: #fff; 
+    }
+  }
+  .customwidth1{
+    width: 204px;
+  }
+
+  .el-date-editor .el-range-separator{
+    width: 8%;
+  }
+  .underline:hover{
+    text-decoration: underline;
   }
 }

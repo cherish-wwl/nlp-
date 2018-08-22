@@ -5,8 +5,8 @@
     <el-row>
       <el-table :data="detailData" border style="width: 100%">
         <el-table-column prop="appName" label="应用名称" min-width="80"></el-table-column>
-        <el-table-column prop="appId" label="APLKEY" min-width="180"></el-table-column>
-        <el-table-column prop="appSecret" label="SecretKey" min-width="180"></el-table-column>
+        <el-table-column prop="appKey" label="App Key" min-width="180"></el-table-column>
+        <el-table-column prop="appSecret" label="App Secret" min-width="180"></el-table-column>
         <el-table-column prop="platformArray" label="应用平台"></el-table-column>
         <el-table-column prop="creatTime" label="创建时间" min-width="100"></el-table-column>
         <el-table-column label="操作" width="100">
@@ -45,13 +45,7 @@ export default {
       totalNum:8,
       appId:"",
       applicationDesrc:"描述内容实体识别描述内容实体识别，描述内容实体识别",
-      detailData:[{
-          seviceName: '最大切割',
-          classType: '词性标语',
-          times: '34',
-          failTimes:'0',
-          perOfFail:'0.00%'
-        }],
+      detailData:[],
       serviceData: [
         {
           seviceName: '最大切割',
@@ -130,6 +124,7 @@ export default {
         });
         this.detailData= [{
           appId:res.data.appId,
+          appKey:res.data.appKey,
           appName:res.data.appName,
           appSecret:res.data.appSecret,
           appState:res.data.appState,

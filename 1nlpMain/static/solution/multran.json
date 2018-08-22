@@ -1,0 +1,45 @@
+{
+  "titleData":{
+    "img":"static/solution/multran/multran003.png",
+    "title":"用我们的科技让世界自由沟通",
+    "desrc":"迈创公司专注于提供先进的智能化离线语言信息处理技术，首次采用一个语言翻译引擎来实现多种语言的实时互译，不仅具有极高的准确率，而且还可在短时间内快速开发特定语种。同时离线语音识别技术方案更可填补市场应用空白，具有广阔应用前景。",
+    "bgimg":"static/solution/multran/u4765.jpg",
+    "url":""
+  },
+  "featureData":
+    {
+    "name":"产品优势",
+    "width":"20%",
+    "data":[
+    { "name":"离线功能",
+      "descr":"不受网络有无限制，无地域影响，在任何地方均可自由使用，填补市场空白。",
+      "img":"static/solution/multran/u4773.png"
+    },
+    { "name":"翻译质量",
+      "descr":"翻译质量高，忠实反应原文意思，无未可知翻译错误，并可保持稳定持续的优化。",
+      "img":"static/solution/multran/u4777.png"},
+    { "name":"语种覆盖",
+      "descr":"可在短时间内对所需语种完成开发，不同语种均可达到相同的准确率。",
+      "img":"static/solution/multran/u4783.png"},
+    { "name":"运营成本",
+      "descr":"无需在全球搭建网络服务器系统，可使企业运行成本最小化。",
+      "img":"static/solution/multran/u4810.png"},
+    { "name":"应用广泛",
+      "descr":"产品应用不受终端硬件产品特性限制，应用方式灵活，应用空间广阔",
+      "img":"static/solution/multran/u4826.png"}
+  ]},
+
+  "cooperationData":
+  { 
+    "col":4,
+    "data":[
+    "static/solution/multran/u4798.png",
+    "static/solution/multran/u4800.png",
+    "static/solution/multran/u4802.png",
+    "static/solution/multran/u4804.png",
+    "static/solution/multran/u4818.png"
+    ]
+  }
+}
+
+

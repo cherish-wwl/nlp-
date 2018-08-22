@@ -1,16 +1,16 @@
 <template>
   <div class="dataset-container">
-    <el-row class='service_info'>
+    <el-row class='service_info '>
       <img class='service_bg_img' src='../../assets/sevice_details/u536.jpg'/>
       <div class='title_desc'>
         <div class='title_content'>
           <h2 class="nomargin font36"> {{ serviceInfo.service_title }} </h2>
-          <p class="font18"> {{ serviceInfo.service_desc }} </p>
+          <p class="font18 hidden-md-and-down"> {{ serviceInfo.service_desc }} </p>
         </div>
       </div>
     </el-row>
     <el-container class='service_class'>
-      <el-aside width="200px" class='aside_style'>
+      <el-aside width="200px" class='aside_style hidden-md-and-down'>
         <ul>
           <li v-for="item in levelOneData" class="font16"
             :class="activeLevelOneData.id == item.id?'active':''" :key="item.id" @click="chooseLevelOne(item)">
@@ -22,13 +22,13 @@
         <el-row class='service_tools' >
           <el-col :span='12' class='font16 nowrap'>
             <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span>{{ activeLevelOneData.name }}</span>
+            <span class="levelOneName">{{ activeLevelOneData.name }}</span>
             &nbsp;&nbsp;
-            <span>  
+            <span class="hidden-md-and-down">  
               <el-input placeholder="请输入内容" size="mini" v-model="search_key" v-on:change="searchThirdList" class="search_input" suffix-icon="el-icon-search"></el-input>
             </span>
           </el-col>
-          <el-col  :span='12' class='text_right'>
+          <el-col  :span='12' class='text_right hidden-md-and-down'>
             <span class='smaller'>排序：</span>
             &nbsp;
             <span class='small tool-sort-icon' :class="sortType != 1 ? '' : (countSort ? 'sort_desc' : 'sort_asc')"   @click="sortList(1)">使用次数&nbsp;<i class="fa fa-sort-desc"></i><i class="fa fa-sort-asc"></i></span>
@@ -39,6 +39,7 @@
             <!-- <span class='tool-style-icon'><i class="el-icon-menu" aria-hidden="true"></i></span> -->
           </el-col>
         </el-row>
+       
         <el-row>
           <el-radio-group v-model="currentTwoLevelId"  text-color="#409EFF" fill="#fff" @change="chooseServiceItem">
             <el-radio-button class="font14" label="null">全部</el-radio-button>
@@ -47,11 +48,11 @@
         </el-row>
         <el-row class='service_list'>
             <el-row class='item' v-for="item in thridList" :key='item.id'>
-              <el-col :span='8' class='item_img' style="width:330px;">
+              <el-col :xl='8' :lg="8" :md="24" :xs="24" :sm="24" class='item_img' >
                 <img :src=" item.image" onerror="this.src='/static/default.png';return false;">
               </el-col>
-              <el-col :span='16' class='item_info'>
-                <h4>
+              <el-col :xl='16' :lg="16" :md="24" :xs="24" :sm="24" class='item_info'>
+                <h4 class="font18">
                   {{ item.name }}
                 </h4>
                 <div class='f_c_grey'>
@@ -66,14 +67,14 @@
                   {{ item.serviceDescr}}
                 </p>
                 <div>
-                  <!-- <el-button class="font16">
+                  <!-- <el-button class="font16" @click="addToMySolution(item.id)">
                    添加到我的数据集
                   </el-button> -->
                 </div>
               </el-col>
             </el-row>
         </el-row>
-        <el-row class="text_center">
+        <el-row class="text_center" id="pagination_tools">
           <el-pagination
             layout="prev, pager, next"
             :total="paginationTotal"
@@ -89,7 +90,10 @@
 </template>
 
 <script>
-import { getOneLevelList, getTwoLevelListById, getThirdServiceList } from '@/api/dataset'
+import { getOneLevelList, getTwoLevelListById, getThirdServiceList, addToMySolution } from '@/api/dataset'
+import { getToken } from '@/utils/auth'
+import { mapGetters } from 'vuex'
+import { isMobile } from '@/utils/index'
 export default {
   data (){
     return {
@@ -112,6 +116,11 @@ export default {
       sortType:1,
       currentTwoLevelId:"null"
     }
+  },
+  computed:{
+    ...mapGetters([
+      'userManageBaseUrL'
+    ])
   },
   filters: {
     getImage (name) {
@@ -165,7 +174,7 @@ export default {
       this.paginationCurrentPage = currentPage
       this.refrushThridList()
     },
-    // 点击radio,更新列表
+    // 点击,更新列表
     chooseServiceItem(id) {
       //  console.log(id);
 
@@ -179,9 +188,19 @@ export default {
     },
     // 初始化
     init (){
+     
+      var queryId = this.$route.query.id
       getOneLevelList().then( response => {
         this.levelOneData = response.data
-        this.activeLevelOneData = this.levelOneData[0]
+        this.activeLevelOneData = this.levelOneData[0] 
+        if(queryId || queryId != null){
+          this.levelOneData.forEach(element => {
+            if(element.id == queryId){
+              this.activeLevelOneData = element
+            }
+          })
+        }
+        console.log(this.activeLevelOneData)
         // 获取二级列表
         this.chooseLevelOne(this.activeLevelOneData) 
       })  
@@ -212,13 +231,34 @@ export default {
         }
         params1.useNum = ""
       }
-  
+       // 判断是否为移动端访问
+      if(isMobile() == true){
+        params1 = { 
+          'typeId': this.currentTwoLevelId,
+          'attr': this.activeLevelOneData.id
+        }
+        document.getElementById("pagination_tools").style.display = "none"
+      }
       getThirdServiceList(params1).then(responce =>{
         this.thridList = responce.data 
         this.paginationTotal = responce.total
        
       })
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    },
+    addToMySolution(id){
+      // 判断是否登录
+      if(getToken() && getToken() !=''){
+        addToMySolution({id:this.id}).then( res => {
+          this.$message({
+            message: '添加成功！可在 管控台-我的数据集 里查看',
+            type: 'success',
+            time:5000
+          })
+        })
+      }else{
+        window.location.href = thi.userManageBaseUrL
+      }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
   },
   mounted () {
     this.init()
@@ -235,9 +275,8 @@ $activeColor: #409EFF;
     position: relative;
     .service_bg_img{
       width: 100%;
-      max-height: 300px;
+      height: 300px;
       background-color: #9d9a96;
-      min-height: 300px;
     }
     .title_desc {
       position: absolute;
@@ -326,6 +365,9 @@ $activeColor: #409EFF;
         img{
           max-width:100%;
         }
+        .item_img{
+          width: 330px;
+        }
         .item_info{
           padding-left: 10px;
           .f_c_grey{
@@ -338,6 +380,38 @@ $activeColor: #409EFF;
   }
   
 }
+// pc
+@media screen and (max-width:1280px ){
+  .dataset-container {
+    .service_info {
+      .service_bg_img {
+        height: 160px;
+      }
+       .title_desc{
+         right: 0;
+       }
+    }
+    .service_class{
 
+      padding: 2.2rem 0;
+      .service_content{
+        .service_tools{
+          .levelOneName, i{
+            font-size: 2.5rem;
+          }
+        }
+        .service_list {
+          .item{
+            flex-direction: column;
+            .item_img{
+              width: auto;
+            }
+          }
+        }
+      }
+      
+    }
+  }
+}
 
 </style>

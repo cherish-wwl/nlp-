@@ -12,8 +12,8 @@
             {{ service_title }}
           </h2>
           <p class="font18" :title="service_desc"> {{ service_desc | subStringNoMore3line}} </p>
-          <div>
-            <el-button type="primary"  class="font16" @click.native="jumpPage({name:'register',params: { serviceId:  1}})">立即使用</el-button>
+          <div class="hidden-md-and-down">
+            <el-button type="primary"  class="font16" @click.native="userNow">立即使用</el-button>
             <el-button  class="font16" @click.native="jumpPage({path:'/services/techDocument/'+serviceId})">技术文档</el-button>
           </div>
         </div>
@@ -21,7 +21,7 @@
     </el-row>
     <technical-features :feature-data="featureData"></technical-features>
     <br />
-    <functional-embodiment :in-arg="inArg"  :type="type"></functional-embodiment>
+    <functional-embodiment class=" hidden-sm-and-down" :in-arg="inArg"  :type="type"></functional-embodiment>
     <application-scene2 :scene-data='sceneData'></application-scene2>
     <div class="text_center">
       <!-- <el-button type="primary" class="font14  custom_button_blue">立即使用</el-button> -->
@@ -29,8 +29,10 @@
     </div>
     <br />
     <br />
-    <div class="text_center">
-      <p class="font01">如果您有以上需求，欢迎【合作咨询】联系电话：010-57973555（9:00-18:00）  邮箱：China-NLP@ultrapower.com.cn</p>
+    <div class="contant_Panel">
+      <p class="font01">如果您有以上需求，欢迎【合作咨询】</p>
+      <p class="font01">联系电话：010-57973555（9:00-18:00）</p>
+      <p class="font01">邮箱：China-NLP@ultrapower.com.cn</p>
     </div>
     <br />
     <br />
@@ -42,6 +44,8 @@ import { getServiceDetails, getServiceTypeNameById } from '@/api/serviceLists'
 import { subStringNoMore3line } from '@/utils/index.js'
 import { TechnicalFeatures, FunctionalEmbodiment, ApplicationScene2 } from '@/views/service/serviceDetail/components'
 import Cookies from 'js-cookie'
+import { getToken } from '@/utils/auth'
+import { mapGetters } from 'vuex'
 export default {
    data (){
     return { 
@@ -56,8 +60,13 @@ export default {
       featureData: {},
       sceneData: {},
       type:'',
-      service_bg_img:'',
+      service_bg_img:''
     }
+  },
+  computed: {
+    ...mapGetters([
+      'consoleBaseUrl'
+    ])
   },
   components: {
     TechnicalFeatures,
@@ -90,6 +99,7 @@ export default {
          }
         
       })
+
     })
   },
   methods:{
@@ -103,6 +113,24 @@ export default {
       this.$router.push({name: 'serviceLists',params:{ randomValue: Math.random().toString(36).substr(2) }})
       console.log(Cookies.get("service_id"))
     },
+    // 立即使用
+    userNow (){
+      // 已登录
+      // if(getToken() != "" && getToken()){
+        window.open( this.consoleBaseUrl,"_blank") 
+      // }else{
+        // 未登录询问是否去登录
+        // this.$confirm('是否去登录?', '提示', {
+        //   confirmButtonText: '确定',
+        //   cancelButtonText: '取消',
+        //   type: 'info'
+        // }).then(() => {
+        //  window.open( this.commonData.userManageBaseUrL,"_blank") 
+        // }).catch(() => {
+                
+        // });
+      // }
+    }
   }
 }
 </script>
@@ -117,15 +145,12 @@ export default {
     justify-content: center;
     .service_bg_img{
       width: auto;
-      height: 300px;
     }
     .title_desc {
       position: absolute;
       display:flex;
       align-items:center;
       color: #fff;
-      left: 20%;
-      right: 20%;
       bottom: 0;
       top: 0
     }
@@ -143,4 +168,33 @@ export default {
     color: #8F8F8F;
   }
 }
+// pc
+@media screen and (min-width: 1024px){
+  .serviceDetail-container {
+    .title_desc {
+      left: 20%;
+      right: 20%;   
+    }
+    .service_bg_img{
+      height: 30rem;
+    }
+    .contant_Panel{
+      text-align: center;
+      p{
+        display: inline-block;
+      }
+    }
+  }
+  
+}
+// mb
+@media screen and (max-width: 1024px){
+  .serviceDetail-container {
+    .contant_Panel{
+      text-align: center;
+      padding: 0 2rem;
+    }
+  }
+}
+
 </style>

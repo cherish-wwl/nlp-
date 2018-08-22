@@ -24,7 +24,6 @@
     "vue": "2.5.10",
     "vue-echarts": "^3.0.7",
     "vue-router": "3.0.1",
-    "vue-video-player": "^5.0.2",
     "vuex": "3.0.1"
   },
   "devDependencies": {
@@ -68,6 +67,7 @@
     "vue-loader": "13.5.0",
     "vue-style-loader": "3.0.3",
     "vue-template-compiler": "2.5.10",
+    "vue-video-player": "^5.0.2",
     "webpack": "3.10.0",
     "webpack-bundle-analyzer": "2.9.1",
     "webpack-dev-server": "2.9.7",

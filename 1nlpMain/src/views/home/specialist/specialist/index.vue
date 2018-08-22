@@ -3,10 +3,10 @@
      <!-- 专家列表页面 -->
     <el-row>
       <div class="back-img">
-        <img  src="/static/index/bgImg/u574.jpg" />
+        <img  src="static/index/bgimg/u574.jpg" />
       </div>
       <div class="dispaly-font">
-        <a v-on:click="returnBack">{{title1}}</a> &nbsp;
+        <a class="font16" v-on:click="returnBack">{{title1}}</a> &nbsp;
         <span> > </span> &nbsp;&nbsp;
         <a class="font36" style="margin-bottom: 20px;">{{title2}}</a>
       </div>
@@ -18,7 +18,7 @@
     <!-- 专家列表展示页面 -->
     <div class="content" v-if="!isDetail">
       <el-row>
-        <el-col :span="12" class="col" v-for="(item,index) in specialistData" :key="index" >
+        <el-col :lg="12" :xl="12" :md="8" :sm="8" :xs="8" class="col" v-for="(item,index) in specialistData" :key="index" >
           <div class="specialist-item line-animate-content">
             <div class="line"></div>
             <div class="left">
@@ -26,15 +26,15 @@
             </div>
             <div class="right">
               <h3 class="font20 specialistName" v-on:click="seeDetails(index,item.professorId)">{{item.professorName}}</h3>
-              <p class="font14 specialistDesrc height135">{{ item.professorDesc}}<p>
-              <div class="text_right" v-on:click="seeDetails(index,item.professorId)"><a>>查看详情</a></div>
+              <p class="font14 specialistDesrc height135 hidden-md-and-down">{{ item.professorDesc}}<p>
+              <div class="text_right hidden-md-and-down font16" v-on:click="seeDetails(index,item.professorId)"><a>>查看详情</a></div>
             </div>
             
           </div>
         </el-col>
       </el-row>
       <el-row>
-        <div class="block text_center">
+        <div class="block text_center" id="pagination_tools">
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
@@ -48,9 +48,9 @@
       </el-row>
     </div>
     <!-- 专家详情展示页面 -->
-    <div class="content" v-else>
+    <el-container class="content" v-else>
       <el-row  :gutter="20">
-        <el-col :span="18">
+        <el-col  :lg="18" :xl="18" :sm="24" :md="24" :xs="24">
           <article class="bordertopbule specialist-item1">
               <p class="font14">
                 <img  class="portrait" :src=" specialistData != null && specialistData.imageUrl?specialistData.imageUrl:'/static/default.png'"  onerror="this.src='/static/default.png'" align="left"/>
@@ -60,11 +60,11 @@
           </article>
           <div class="specialist-content">
             <div class="btn-tools" >
-              <span class="item" v-for="(item,index) in specialistData.relateList" 
+              <span class="item font14" v-for="(item,index) in specialistData.relateList" 
               :key="item.relateId" :class="currentNode == index?'active':''" 
               @click="currentNode = index">{{ item.relateType }}</span>
             </div>
-            <br />
+            <!-- <br /> -->
             <div class="dispaly-content">
               <template v-if="specialistData.relateList && specialistData.relateList[currentNode] && specialistData.relateList[currentNode].relateDesc">
                 <article v-html="specialistData.relateList[currentNode].relateDesc">
@@ -76,14 +76,14 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="specialist-contact bordertopbule">
+          <div class="specialist-contact bordertopbule hidden-md-and-down">
             <div class="font16">同研究领域相关专家</div>
             <el-row :gutter="15">
               <template v-for="(item,index) in specialistData.recommendProfessorList">
                 <el-col :key="index" :span="8" class="specialist-content-item text_center" >
                   <div class="item" @click="seeDetails(index,item.id)">
                     <img :src="item.imageUrl?item.imageUrl:'/static/nlp_head2.jpg'" onerror="this.src='/static/nlp_head2.jpg'">
-                    <p class="text_center"><span>{{ item.professorName }}</span></p>
+                    <p class="text_center font14"><span>{{ item.professorName }}</span></p>
                   </div>
                 </el-col>
               </template>
@@ -91,14 +91,14 @@
           </div>
         </el-col>
       </el-row>
-    </div>
+    </el-container>
     <br />
     <br />
     <br />
   </div>
 </template>
 <script>
-import { subStringNoMore3line } from '@/utils/index'
+import { subStringNoMore3line, isMobile } from '@/utils/index'
 import { professorList, professorRelateList } from '@/api/speciallist'
 export default {
   data () {
@@ -146,7 +146,13 @@ export default {
       this.title1 = '首页'
       this.title2 = "专家列表"
       this.currentNode = 1
-      professorList({pageNow:this.currentPage,pageSize:this.pageSize}).then( res => {
+      var params = {pageNow:this.currentPage,pageSize:this.pageSize}
+      // 判断是否为移动端访问
+      if(isMobile() == true){
+        params = {}
+        document.getElementById("pagination_tools").style.display = "none"
+      }
+      professorList(params).then( res => {
         this.specialistData = res.data
         this.totalsNums = res.total
       })
@@ -181,16 +187,16 @@ export default {
   mounted(){
     // specialistDetails
     
-    console.log("当前专家id："+this.$route.params.specialistId)
-    console.log(this.$route.params.specialistId)
+    // console.log("当前专家id："+this.$route.params.specialistId)
+    // console.log(this.$route.params.specialistId)
   
     if(this.$route.params.specialistId){
       var specialistId = this.$route.params.specialistId  
       this.detailInit(specialistId)
     }else{
-    
-       this.init()
+      this.init()
     }
+    
   }
 }
 </script>
@@ -217,11 +223,12 @@ export default {
     bottom: 20px;
     right: 11%;
     color: #ffffffbf;
+    span{
+      color: #fff;
+    }
   }
   .back-img {
-      min-width: 1240px;
-      min-height: 100px;
-      position: relative;
+    position: relative;
   }
   .content {
     padding: 0px 10%;
@@ -229,9 +236,7 @@ export default {
       padding: 0 12px 12px 12px;
       // height: 280px;
     }
-    .bordertopbule{
-      border-top: 4px solid #2b9eeb;
-    }
+    
     
     
     
@@ -266,10 +271,10 @@ export default {
       // height: 230px;    
       .left{
         margin: auto 0;
-        img{
-          width: 155px;
-          height: 191px;
-        }
+        // img{
+        //   width: 155px;
+        //   height: 191px;
+        // }
       }
       .right{
         padding-left: 20px;
@@ -288,7 +293,7 @@ export default {
           line-height: 26px;
         }
         .height135 {
-          height: 135px;
+          height: 133px;
           overflow: hidden;
         }
         a{
@@ -434,6 +439,76 @@ export default {
     }
   }
   
+}
+// pc
+@media screen and (min-width: 1280px){
+  .specialist-content{
+    .back-img {
+      min-width: 1240px;
+      min-height: 100px;
+    }
+    .content {
+      .bordertopbule{
+        border-top: 4px solid #2b9eeb;
+      }
+      
+      .specialist-item{
+        .left img {
+          width: 155px; 
+          height: 191px; 
+        }
+       }
+    }
+   
+  }
+}
+// mb
+@media screen and (max-width: 1280px){
+   .specialist-content{
+    .back-img {
+      img{
+        height: 100px;
+      }
+    }
+    
+    .content {
+      padding: 0;
+      margin: 0 10px;
+      .specialist-item{
+         flex-direction: column;
+         align-items: center;
+         padding: 0;
+          .left {
+            height: 12rem;
+            img {
+              width: auto;
+              height: auto;
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          .right{
+            padding-left: 0;
+          }
+         .specialistName{
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+         }
+      }
+      .specialist-content{
+        .btn-tools{
+          .item{
+            &.active:after{
+              content: none;
+            }
+          }
+        }
+      }
+    }
+   
+  }
 }
 </style>
 

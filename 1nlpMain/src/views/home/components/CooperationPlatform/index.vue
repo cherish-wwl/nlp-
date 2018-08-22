@@ -3,13 +3,14 @@
     <el-row class="text_center">
       <h2 class="font30"> {{ title }}</h2>
     </el-row>
-    <el-row class="display_panel">
+    <el-row class="display_panel hidden-md-and-down">
       <el-carousel 
-      :autoplay="false">
-        <el-carousel-item v-for="(item, index) in datalist" :key="index">
+      :autoplay="false"
+      height="35rem"
+      arrow="always">
+        <el-carousel-item v-for="(item, index1) in datalist" :key="index1">
           <ul>
-
-             <li v-for="(img, index) in item" :key="index"> 
+            <li v-for="(img, index) in item" :key="index"> 
               <a @click="proxyImage(img.link)" :title="img.img_name">
                 <img :src="img.img_url" @mouseover="chageImg(img,0,$event)" @mouseout="chageImg(img,1,$event)"/>
               </a>
@@ -18,9 +19,15 @@
         </el-carousel-item>
       </el-carousel>
     </el-row>
+    <el-row class="text_center mb_didisplay_panel hidden-lg-and-up" >
+      <template v-for="(item,index1) in datalist">
+        <el-col class="item" :span="12" v-for="(img, index) in item" :key="index" >
+          <img @click="proxyImage(img.link)" :title="img.img_name" :src="img.active_img_url" :key="index1" />
+        </el-col>
+      </template>   
+    </el-row>
   </el-container>
 </template>
-
 <script>
 import { getCooperationList } from "@/api/localData.js"
 export default {
@@ -50,7 +57,7 @@ export default {
   },
   mounted () {
     getCooperationList().then(res=>{
-      console.log(res)
+      // console.log(res)
       if( typeof res  == "object" ){
         this.datalist = res.dataList
         this.title = res.title
@@ -64,35 +71,41 @@ export default {
 <style lang="scss" scoped>
 .cooperation_platform {
   display: block;
-  padding-top: 80px;
-  padding-bottom: 80px;
   background-color: rgba(242, 242, 242, 1); 
   h2{
     font-weight: 500;
-    margin: 55px 0;
+    margin: 5.5rem 0;
   }
   .display_panel{
-    width: 1200px;
     margin: 0 auto;
+    width: 1200px;
+    // text-align: center;
     ul{
       width: 94%;
       margin: 0 auto;
+      padding: 0;
       list-style: none;
+      li{
+        display: inline-block;
+        padding: .6rem;
+        width: 33%;
+      }
     }
-    li{
-      width: 33%;
-      float: left;
-      padding: 6px;
-    }
-  /deep/ .el-carousel__indicators{
+    /deep/ .el-carousel__indicators{
       display: none;
     }
+    
   }
- 
 }
-img{
-  width:300px;
-  height: 84px;
+.mb_didisplay_panel {
+  padding: 0 1rem 3rem;
+  margin: 0;
+  .item{
+    padding: .4rem;
+  }
 }
+
+
+
 </style>
 

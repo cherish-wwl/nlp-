@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import consoleRequest from '@/utils/consoleRequest'
 import qs from 'qs'
 // 获取左侧数据集一级列表
 export function getOneLevelList() {
@@ -22,5 +23,14 @@ export function getThirdServiceList(params) {
     url: 'dataset/datasetlist/list',
     method: 'post',
     data:qs.stringify(params)
+  })
+}
+
+// 添加到我的数据集
+export function addToMySolution(params){
+  return consoleRequest({
+    url: '/dataSet/addData',
+    method: 'post',
+    params
   })
 }

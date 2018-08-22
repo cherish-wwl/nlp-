@@ -48,6 +48,7 @@
 </template>
 <script>
 import { titleTool } from "@/views/console/components/index"
+// const titleTool = r => require.ensure([], () => r(require('@/views/console/components/index')), 'titleTool')
 import { mapGetters } from 'vuex'
 import { getToken } from '@/utils/auth'
 export default {
