@@ -2,7 +2,6 @@
    <el-header :height="(60+MbHeaderTopValue)+'px'">
     <pc-header class="hidden-md-and-down"></pc-header>
     <mb-header class="hidden-lg-and-up"></mb-header>
-    
    </el-header>
 </template>
 
