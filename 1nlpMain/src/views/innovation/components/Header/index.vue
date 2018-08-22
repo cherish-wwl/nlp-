@@ -5,7 +5,7 @@
       mode="horizontal"
       background-color="#000"
       text-color="#fff"
-      active-text-color="#fff"
+      active-text-color="#000"
       >
       <el-menu-item index='0'>
         <!-- <router-link :to="{name:'home'}"><img src='../../../../assets/innovation/u2473.png'/></router-link> -->
@@ -128,9 +128,8 @@ import { scrollAnimation } from '@/utils/scrollAnimation.js'
     li{
       color: #fff;
     }
-    .el-popper .popper__arrow::after{
-      border-bottom-color: #000;
-    }
+    
   }
+ 
 }
 </style>

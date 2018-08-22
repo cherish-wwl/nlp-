@@ -10,6 +10,7 @@
 <script>
 import { getTopFestivalInfo } from '@/api/localData'
 import store from '../../store'
+import { isMobile } from '@/utils/index'
 export default {
   data(){
     return {
@@ -59,7 +60,10 @@ export default {
                 this.imageInfo = element.imageInfo
                 document.getElementById("top-festival").style.backgroundImage='url('+this.imageInfo.imgUrl+')'
                 this.num = element.seconds
-                store.dispatch('setMbHeaderTopValue',"25")
+                if(isMobile() === true){
+                  store.dispatch('setMbHeaderTopValue',"25")
+                }
+                
               }
             });
             this.auotClose()

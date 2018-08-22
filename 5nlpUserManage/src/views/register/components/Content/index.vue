@@ -25,7 +25,7 @@
         </span>
       </el-form-item>
       <el-form-item prop="tel">
-        <el-input name="phone" type="number" v-model="loginForm.tel" placeholder="手机号码（选填）" autoComplete="on"></el-input>
+        <el-input name="phone" v-model="loginForm.tel" placeholder="手机号码（选填）" autoComplete="on"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="font16" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">

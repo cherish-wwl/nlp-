@@ -15,7 +15,7 @@
                 <div class='title'  @click="seeDetails(item.id)">
                   <!-- <img src='../../../../assets/home/news02.png'> -->
                   <svg-icon :icon-class="item.icon"></svg-icon>
-                  <h2>{{ item.name }}</h2>
+                  <h2 class="font18">{{ item.name }}</h2>
                 </div>
                 <div class='content_text hidden-sm-and-down' >
                   <p>{{ item.descr}}</p>

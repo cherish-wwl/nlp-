@@ -12,8 +12,8 @@ const commonData = {
       commonData.mainsiteBaseUrL =  "http://localhost:9696"
     }
     if(commonData.developMode == "prod"){
-      commonData.userManageBaseUrL = "http://www.china-nlp.com/userManage"
-      commonData.consoleBaseUrl = "http://www.china-nlp.com/console"
+      commonData.userManageBaseUrL = "http://www.china-nlp.com/userManage-font"
+      commonData.consoleBaseUrl = "http://www.china-nlp.com/console-font"
       commonData.mainsiteBaseUrL =  "http://www.china-nlp.com"
     }
     if(commonData.developMode == "test"){

@@ -239,3 +239,8 @@ li {
     text-decoration:underline;
   }
 }
+// 下拉框样式
+.el-popper[x-placement^=bottom] .popper__arrow{
+  display: none !important;
+  top: 0 !important;
+}

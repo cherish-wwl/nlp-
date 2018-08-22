@@ -10,8 +10,8 @@ module.exports = merge(prodEnv, {
   // CONSOLE_API:'"http://192.168.16.128:8094/console"'
   // BASE_API: '"http://192.168.16.142:8090/mainsite"  '
   // BASE_API:'"HTTP://192.168.16.84:8090/mainsite"'
-  // BASE_API: '"http://192.168.95.57:8090/mainsite"',
-  // CONSOLE_API:'"http://192.168.95.57:8090/console"'
+  BASE_API: '"http://192.168.95.57:8090/mainsite"',
+  CONSOLE_API:'"http://192.168.95.57:8090/console"'
   // BASE_API: '"http://www.china-nlp.com/mainsite"',
   // CONSOLE_API:'"http://www.china-nlp.com/console"'
 })

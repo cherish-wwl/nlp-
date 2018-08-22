@@ -113,7 +113,7 @@ export default {
           overflow: hidden;
           margin-top: 8px;
           color: #9d9a96;
-          font-size: smaller;
+          // font-size: smaller;
           cursor:pointer;
           &:hover{
             color: #389FFF;
