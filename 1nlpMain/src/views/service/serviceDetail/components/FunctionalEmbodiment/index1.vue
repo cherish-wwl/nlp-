@@ -9,8 +9,8 @@
     <br />
     <br />
     <el-row class='panel'>
-      <el-col :span='20'>
-        <div class='viewPanel'>
+      <el-col :span='10'>
+        <div class='left'>
           <el-input
             type="textarea"
             placeholder="请输入内容"
@@ -18,15 +18,19 @@
           </el-input>
         </div>
       </el-col>
-      <el-col :span="20">
-        <pre class="JSONhtmlStyle viewPanel" v-html="disposeValue"> </pre>
-      </el-col>
-      <el-col :span='20' class="text_center">
+      <el-col :span='4' class="text_center">
         <el-button type="primary" :loading="waiting" @click.native="execute">&nbsp;&nbsp;&nbsp;&nbsp;执行&nbsp;&nbsp;&nbsp;&nbsp; </el-button>
       </el-col>
-      <el-col :span='20'>
-        <pre class="JSONhtmlStyle viewPanel" v-html="afterValue"> </pre>
-      
+      <el-col :span='10'>
+        <div class='right'>
+          <!-- <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="afterValue">
+
+          </el-input> -->
+          {{afterValue}}
+        </div>
       </el-col>
     </el-row>
    </el-container>
@@ -34,12 +38,10 @@
 
 <script>
   import { serviceDetailsExecute , serviceGetCertificate} from '@/api/serviceLists'
-  import { syntaxHighlight } from '@/utils/index'
   export default {
     data () {
       return {
-        beforeValue: null,
-        disposeValue:null,
+        beforeValue: this.inArg,
         afterValue: null,
         executeUrl:'',
         waiting:false
@@ -49,7 +51,6 @@
     watch:{
       inArg(val){
         this.beforeValue = val
-        this.disposeValue = this.disposeData(val)
       }
     },
     methods:{
@@ -61,32 +62,15 @@
       
           serviceDetailsExecute(params).then( response =>{
             if(response.data.data){
-              this.afterValue = this.disposeData(response.data.data)
+              this.afterValue =response.data.data
             }else{
-              this.afterValue = this.disposeData(response.data)
+              this.afterValue =response.data
             }
             this.waiting = false
           })
         })
         
       },
-      // json数据 结构化展示
-      disposeData(str){
-        if(typeof str == 'string'){
-          try {
-              var obj=JSON.parse(str.trim('"').toString());
-              if(typeof obj == 'object' && obj ){
-                return syntaxHighlight(obj);
-              }else{
-                  return '"'+str+'"';
-              }
-
-          } catch(e) {
-              console.log('error：'+str+'!!!'+e);
-              return '"'+str+'"';
-          }
-        }
-      }
     },
     mounted () {
       // this.init()
@@ -105,9 +89,18 @@
     .panel{
       display: flex;
       align-items: center;
-      flex-direction: column;
-      .viewPanel{
-        height: 200px; // float: left;
+      .left{
+        width: 79%;
+        height: 300px;
+        float: right;
+        // background-color: #fff;
+        // border: 1px solid #ddd;
+
+      }
+      .right{
+        width: 79%;
+        height: 300px;
+        float: left;
         background-color: #fff;
         overflow: scroll;
         overflow-x: hidden;

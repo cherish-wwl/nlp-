@@ -6,7 +6,7 @@
       </el-col>
     </el-row>
     <el-row class='panel'>
-      <el-col class='item' :lg="8" :md="8" :sm="24" :xl="24" :xs="24" v-for="(item,index) in sceneData" :key="index" v-if="item.relateType=='006002'">
+      <el-col class='item' :lg="8" :md="8" :sm="24" :xl="8" :xs="24" v-for="(item,index) in sceneData" :key="index" v-if="item.relateType=='006002'">
         <el-col :span="5">
           <img class="img " :src="item.banner">
         </el-col>
@@ -51,7 +51,7 @@
           background-color: #4945458a;
         }
         &:not(:last-child){
-          border-right: 1px solid #474545;
+          border-right: 1.5px solid #212121;
         }
         .content{
           padding-left: 10px;
@@ -70,6 +70,7 @@
   .applicationScene2 {
     color: #fff;
     background:url('../../../../../assets/sevice_details/u513.jpg') no-repeat; 
+    background-size: 100% 100%;  
     padding-bottom: 50px;
     margin-bottom: 50px;
     .panel{

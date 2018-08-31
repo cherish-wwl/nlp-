@@ -78,7 +78,7 @@ export default {
         // console.log(key, keyPath);
         // console.log(this.userManageBaseUrL)
         if(key == "login"){
-          window.location.href = this.userManageBaseUrL
+          window.location.href = this.consoleBaseUrl
         }
       },
       // 点击判断是否显示下拉面板
@@ -145,7 +145,7 @@ export default {
        }
     },
     mounted () { 
-      // console.log(getToken())
+      console.log(getToken())
       if(getToken() != "" && getToken()){
         store.dispatch('GetInfo').then(res => { // 拉取用户信息
           console.log("拉取用户信息")

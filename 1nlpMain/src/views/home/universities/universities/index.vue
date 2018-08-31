@@ -36,7 +36,7 @@
       <el-row>
         <el-col :lg="8" :xl="8" :md="24" :xs="24" :sm="24" class="col" v-for="(item,index) in listData" :key="index" >
           <div class="item line-animate-content" v-on:click="seeDetails(item.groupId)">
-            <div class="line"></div>
+            <div class="line hidden-md-and-down"></div>
             <div class="img-line">
               <img 
               :src="item.groupImgUrl?item.groupImgUrl:item.academyImgUrl?item.academyImgUrl:'/static/default.png'"  onerror="this.src='/static/default.png'">

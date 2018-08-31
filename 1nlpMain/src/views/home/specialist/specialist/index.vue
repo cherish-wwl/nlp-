@@ -19,13 +19,13 @@
     <div class="content" v-if="!isDetail">
       <el-row>
         <el-col :lg="12" :xl="12" :md="8" :sm="8" :xs="8" class="col" v-for="(item,index) in specialistData" :key="index" >
-          <div class="specialist-item line-animate-content">
-            <div class="line"></div>
+          <div class="specialist-item line-animate-content" v-on:click="seeDetails(index,item.professorId)">
+            <div class="line hidden-md-and-down"></div>
             <div class="left">
-              <img :src="item.imageUrl?item.imageUrl:'/static/nlp_head2.jpg'" onerror="this.src='/static/nlp_head2.jpg'">
+              <img  :src="item.imageUrl?item.imageUrl:'/static/nlp_head2.jpg'" onerror="this.src='/static/nlp_head2.jpg'">
             </div>
             <div class="right">
-              <h3 class="font20 specialistName" v-on:click="seeDetails(index,item.professorId)">{{item.professorName}}</h3>
+              <h3 class="font20 specialistName">{{item.professorName}}</h3>
               <p class="font14 specialistDesrc height135 hidden-md-and-down">{{ item.professorDesc}}<p>
               <div class="text_right hidden-md-and-down font16" v-on:click="seeDetails(index,item.professorId)"><a>>查看详情</a></div>
             </div>

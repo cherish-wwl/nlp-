@@ -57,11 +57,12 @@
       display: flex;
       justify-content: space-around;
       .icon_panel_item {
+        width: 30%;
         position: relative;
         text-align: center;
         img{
           width: 32%;
-        }
+         }
       } 
     }
   }

@@ -11,7 +11,7 @@
     <br />
     <cooperation-platform :cooperation-data="cooperationData"></cooperation-platform>
     <br />
-    <contact></contact>
+    <contact :contact-data="contactData"></contact>
 
 
   </div>
@@ -40,7 +40,8 @@ export default {
       propertyData:{},
       tableData:{},
       specialist:{},
-      cooperationData:{}
+      cooperationData:{},
+      contactData:{}
     }
    
   },mounted(){
@@ -53,6 +54,7 @@ export default {
         this.tableData = res.tableData
         this.specialist = res.specialist
         this.cooperationData = res.cooperationData
+        this.contactData = res.contactData
       }else{
         console.log("未加载到数据")
       }

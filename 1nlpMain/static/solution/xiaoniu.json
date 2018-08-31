@@ -1,53 +1,62 @@
 {
   "titleData":{
-  "img":"static/solution/xiaoniu/u1525.png",
-  "title":"让语言交流无障碍",
-  "desrc":"NiuTrans是一个开源的统计机器翻译系统，由中国的 东北大学 自然语言处理实验室 开发。NiuTrans系统全部由C++开发，运行速度快，占用内存少。目前该系统支持基于（层次）短语/基于句法的模型，可供研究之用。",
+  "img":"static/solution/xiaoniu/niutrans_logowhite.png",
+  "title":"38年专注机器翻译技术",
+  "desrc":"专业的多语种机器翻译解决方案提供商，拥有近40年的机器翻译技术积累，自主研发7大少数民族语言（维藏蒙哈朝彝壮）及112+种主流语种（“英日韩俄法西”等）的机器翻译系统。",
   "bgimg":"static/solution/xiaoniu/u1460.jpg"
   },
   "featureData":
     {"name":"服务特色",
      "width":"16.6%",
     "data":[
-    {"name":"提供api接口","descr":"与其他应用轻松集成","img":"static/solution/xiaoniu/u1468.png"},
-    {"name":"多种翻译插件","descr":"可应用于主流CAT工具及Office软件中","img":"static/solution/xiaoniu/u1474.png"},
+    {"name":"提供API接口","descr":"轻松集成、二次开发","img":"static/solution/xiaoniu/u1468.png"},
+    {"name":"多种翻译插件","descr":"如：Trados插件、Word插件等","img":"static/solution/xiaoniu/u1474.png"},
     {"name":"在线文本翻译","descr":"在线输入，轻松搞定译文","img":"static/solution/xiaoniu/u1480.png"},
-    {"name":"批量文档翻译","descr":"支持多种文件格式","img":"static/solution/xiaoniu/u1632.png"},
-    {"name":"多个垂直行业引擎","descr":"例如新闻、口语、医药等","img":"static/solution/xiaoniu/u1517.png"},
+    {"name":"批量文档翻译","descr":"支持PDF、Word、PPT、Excel等格式，翻译前后格式保持不变","img":"static/solution/xiaoniu/u1632.png"},
+    {"name":"多套垂直领域引擎","descr":"如：新闻、口语、医药、专利、金融等","img":"static/solution/xiaoniu/u1517.png"},
     {"name":"个性化定制","descr":"满足用户语种、场景、领域等需求","img":"static/solution/xiaoniu/u1523.png"}
   ]},
   "propertyData":
   {"name":"性能指标",
     "width":"30%",
     "data":[
-    {"name":"译文质量","descr":"在口语及通用新闻领域，中文与英、日、韩、维、藏等5种语言双向译文流畅，准确率超过80%","img":"static/solution/xiaoniu/u1529.jpg"},
-    {"name":"翻译速度","descr":"每秒可至少处理300n个词，其中n为翻译服务器中GPU卡（1080Ti）的数量。一台2张GPU卡的服务器每小时翻译量达到216万词以上","img":"static/solution/xiaoniu/u1531.jpg"},
-    {"name":"秒级并发量","descr":"大于30（平均句长10个词）/GPU卡","img":"static/solution/xiaoniu/u1533.jpg"}
+    {"name":"译文质量","descr":"在口语及通用新闻领域，中英双向准确率接近90%；中文与日韩俄维藏等语种双向准确率超过85%。","img":"static/solution/xiaoniu/u1529.jpg"},
+    {"name":"翻译速度","descr":"每秒满负荷可处理500*N个词，其中N为GPU卡（GTX 1080Ti)的数量。一台8张1080Ti显卡的服务器每小时翻译量可达到1000万词。","img":"static/solution/xiaoniu/u1531.jpg"},
+    {"name":"秒级并发量","descr":"大于50句（平均句长10个词）/GPU卡。","img":"static/solution/xiaoniu/u1533.jpg"}
   ]},
   "tableData":{
     "headList":[
-      {"id":"col1","name":"服务名称"},{"id":"col2","name":"适用客户"},
+      {"id":"col1","name":"服务名称"},{"id":"col2","name":"客户类型"},
       {"id":"col3","name":"支持语言"},{"id":"col4","name":"反馈学习能力"},
       {"id":"col5","name":"引擎部署及使用方式"},{"id":"col6","name":"计费方式"}
     ],
     "data":[
-      {"col1":"小牛翻译私有云","col2":"大型企业","col3":"中文与64种语言","col4":"有","col5":"用户服务器本地部署，私有使用","col6":"一次性买断"},
-      {"col1":"小牛翻译专有云","col2":"大中型企业","col3":"中文与64种语言","col4":"有","col5":"小牛翻译云服务器，用户独享使用","col6":"按年租赁"},
-      {"col1":"小牛翻译离线版","col2":"大中型企业","col3":"中文与英日韩泰俄","col4":"无","col5":"用户服务器本地部署，私有使用","col6":"按年授权"},
-      {"col1":"小牛翻译引擎定制","col2":"大型企业","col3":"根据用户需求","col4":"根据用户需求","col5":"根据用户需求","col6":"一次性买断"}
-     
-    ]
+      {"col1":"小牛翻译私有云","col2":"大型企业","col3":"中文与112种语言","col4":"有","col5":"本地服务器部署，局域网内使用","col6":"一次性买断"},
+      {"col1":"小牛翻译专有云","col2":"大中型企业","col3":"中文与112种语言","col4":"无","col5":"小牛翻译开放平台提供云端部署，通过API接入，独享使用","col6":"按年租赁"},
+      {"col1":"小牛翻译离线版","col2":"大中型企业","col3":"中文与英日韩泰法俄意德双向","col4":"无","col5":"智能终端设备嵌入离线翻译SDK，无网络独享使用","col6":"按年授权"},
+      {"col1":"小牛翻译引擎定制","col2":"大型企业","col3":"根据用户需求","col4":"根据用户需求","col5":"根据用户需求","col6":"一次性买断"}  
+    ],
+    "remark":"注：每套翻译引擎部署在一张GPU卡上，一个语言方向的机器翻译引擎为一套机器翻译引擎，比如中译英为一套机器翻译引擎，英译中为另一套机器翻译引擎。",
+    "jumpURL":"https://niutrans.vip/index/reg/index.html"
   },
   "specialist":{
     "name":"专家介绍",
     "data":[
-    {"teamname":"NiuTrans团队","principal":"朱靖波",
-    "detail":"国内顶级自然语言处理领域专家，任东北大学计算机学院教授、博士生导师。曾先后在香港城市大学、美国南加州大学USC/ISI开展语言分析和机器翻译的访问研究。",
-    "img":"static/solution/xiaoniu/u1622.jpg","url":"/specialistDetails/11","type":1},
-    {"teamname":"NiuTrans团队","principal":"肖桐",
+    {"teamname":"小牛翻译董事长","principal":"朱靖波",
+    "detail":"国内顶级自然语言处理领域专家，任东北大学计算机学院教授、博士生导师。讯飞AI大学首批特聘教授，曾先后在香港城市大学、美国南加州大学USC/ISI开展语言分析和机器翻译的访问研究。",
+    "img":"static/solution/xiaoniu/u1622.jpg","url":"http://www.yatrans.com/plus/list.php?tid=79","type":0},
+    {"teamname":"小牛翻译CEO","principal":"肖桐",
     "detail":"国内机器翻译领域最杰出的青年学者之一，中国中文信息学会首届优秀博士论文提名奖获得者，东北大学计算机学院副教授。曾先后在东京富士通研究中心、微软亚洲研究院、剑桥大学访问学习或研究合作。",
     "img":"static/solution//xiaoniu/u1626.jpg","url":"http://www.yatrans.com/plus/list.php?tid=79","type":0}
     ]
+  },
+  "contactData":{
+    "companyName":"沈阳雅译网络技术有限公司",
+    "companyUrl":"https://NiuTrans.vip",
+    "conactPensonName":"宁义明",
+    "conactPensonPhone":"150-0988-5010",
+    "conactPensonEmail":"ningyiming@niutrans.vip",
+    "QRcode":[{"url":"static/solution/xiaoniu/u1764.png","desc":"小牛翻译微信公众号"}]
   },
   "cooperationData":{
     "col":6,

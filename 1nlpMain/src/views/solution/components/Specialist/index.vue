@@ -16,7 +16,7 @@
           <img :src="item.img"/>
         </div>
         <div class="right">
-          <label class="font_color_grey3"> <span class="font16">{{ item.teamname }}负责人：{{item.principal}}</span></label>
+          <label class="font_color_grey3"> <span class="font16">{{ item.teamname }}：{{item.principal}}</span></label>
           <p class="font14 font_color_grey2">{{item.detail}}</p>
           <div class="font14 font_color_grey2 float_right" >
             <a  href="javaScript:void(0)">
@@ -65,6 +65,7 @@
         cursor: pointer;
         align-items: center;
         border: 1px solid #ededed;
+        padding: 10px 0;
         &:hover{
           -moz-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
           -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);

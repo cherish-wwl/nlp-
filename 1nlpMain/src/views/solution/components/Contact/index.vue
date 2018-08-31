@@ -7,25 +7,21 @@
     </el-row>
     <el-row class="icon_panel">
       <el-col :lg="12" :xl="12" :md="24" :sm="24" :xs="24">
-        <p class="font16">沈阳雅译网络技术有限公司</p>
+        <p class="font16">{{ contactData.companyName }}</p>
   
-        <p class="font14">网址：<a href="http://www.yatrans.com" target='_blank'>http://www.yatrans.com</a></p>
-        <p class="font14">联系人：宁义明 </p>
+        <p class="font14">网址：<a :href="contactData.companyUrl" target='_blank'>{{ contactData.companyUrl }}</a></p>
+        <p class="font14">联系人：{{ contactData.conactPensonName }} </p>
         <br />
     
-        <p class="font14">电话：15009885010</p>
-        <p class="font14">Email: business@yatrans.com</p>
+        <p class="font14">电话：{{ contactData.conactPensonPhone }}</p>
+        <p class="font14">Email: {{ contactData.conactPensonEmail }}</p>
       </el-col>
       <el-col :lg="12" :xl="12" :md="24" :sm="24" :xs="24">
-        <el-col :lg="12" :xl="12" :md="12" :sm="12" :xs="24" class="text_center">
-          <img src="static/solution/xiaoniu/u1764.png"/>
-          <p class="font16">小牛翻译微信公众号</p>
+        <el-col :lg="12" :xl="12" :md="12" :sm="12" :xs="24" v-for="item in contactData.QRcode" :key="item.url" class="text_center">
+          <img :src="item.url"/>
+          <p class="font16">{{item.desc}}</p>
         </el-col>
-        <el-col :lg="12" :xl="12" :md="12" :sm="12" :xs="24" class="text_center">
-          <img src="static/solution/xiaoniu/u1766.png"/>
-          <p class="font16">扫描下载</p>
-          <p class="font16">小牛翻译APP安卓版</p>
-        </el-col>
+        
       </el-col>
     </el-row>
    </el-container>
@@ -38,7 +34,7 @@
       
       }
     },
-    props: ['featureData'],
+    props: ['contactData'],
    
   }
 </script>

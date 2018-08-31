@@ -37,7 +37,7 @@
         </el-table-column>
 
     </el-table>
-    <p class="smaller font_color_grey">注：每套翻译引擎部署在一张GPU卡上，一个语言方向的机器翻译引擎为1套机器翻译引擎，比如中译英为一套机器翻译引擎，英译中为另一套机器翻译引擎。</p>
+    <p class="smaller font_color_grey">{{tableData.remark}}</p>
     <el-row class="text_center">
       <br />
       <br />
@@ -59,7 +59,8 @@ export default {
   },
   methods:{
     jumpPage(){
-      window.open("http://fanyi.niutrans.com/","_blank")
+
+      window.open(this.tableData.jumpURL,"_blank")
     }
   },
   props:["tableData"],

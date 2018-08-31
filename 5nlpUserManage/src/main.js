@@ -20,7 +20,7 @@ import promise from 'es6-promise'
 promise.polyfill()
 import '@/icons' // icon
 import '@/styles/index.scss' // global css
-import '@/permission' // permission control
+// import '@/permission' // permission control
 
 Vue.use(ElementUI, { locale })
 

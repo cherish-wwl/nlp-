@@ -40,7 +40,7 @@
           <div>
           <el-row>
             <h3><span>Body请求示例:</span></h3>
-              <pre class="JSONhtmlStyle" v-html="bodyexample"> </pre>
+            <pre class="JSONhtmlStyle" v-html="bodyexample"> </pre>
           </el-row>
           </div>
           <div>

@@ -81,7 +81,7 @@ export default {
     width: 1200px;
     // text-align: center;
     ul{
-      width: 94%;
+      width: 85%;
       margin: 0 auto;
       padding: 0;
       list-style: none;
