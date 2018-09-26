@@ -30,7 +30,7 @@
             </template>
             <el-submenu :index="'1-'+item.id" v-for="item in serviceList" :key="item.id">
               <template slot="title">{{ item.name }}</template>
-              <el-submenu :index="'1-'+item.id+child.id" v-for="child in item.children" :key="child.id">
+              <el-submenu v-if="item.id == '001'" :index="'1-'+item.id+child.id" v-for="child in item.children" :key="item.id+child.id">
                 <template slot="title">{{ child.name }}</template>
                 <el-menu-item 
                 :index="'1-'+item.id+child.id+child2.id" 
@@ -40,6 +40,13 @@
                   {{ child2.name }}
                 </el-menu-item>
               </el-submenu>
+              <el-menu-item v-if="item.id == '002'" 
+                :index="'1-'+item.id+child3.id"
+                v-for="child3 in item.children" 
+                @click="linkServiceListPage(child3.id)"
+                :key="child3.id">
+                  {{ child3.name }}
+              </el-menu-item>
             </el-submenu>
           </el-submenu>
           <el-submenu index="2">

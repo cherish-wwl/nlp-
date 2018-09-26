@@ -33,5 +33,10 @@ export function getCountBytype() {
   })
 }
 
-
-
+// 获取首页所有数据
+export function getAllDataOfHome() {
+  return request({
+    url: '/index/getAll',
+    method: 'post'
+  })
+}

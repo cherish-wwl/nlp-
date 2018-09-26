@@ -38,7 +38,7 @@
             </el-row>
           </div>
         </div>
-        <img class='zhehe hidden-sm-and-down' src='../../../../assets/home/zhehe.png'>
+        <img class='zhehe hidden-sm-and-down' src='../../../../../assets/home/zhehe.png'>
         <!-- <img class='qiu' src='../../../../assets/home/qiu.png'> -->
       </el-row>
     </div>

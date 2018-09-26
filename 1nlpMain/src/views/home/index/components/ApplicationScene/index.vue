@@ -1,10 +1,11 @@
 <template>
   <el-container class='applicatin_scene'>
     <el-row class='text_center'>
-      <h2 class="font30">应用服务</h2>
+      <h2 class="font30">应用服务
+      </h2>
     </el-row>
     <el-row class='display_panel'>    
-      <div class="grid-content item" v-for='item in datalist' :key='item.p_id'>
+      <div class="grid-content item" v-for='(item,index) in sceneData' v-if="index<5" :key='index'>
         <div class="normol_panel">
           <img :src="'static/index/'+item.icon+'.jpg'">      
           <!-- <img :src="imglist[(index < 3)? index : index % 3]" /> -->
@@ -39,14 +40,8 @@
     data() {
       return {
         currentIndex: 0,
-        datalist:[],
-        imglist:[
-          // require('../../../../assets/home/xinwen01.jpg'),
-          // require('../../../../assets/home/kefu01.jpg'),
-          // require('../../../../assets/home/sifa01.jpg'),
-          // require('../../../../assets/home/wenben01.jpg'),
-          // require('../../../../assets/home/yiliao01.jpg'),
-        ],
+        datalist:this.sceneData,
+        imglist:null,
       }
     },
     methods: {
@@ -55,15 +50,16 @@
           this.$router.push({name: 'serviceLists',params:{ randomValue: Math.random().toString(36).substr(2) }})
         }
     },
+    props:["sceneData"],
     mounted () {
-      getApplicationSceneList().then(response =>{
-        if( response.data.length > 3 ){
-          this.datalist = response.data.slice(0,5)
-        }else{
-          this.datalist = response.data
-        }
+      // getApplicationSceneList().then(response =>{
+      //   if( response.data.length > 3 ){
+      //     this.datalist = response.data.slice(0,5)
+      //   }else{
+      //     this.datalist = response.data
+      //   }
        
-      })
+      // })
     }
   }
 </script>
