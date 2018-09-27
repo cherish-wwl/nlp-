@@ -3,17 +3,10 @@
     // 主体区域
     .main-container {
       min-height: 100%;
-      // margin-top: $headerHeight;
-      // margin-bottom: 50px;
     } 
     // header
     .header-container {
       padding: 0;
-      // position: fixed;
-      // top: 0;
-      // z-index: 999;
-      // left: 0;
-      // right: 0;
       .pcHeaderPanel{
         .el-menu--horizontal .el-submenu{
           position: static;
@@ -44,7 +37,7 @@
             color: #fff;
             ul{
                 list-style: none;
-                display: inline-table;
+                // display: inline-table;
             }
         }    
         .el-menu {

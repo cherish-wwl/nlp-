@@ -115,7 +115,7 @@ export default {
         this.isHidePanel(1)
         this.activeIndex = "1-1"
         Cookies.set("service_id",id)
-        this.$router.push({name: 'serviceLists',params:{ randomValue: id }})
+        this.$router.push({name: 'serviceLists',params:{ rid: id.substring(0,3)}})
       },
       // 处理从HeaderSolutionsPanel组件传来的 跳转到解决方案列表页面
       handleFromHeaderSolutionsPanel(item){
@@ -145,16 +145,16 @@ export default {
        }
     },
     mounted () { 
-      console.log(getToken())
+      // console.log(getToken())
       if(getToken() != "" && getToken()){
-        store.dispatch('GetInfo').then(res => { // 拉取用户信息
-          console.log("拉取用户信息")
-          console.log(res)
+        // store.dispatch('GetInfo').then(res => { // 拉取用户信息
+        //   console.log("拉取用户信息")
+        //   console.log(res)
           this.isLogin = true
-          this.userName = res.data.userName
-        }).catch(() => {
-          this.isLogin = false
-        })
+        //   this.userName = res.data.userName
+        // }).catch(() => {
+        //   this.isLogin = false
+        // })
        
       }else{
         this.isLogin = false

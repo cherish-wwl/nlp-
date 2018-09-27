@@ -31,31 +31,30 @@ export const constantRouterMap = [
     redirect: '/home',
     hidden: true,
     children: [{
-        path: 'home',
-        name: 'home',
-        component: () => import('@/views/home/index')
-      },
-      {
-        path: 'specialist',
-        name:"specialist",
-        component: () => import('@/views/home/specialist/specialist/index')
-      },
-      {
-        path: 'specialistDetails/:specialistId',
-        name:"specialistDetails",
-        component: () => import('@/views/home/specialist/specialist/index')
-      },
-      {
-        path: 'universities',
-        name:"universities",
-        component: () => import('@/views/home/universities/universities/index')
-      },
-      {
-        path: 'universitiesDetails/:universitiesId',
-        name:"universitiesDetails",
-        component: () => import('@/views/home/universities/universities/index')
-      }
-    ]
+      path: 'home',
+      name: 'home',
+      component: () => import('@/views/home/index/index')
+    },
+    {
+      path: 'specialist',
+      name: 'specialist',
+      component: () => import('@/views/home/specialist/specialist/index')
+    },
+    {
+      path: 'specialistDetails/:specialistId',
+      name: 'specialistDetails',
+      component: () => import('@/views/home/specialist/specialist/index')
+    },
+    {
+      path: 'universities',
+      name: 'universities',
+      component: () => import('@/views/home/universities/universities/index')
+    },
+    {
+      path: 'universitiesDetails/:universitiesId',
+      name: 'universitiesDetails',
+      component: () => import('@/views/home/universities/universities/index')
+    }]
   },
   {
     path: '/services',
@@ -63,19 +62,19 @@ export const constantRouterMap = [
     redirect: '/services/list',
     children: [
       {
-        path: 'list/:randomValue',
+        path: 'list/:rid',
         name: 'serviceLists',
         component: () => import('@/views/service/serviceLists/index'),
         meta: { title: '服务列表' }
       },
       {
-        path:'serviceDetail/:service_id',
+        path: 'serviceDetail/:service_id',
         name: 'serviceDetail',
         component: () => import('@/views/service/serviceDetail/index'),
         meta: { title: '服务详情' }
       },
       {
-        path:'techDocument/:serviceId',
+        path: 'techDocument/:serviceId',
         name: 'techDocument',
         component: () => import('@/views/service/techDocument/index'),
         meta: { title: '技术文档' }
