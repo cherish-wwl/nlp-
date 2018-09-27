@@ -115,7 +115,7 @@ export default {
         this.isHidePanel(1)
         this.activeIndex = "1-1"
         Cookies.set("service_id",id)
-        this.$router.push({name: 'serviceLists',params:{ randomValue: Math.random().toString(36).substr(2) }})
+        this.$router.push({name: 'serviceLists',params:{ randomValue: id }})
       },
       // 处理从HeaderSolutionsPanel组件传来的 跳转到解决方案列表页面
       handleFromHeaderSolutionsPanel(item){

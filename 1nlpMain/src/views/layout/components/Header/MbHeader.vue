@@ -113,7 +113,7 @@ export default {
     linkServiceListPage (id) {
       Cookies.set("service_id",id)
       this.showPanel = false
-      this.$router.push({name: 'serviceLists',params:{ randomValue: Math.random().toString(36).substr(2) }})
+      this.$router.push({name: 'serviceLists',params:{ randomValue: id }})
     },
     // 跳转到解决方案对应页面
     linkSolutionPage(item) {
