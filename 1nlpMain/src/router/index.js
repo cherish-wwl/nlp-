@@ -33,7 +33,7 @@ export const constantRouterMap = [
     children: [{
         path: 'home',
         name: 'home',
-        component: () => import('@/views/home/index/index')
+        component: () => import('@/views/home/index')
       },
       {
         path: 'specialist',

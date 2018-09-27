@@ -145,16 +145,16 @@ export default {
        }
     },
     mounted () { 
-      // console.log(getToken())
+      console.log(getToken())
       if(getToken() != "" && getToken()){
-        // store.dispatch('GetInfo').then(res => { // 拉取用户信息
-        //   console.log("拉取用户信息")
-        //   console.log(res)
+        store.dispatch('GetInfo').then(res => { // 拉取用户信息
+          console.log("拉取用户信息")
+          console.log(res)
           this.isLogin = true
-        //   this.userName = res.data.userName
-        // }).catch(() => {
-        //   this.isLogin = false
-        // })
+          this.userName = res.data.userName
+        }).catch(() => {
+          this.isLogin = false
+        })
        
       }else{
         this.isLogin = false

@@ -6,7 +6,7 @@
       </el-col>
     </el-row>
     <el-row class="icon_panel hidden-sm-and-down">
-      <div class="icon_panel_item" v-for="item in popularData" :key='item.id' :class="icon_panel_index == item.id ? 'active':''" v-on:mouseenter="toggleIconPanel(item.id)">
+      <div class="icon_panel_item" v-for="item in list1" :key='item.id' :class="icon_panel_index == item.id ? 'active':''" v-on:mouseenter="toggleIconPanel(item.id)">
         <div class="grid-content text_center">
           <svg-icon :icon-class="item.icon" ></svg-icon>
           <p class="font20">{{ item.name }}</p>
@@ -73,7 +73,6 @@
   import { subStringNoMore3line } from '@/utils/index.js'
   import Cookies from 'js-cookie'
   export default {
-    props:["popularData"],
     data () {
       return {
         icon_panel_index:0,
@@ -88,15 +87,18 @@
         return subStringNoMore3line(str,35)
       }
     },
-    
     methods:{
       init () {
-        this.list1 = this.popularData
-        this.mbData = this.popularData
-        if(this.list1.length !=0 ){
-          this.icon_panel_index = this.list1[0].id
-          this.refrushIconPanel(0)
-        }         
+        // axios  获取全部数据
+       getpopularServicesList ().then(response =>{
+          this.list1 = response.data
+          this.mbData = response.data
+          if(this.list1.length !=0 ){
+            this.icon_panel_index = this.list1[0].id
+            this.refrushIconPanel(0)
+          }
+          
+       })
       },
       changeCollapse(e){
         console.log( 0 === "")
@@ -114,6 +116,7 @@
       },
 
       refrushIconPanel(arrayNum){
+       
         getpopularSubServicesList ({ "id": this.icon_panel_index,"size": 3 }).then(response => {
           this.list2 = response.data
           if(arrayNum != null && arrayNum !== ""){
@@ -121,7 +124,7 @@
           }
           
         })
-        // console.log(this.mbData)
+        console.log(this.mbData)
       },
       linkServiceDetialPage(item){
         console.log(item)
@@ -141,10 +144,8 @@
         console.log(Cookies.get("service_id"))
       },
     },
-    watch:{
-      popularData(val){
-        this.init()       
-      }
+    mounted () {
+      this.init()
     }
   }
 </script>

@@ -1,8 +1,6 @@
 <template>
    <el-header :height="(60+parseInt(MbHeaderTopValue))+'px'">
-     <!-- class="hidden-md-and-down" -->
-    <pc-header  class="hidden-md-and-down"></pc-header>
-    <!-- class="hidden-lg-and-up" -->
+    <pc-header class="hidden-md-and-down"></pc-header>
     <mb-header class="hidden-lg-and-up"></mb-header>
    </el-header>
 </template>
@@ -12,7 +10,6 @@ import store from '../../../../store'
 import MbHeader from './MbHeader'
 import PcHeader from './PcHeader'
 import { mapGetters } from 'vuex'
-import { isMobile } from '@/utils/index'
   export default {
     components:{
       MbHeader,
@@ -20,7 +17,7 @@ import { isMobile } from '@/utils/index'
     },
     data() {
       return {
-        H_height: '60px',
+        H_height:'60px'
       }
     },
     computed:{
@@ -28,8 +25,8 @@ import { isMobile } from '@/utils/index'
         'MbHeaderTopValue'
       ])
     },
-    mounted () {  
-      // 初始化commonData变量数据
+    mounted () { 
+       // 初始化commonData变量数据
       store.dispatch('initCommonData')
     }
   }
