@@ -112,7 +112,7 @@ export default {
  .close-btn:hover{
     color: #fff;
  }
- @media screen and (max-width:1280px) {
+ @media screen and (max-width:1200px) {
     #top-festival{
       background: #122186 center center no-repeat;
       height: 25px;

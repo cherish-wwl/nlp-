@@ -5,10 +5,10 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   // BASE_API: '"http://192.168.95.57:8090/mainsite"'
-  BASE_API: '"http://192.168.181.145:8090/mainsite"',//tian
+  // BASE_API: '"http://192.168.181.145:8090/mainsite"',//tian
   // BASE_API: '"http://192.168.95.128:8788/nlp-portal/mainsite"',//sun
   // CONSOLE_API:'"http://192.168.95.128:8788/nlp-console/console"'
-  // BASE_API: '"http://192.168.16.151:8090/mainsite"',
+  BASE_API: '"http://192.168.16.151:8090/mainsite"',
   // BASE_API:'"HTTP://192.168.16.84:8090/mainsite"'
   // BASE_API: '"http://192.168.95.57:8090/mainsite"',
   // CONSOLE_API:'"http://192.168.95.57:8090/console"'

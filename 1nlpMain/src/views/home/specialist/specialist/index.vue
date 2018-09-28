@@ -441,7 +441,7 @@ export default {
   
 }
 // pc
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1200px){
   .specialist-content{
     .back-img {
       min-width: 1240px;
@@ -463,7 +463,7 @@ export default {
   }
 }
 // mb
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1200px){
    .specialist-content{
     .back-img {
       img{

@@ -26,7 +26,7 @@
       <!-- <el-menu-item index='1' >
         技术咨询
       </el-menu-item> -->
-      <div class="rightPanel hidden-md-and-down">
+      <div class="rightPanel hidden-md-and-down" style="float:right;">
         <el-menu-item index="10" @click="jumpPage({name:'home'})">
           >>返回开放平台首页
         </el-menu-item>
@@ -108,7 +108,7 @@ import { scrollAnimation } from '@/utils/scrollAnimation.js'
     }
   }
 // mb
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1200px){
   .header-container {
     padding: 0;
     position: fixed;

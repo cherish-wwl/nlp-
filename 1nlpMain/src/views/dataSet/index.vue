@@ -12,7 +12,7 @@
     <el-container class='service_class'>
       <el-aside width="200px" class='aside_style hidden-md-and-down'>
         <ul>
-          <li v-for="item in levelOneData" class="font16"
+          <li v-for="item in levelOneData" class="font18"
             :class="activeLevelOneData.id == item.id?'active':''" :key="item.id" @click="chooseLevelOne(item)">
             {{ item.name }}
           </li>
@@ -21,19 +21,19 @@
       <el-main class='service_content'>
         <el-row class='service_tools' >
           <el-col :span='12' class='font16 nowrap'>
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <span class="levelOneName">{{ activeLevelOneData.name }}</span>
+            <i class="fa fa-paper-plane font20" aria-hidden="true"></i>
+            <span class="levelOneName font20">{{ activeLevelOneData.name }}</span>
             &nbsp;&nbsp;
             <span class="hidden-md-and-down">  
               <el-input placeholder="请输入内容" size="mini" v-model="search_key" v-on:change="searchThirdList" class="search_input" suffix-icon="el-icon-search"></el-input>
             </span>
           </el-col>
           <el-col  :span='12' class='text_right hidden-md-and-down'>
-            <span class='smaller'>排序：</span>
+            <span class='font14'>排序：</span>
             &nbsp;
-            <span class='small tool-sort-icon' :class="sortType != 1 ? '' : (countSort ? 'sort_desc' : 'sort_asc')"   @click="sortList(1)">使用次数&nbsp;<i class="fa fa-sort-desc"></i><i class="fa fa-sort-asc"></i></span>
+            <span class='font16 tool-sort-icon' :class="sortType != 1 ? '' : (countSort ? 'sort_desc' : 'sort_asc')"   @click="sortList(1)">使用次数&nbsp;<i class="fa fa-sort-desc"></i><i class="fa fa-sort-asc"></i></span>
             &nbsp;
-            <span class='small tool-sort-icon' :class="sortType != 2 ? '' : (timeSort ? 'sort_desc' : 'sort_asc')" @click="sortList(2)">发布时间&nbsp;<i class="fa fa-sort-desc"></i><i class="fa fa-sort-asc"></i></span>
+            <span class='font16 tool-sort-icon' :class="sortType != 2 ? '' : (timeSort ? 'sort_desc' : 'sort_asc')" @click="sortList(2)">发布时间&nbsp;<i class="fa fa-sort-desc"></i><i class="fa fa-sort-asc"></i></span>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <!-- <span class='tool-style-icon active'><i class="fa fa-bars" aria-hidden="true"></i></span> -->
             <!-- <span class='tool-style-icon'><i class="el-icon-menu" aria-hidden="true"></i></span> -->
@@ -381,7 +381,7 @@ $activeColor: #409EFF;
   
 }
 // pc
-@media screen and (max-width:1280px ){
+@media screen and (max-width:1200px ){
   .dataset-container {
     .service_info {
       .service_bg_img {

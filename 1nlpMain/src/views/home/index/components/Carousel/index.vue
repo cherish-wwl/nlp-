@@ -1,17 +1,4 @@
 <template>
-    <!-- <el-carousel class="carouserStyle" :autoplay="false"> -->
-      <!-- :interval="5000"  -->
-      <!-- <el-carousel-item v-for="(item, index) in datalist" :key="index">
-        <template v-if="item.link == ''" >
-          <img :src='item.imgUrl' class="carouse-img"/>
-        </template>
-        <template v-else>
-          <a  @click="jumpPage(item)" target="_blank" class="carouse-img">
-            <img :src='item.imgUrl' class="carouse-img"/>
-          </a>
-        </template>
-      </el-carousel-item>
-    </el-carousel> -->
     <div class="swiper-container">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="swiper-slide" v-for="(item, index) in datalist" :key="index">
@@ -76,7 +63,7 @@
       jumpPage(item){
         if(item.type == 1){
           Cookies.set("service_id","001001")
-          console.log(item.link)
+          // console.log(item.link)
           this.$router.push({
             name: item.link+'',
             params:{ 
@@ -86,7 +73,7 @@
               isCharge:"false"
             }
           })
-          console.log(Cookies.get("service_id"))
+          // console.log(Cookies.get("service_id"))
         }else{
           if(item.link != ''){
             window.open(item.link,"_blank")
@@ -108,14 +95,14 @@
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 // pc
-@media screen and (min-width:1280px) {
+@media screen and (min-width:1200px) {
   .swiper-img{
     height: 30rem;
     width: 100%;
   }
 }
 // mb
-@media screen and (max-width:1280px) {
+@media screen and (max-width:1200px) {
   .swiper-img{
     height: 17rem;
     width: 100%;

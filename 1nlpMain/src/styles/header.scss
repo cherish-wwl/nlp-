@@ -12,8 +12,6 @@
           position: static;
         }
         .el-menu--horizontal .el-submenu>.el-menu {
-          // position: fixed;
-          // background-color: rgba(9, 9, 9, 0.98)!important;
           background-color: #0d0d0d !important;
           top:$headerHeight;
           padding-top:25px;
@@ -21,9 +19,6 @@
           left: 0;
           right: 0; 
         }
-        // .el-submenu__title,.el-menu-item{
-          
-        // }
         .el-menu--horizontal{
           border-bottom-color: #000;
           .el-submenu .el-submenu__title, .el-menu-item{
@@ -37,7 +32,6 @@
             color: #fff;
             ul{
                 list-style: none;
-                // display: inline-table;
             }
         }    
         .el-menu {

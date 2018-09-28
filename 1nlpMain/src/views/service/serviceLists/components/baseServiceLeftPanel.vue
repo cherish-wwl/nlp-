@@ -6,7 +6,7 @@
         <span class="font18">{{ item.name }}</span>
       </template>
       <ul>
-        <li class='font14' 
+        <li class='font16' 
           v-for="child in item.children" 
           :class="currentServiceId == child.id ?'active':''" 
           :key="child.id" 

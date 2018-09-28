@@ -162,7 +162,7 @@ export default {
     }   
   }
 }
-@media  screen and (max-width: 1280px) {
+@media  screen and (max-width: 1200px) {
   .platform_features {
     margin-top: .5rem;
     .item{

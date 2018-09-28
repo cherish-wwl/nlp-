@@ -62,8 +62,11 @@
       color: #409eff;
     }
   }
+  .rightPanel{
+    float: right;
+  }
   // mb
-  @media screen and (max-width: 1280px){
+  @media screen and (max-width: 1200px){
     ul.el-menu.el-menu-demo.el-menu--horizontal {
       display: flex;
       justify-content: space-between;

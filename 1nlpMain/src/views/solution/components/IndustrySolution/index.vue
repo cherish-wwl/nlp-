@@ -67,7 +67,7 @@
       
   }
   // pc
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     .solution_panel {  
       .icon_panel{
         .icon_panel_item {
@@ -137,17 +137,17 @@
       }
     }
   }
-  @media screen and (max-width: 1280px) and (min-width: 1020px) {
-    .solution_panel {  
-      .icon_panel{
-        .up_panel img{
-          width: auto;
-        }
-      }
-    }
-  }
+  // @media screen and (max-width: 1280px) and (min-width: 1020px) {
+  //   .solution_panel {  
+  //     .icon_panel{
+  //       .up_panel img{
+  //         width: auto;
+  //       }
+  //     }
+  //   }
+  // }
   // mb
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1200px) {
     .solution_panel {  
       .icon_panel{
         color: #fff;

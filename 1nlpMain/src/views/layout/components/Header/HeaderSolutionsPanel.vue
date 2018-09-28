@@ -18,12 +18,13 @@
   </div>
 </template>
 <script>
-import { getSolutionList } from '@/api/solutions'
+// import { getSolutionList } from '@/api/solutions'
 import { subStringNoMore3line } from '@/utils/index'
 export default {
+  props: [ "dataSetList" ],
   data(){
     return {
-      dataSetList:[]
+      // dataSetList:[]
     }
   },
   filters:{
@@ -32,20 +33,13 @@ export default {
     }
   },
   methods:{
-    // 初始化
-    init(){
-      // 获取解决方案数据
-      getSolutionList().then(response => {
-        this.dataSetList = response.data
-      })
-    },
     // 跳转到解决方案详情页
     linkSolutionPage(item){
       this.$emit("handleFromHeaderSolutionsPanel",item)
     }
   },
   mounted () {
-    this.init()
+   
   }
 }
 </script>

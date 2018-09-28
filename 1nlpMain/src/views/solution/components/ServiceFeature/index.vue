@@ -56,7 +56,7 @@
       
   }
   // mb
-  @media screen and (max-width: 1280px){
+  @media screen and (max-width: 1200px){
     .feature_panel {
       .icon_panel{
         display: flex;

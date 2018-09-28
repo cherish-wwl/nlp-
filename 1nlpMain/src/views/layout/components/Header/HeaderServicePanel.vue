@@ -1,10 +1,10 @@
 <template>
   <div class="sub-meun-panel">
-    <el-row style='padding-left: 40px; margin-bottom: 20px;'>
+    <!-- <el-row style='padding-left: 40px; margin-bottom: 20px;'>
       <el-input placeholder="请输入内容" v-model="searchKey" v-on:change='querySearch' @keyup.enter.native="querySearch" class="input-with-select">
         <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
-    </el-row>
+    </el-row> -->
     <el-row class='meunItemDiv'>     
       <el-col :span="child.id == '001'? 13: 11" class="submeunitem" v-for="child in serviceMeunList" :key="child.id">
         <div class='meunItemFont01 font18' ><label ><i class="fa fa-bookmark-o" aria-hidden="true"></i>&nbsp;&nbsp;{{ child.name}}</label></div>
@@ -15,7 +15,7 @@
               :class="child.id == '001'?'':'applicattionServicePanelItem'"
               @click="linkServiceListPage(item.id)"
             >{{ item.name }}</label>
-            <li class="font14" v-for="subChild in item.children" :key="subChild.id" v-if="subChild.show == true" @click="linkServiceListPage(subChild.id)">
+            <li class="font14" v-for="subChild in item.children" :key="subChild.id" v-if="(!subChild.show)||subChild.show == true" @click="linkServiceListPage(subChild.id)">
               {{ subChild.name }}  
             </li>
           </ul>
@@ -25,14 +25,14 @@
   </div>
 </template>
 <script>
-import { getMenus } from '@/api/header'
+// import { getMenus } from '@/api/header'
 export default {
-  // props:["serviceMeunList"],
+  props:["serviceMeunList"],
   data(){
     return{
       searchKey:'',
       originalMeunList:'',
-      serviceMeunList:''
+      // serviceMeunList:''
     }
   },
   methods:{
@@ -63,14 +63,18 @@ export default {
     // 初始化
     init(){
       // 初始化
-      getMenus().then(response => {
-        this.initMeunList(response.data)
-        this.serviceMeunList = response.data
-        this.originalMeunList = response.data
-        // console.log(this.serviceMeunList)
-      })
+      // getMenus().then(response => {
+        // this.initMeunList(response.data)
+        // this.serviceMeunList = response.data
+        // this.originalMeunList = response.data
+      // })
+      /**  用于查询  初始化添加字段show 控制显影
+      this.initMeunList(this.serviceMeunList)
+      this.originalMeunList = this.serviceMeunList
+      */
+      
     },
-    // 遍历数据  添加show 字段 用于控制显影
+    // 用于查询 遍历数据  添加show 字段 用于控制显影
     initMeunList(list){
       for(let i=0;i<list.length;i++){
         if( list[i].children ){
@@ -82,7 +86,7 @@ export default {
     },
   },
   mounted(){
-    this.init()
+    // this.init()
   }
 }
 </script>

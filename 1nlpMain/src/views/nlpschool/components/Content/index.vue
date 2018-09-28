@@ -107,7 +107,7 @@ export default {
   },
   mounted () {
     getNlpSchoolData().then(res => {
-      console.log(res)
+      // console.log(res)
       if((typeof res) == "object"){
         this.lessonData = res.lessonData
         this.lecturerData = res.lecturerData
@@ -188,7 +188,7 @@ export default {
     
   }
   // mb
-  @media screen and (max-width: 1280px){
+  @media screen and (max-width: 1200px){
     .classroomContent{
       display: flex;
       flex-direction: column-reverse;

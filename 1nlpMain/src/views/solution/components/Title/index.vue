@@ -72,7 +72,7 @@ export default {
   }
 }
 // mb
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   .banner_info{
     img.banner_bg_img {
       height: 7rem;

@@ -80,7 +80,7 @@
     
   }
   // mb
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1200px) {
     .property_panel{
       .icon_panel{
         flex-direction: column;

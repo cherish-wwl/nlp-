@@ -82,19 +82,17 @@
   </div>
 </template>
 <script>
-import { getMenus } from '@/api/header'
 import Cookies from 'js-cookie'
-import { getSolutionList } from '@/api/solutions'
-import { getOneLevelList } from '@/api/dataset'
 import { mapGetters } from 'vuex'
 export default {
+  props: [ "serviceList", "solutionsList", "datasetList" ],
   data () {
     return {
       activeIndex: '1',
       showPanel:false,
-      serviceList:null,
-      solutionsList:null,
-      datasetList:null
+      // serviceList:null,
+      // solutionsList:null,
+      // datasetList:null
     }
   },
   computed:{
@@ -113,7 +111,7 @@ export default {
     linkServiceListPage (id) {
       Cookies.set("service_id",id)
       this.showPanel = false
-      this.$router.push({name: 'serviceLists',params:{ randomValue: id }})
+      this.$router.push({name: 'serviceLists',params:{ rid: id.substring(0,3) , ramdom: (new Date()).getSeconds() }})
     },
     // 跳转到解决方案对应页面
     linkSolutionPage(item) {
@@ -131,21 +129,7 @@ export default {
     }
   },
   mounted() {
-    // 获取服务列表
-    getMenus().then( res => {
-      // console.log("this.serviceList")
-      // console.log(res)
-      this.serviceList = res.data
-    })
-    // 获取解决方案数据
-    getSolutionList().then(response => {
-      this.solutionsList = response.data
-    })
-    // 获取数据集以及列表
-    getOneLevelList().then( response => {
-      this.datasetList = response.data
-      console.log(response.data)
-    })  
+    
   }
 }
 </script>

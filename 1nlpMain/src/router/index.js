@@ -8,9 +8,6 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
-
-
-
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
 * alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
@@ -62,7 +59,7 @@ export const constantRouterMap = [
     redirect: '/services/list',
     children: [
       {
-        path: 'list/:rid',
+        path: 'list/:rid/:ramdom',
         name: 'serviceLists',
         component: () => import('@/views/service/serviceLists/index'),
         meta: { title: '服务列表' }
@@ -96,46 +93,44 @@ export const constantRouterMap = [
     ]
   },
   {
-    path:"/solution",
-    component:Layout,
+    path: '/solution',
+    component: Layout,
     // redirct:'/solution/template',
-    children:[
+    children: [
       {
-        path:"xiaoniu",
-        name:"xiaoniu",
-        component:() =>import('@/views/solution/xiaoniu/index'),
+        path: 'xiaoniu',
+        name: 'xiaoniu',
+        component: () => import('@/views/solution/xiaoniu/index'),
         meta: { title: '小牛翻译' }
       },
       {
-        path:"datagrand",
-        name:"datagrand",
-        component:() =>import('@/views/solution/datagrand/index'),
+        path: 'datagrand',
+        name: 'datagrand',
+        component: () => import('@/views/solution/datagrand/index'),
         meta: { title: '达观数据' }
       },
       {
-        path:"multran",
-        name:"multran",
-        component:() =>import('@/views/solution/multran/index'),
+        path: 'multran',
+        name: 'multran',
+        component: () => import('@/views/solution/multran/index'),
         meta: { title: '迈创' }
       }
     ]
   },
   {
-    path:"/innovation",
-    name:'innovation',
-    component:() =>import('@/views/innovation/index'),
-    
+    path: '/innovation',
+    name: 'innovation',
+    component: () => import('@/views/innovation/index')
   },
   {
-    path:"/nlpschool",
-    name:'nlpschool',
-    component:() =>import('@/views/nlpschool/index'),
+    path: '/nlpschool',
+    name: 'nlpschool',
+    component: () => import('@/views/nlpschool/index')
   },
   {
-    path:"/nlpDetails",
-    name:'nlpDetails',
-    component:() =>import('@/views/nlpschool/details/index'),
-    
+    path: '/nlpDetails',
+    name: 'nlpDetails',
+    component: () => import('@/views/nlpschool/details/index')
   },
   { path: '*', redirect: '/404', hidden: true }
 ]

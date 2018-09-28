@@ -15,13 +15,19 @@
         <template slot="title">产品服务 </template>
         <el-menu-item index="1-1" style="display:none;"></el-menu-item>
         <!-- 引入服务展示组件 -->
-        <header-service-panel @handleFromHeaderServicePanel="handleFromHeaderServicePanel"></header-service-panel>
+        <header-service-panel 
+          :service-meun-list = "serviceList"
+          @handleFromHeaderServicePanel="handleFromHeaderServicePanel">
+        </header-service-panel>
       </el-submenu>
       <el-submenu index="2" @click.native="isHidePanel(2,$event)">
         <template slot="title">解决方案 </template>
         <el-menu-item index="2-1" style="display:none;"></el-menu-item>
         <!-- 引入解决方案展示组件 -->
-        <header-solutions-panel @handleFromHeaderSolutionsPanel="handleFromHeaderSolutionsPanel"></header-solutions-panel>
+        <header-solutions-panel 
+          :data-set-list = "solutionsList"
+          @handleFromHeaderSolutionsPanel="handleFromHeaderSolutionsPanel">
+        </header-solutions-panel>
       </el-submenu>
       <el-menu-item index='3'  @click="jumpPage({name:'dataset'})">
         数据集
@@ -54,113 +60,127 @@ import Cookies from 'js-cookie'
 import { mapGetters } from 'vuex'
 import HeaderServicePanel  from './HeaderServicePanel'
 import HeaderSolutionsPanel from './HeaderSolutionsPanel'
+import { getSolutionList } from '@/api/solutions'
+import { getMenus } from '@/api/header'
 export default {
-   computed: {
-      ...mapGetters([
-        'userManageBaseUrL',
-        'consoleBaseUrl',
-      ])
-    },
-    components:{
-      HeaderServicePanel,
-      HeaderSolutionsPanel,
-    },
-    data() {
-      return {
-        activeIndex: '1',
-        userName:"",
-        isLogin:false,
+  props: [ "serviceList", "solutionsList" ],
+  computed: {
+    ...mapGetters([
+      'userManageBaseUrL',
+      'consoleBaseUrl',
+    ])
+  },
+  components:{
+    HeaderServicePanel,
+    HeaderSolutionsPanel,
+  },
+  data() {
+    return {
+      activeIndex: '1',
+      userName: '',
+      isLogin: false,
+      // serviceMeunList: [],
+      // dataSetList: []
+    }
+  },
+  methods: {
+      // 切换菜单事件
+    handleSelect (key, keyPath) {
+      // console.log(key, keyPath);
+      // console.log(this.userManageBaseUrL)
+      if(key == "login"){
+        window.location.href = this.consoleBaseUrl
       }
     },
-    methods: {
-       // 切换菜单事件
-      handleSelect (key, keyPath) {
-        // console.log(key, keyPath);
-        // console.log(this.userManageBaseUrL)
-        if(key == "login"){
-          window.location.href = this.consoleBaseUrl
-        }
-      },
-      // 点击判断是否显示下拉面板
-      isHidePanel(index,e){
-        if(e){
-          if(e.target.className == "el-submenu__title"){
-            var displayValue = document.querySelectorAll(".el-menu")[index].style.display
-            if(displayValue == "none"){
-              document.querySelectorAll(".el-menu")[index].style.display = ""
-            }else{
-              document.querySelectorAll(".el-menu")[index].style.display = "none"
-            }
+    // 点击判断是否显示下拉面板
+    isHidePanel(index,e){
+      if(e){
+        if(e.target.className == "el-submenu__title"){
+          var displayValue = document.querySelectorAll(".el-menu")[index].style.display
+          if(displayValue == "none"){
+            document.querySelectorAll(".el-menu")[index].style.display = ""
+          }else{
+            document.querySelectorAll(".el-menu")[index].style.display = "none"
           }
         }
-        
-      },
-      // 跳转页面
-      jumpPage(params){
-        this.activeIndex = "0"
-        if(params.name == "innovation"|| params.name == "nlpschool"){
-          let routeData = this.$router.resolve({
-            name: params.name,
-          });
-          window.open(routeData.href, "_blank");
-        }else{
-          this.$router.push(params)
-        }
-        
-      },
-      // 处理从HeaderServicePanel组件传来的 跳转到服务列表页面 事件
-      handleFromHeaderServicePanel (id) {
-        // console.log("跳转到服务详情页面")
-        document.querySelectorAll(".el-menu")[1].style.display="none" 
-        this.isHidePanel(1)
-        this.activeIndex = "1-1"
-        Cookies.set("service_id",id)
-        this.$router.push({name: 'serviceLists',params:{ rid: id.substring(0,3)}})
-      },
-      // 处理从HeaderSolutionsPanel组件传来的 跳转到解决方案列表页面
-      handleFromHeaderSolutionsPanel(item){
-        this.activeIndex = "2-1"
-        document.querySelectorAll(".el-menu")[2].style.display="none"
-        if(item.forwardType == '011002'){
-          this.$router.push({name:item.solutionUrl,params:{id:item.id}})
-        }else{
-          window.open(item.solutionUrl)
-        }
-        document.querySelectorAll(".el-menu")[2].style.display="none"
-        this.isHidePanel(2)
-      },  
-      // 退出登录
-      logout() {
-        this.$store.dispatch('LogOut').then(() => {
-          location.reload() // 为了重新实例化vue-router对象 避免bug
-        })
-      },
-      // 跳转到管控台
-      jumpToConsole(){
-        window.location.href = this.userManageBaseUrL
-      },
-      // 跳转到个人中心
-       jumpToConsoleMine(){
-         window.location.href = this.consoleBaseUrl +"/#/mine"
-       }
-    },
-    mounted () { 
-      // console.log(getToken())
-      if(getToken() != "" && getToken()){
-        // store.dispatch('GetInfo').then(res => { // 拉取用户信息
-        //   console.log("拉取用户信息")
-        //   console.log(res)
-          this.isLogin = true
-        //   this.userName = res.data.userName
-        // }).catch(() => {
-        //   this.isLogin = false
-        // })
-       
-      }else{
-        this.isLogin = false
       }
-     
+      
+    },
+    // 跳转页面
+    jumpPage(params){
+      this.activeIndex = "0"
+      if(params.name == "innovation"|| params.name == "nlpschool"){
+        let routeData = this.$router.resolve({
+          name: params.name,
+        });
+        window.open(routeData.href, "_blank");
+      }else{
+        this.$router.push(params)
+      }
+      
+    },
+    // 处理从HeaderServicePanel组件传来的 跳转到服务列表页面 事件
+    handleFromHeaderServicePanel (id) {
+      // console.log("跳转到服务详情页面")
+      document.querySelectorAll(".el-menu")[1].style.display="none" 
+      this.isHidePanel(1)
+      this.activeIndex = "1-1"
+      Cookies.set("service_id",id)
+      this.$router.push({ name: 'serviceLists',params:{ rid: id.substring(0,3), ramdom: (new Date()).getSeconds()}})
+    },
+    // 处理从HeaderSolutionsPanel组件传来的 跳转到解决方案列表页面
+    handleFromHeaderSolutionsPanel(item){
+      this.activeIndex = "2-1"
+      document.querySelectorAll(".el-menu")[2].style.display="none"
+      if(item.forwardType == '011002'){
+        this.$router.push({name:item.solutionUrl,params:{id:item.id}})
+      }else{
+        window.open(item.solutionUrl)
+      }
+      document.querySelectorAll(".el-menu")[2].style.display="none"
+      this.isHidePanel(2)
+    },  
+    // 退出登录
+    logout() {
+      this.$store.dispatch('LogOut').then(() => {
+        location.reload() // 为了重新实例化vue-router对象 避免bug
+      })
+    },
+    // 跳转到管控台
+    jumpToConsole(){
+      window.location.href = this.userManageBaseUrL
+    },
+    // 跳转到个人中心
+      jumpToConsoleMine(){
+        window.location.href = this.consoleBaseUrl +"/#/mine"
+      }
+  },
+  mounted () { 
+    // console.log(getToken())
+    if(getToken() != "" && getToken()){
+      // store.dispatch('GetInfo').then(res => { // 拉取用户信息
+      //   console.log("拉取用户信息")
+      //   console.log(res)
+        this.isLogin = true
+      //   this.userName = res.data.userName
+      // }).catch(() => {
+      //   this.isLogin = false
+      // })
+      
+    }else{
+      this.isLogin = false
     }
+    // 初始化数据
+    // if(!this.isMbInit){
+    //   getMenus().then(response => {
+    //     this.serviceMeunList = response.data
+    //   })
+    //   // 获取解决方案数据
+    //   getSolutionList().then(response => {
+    //     this.dataSetList = response.data
+    //   })
+    // }
+  }
 }
 </script>
 

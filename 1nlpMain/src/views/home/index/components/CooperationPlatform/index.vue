@@ -6,7 +6,7 @@
     <el-row class="display_panel hidden-md-and-down">
       <el-carousel 
       :autoplay="false"
-      height="35rem"
+     
       arrow="always">
         <el-carousel-item v-for="(item, index1) in datalist" :key="index1">
           <ul>
@@ -72,6 +72,7 @@ export default {
 .cooperation_platform {
   display: block;
   background-color: rgba(242, 242, 242, 1); 
+  padding-bottom: 30px;
   h2{
     font-weight: 500;
     margin: 5.5rem 0;
