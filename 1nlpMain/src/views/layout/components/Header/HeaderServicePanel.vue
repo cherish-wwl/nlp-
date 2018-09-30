@@ -11,11 +11,11 @@
         <div class="itemlist">
           <ul  v-for="item in child.children" :key="item.id">
             <label 
-              class='meunItemFont02 font16'
+              class='meunItemFont02 font18'
               :class="child.id == '001'?'':'applicattionServicePanelItem'"
               @click="linkServiceListPage(item.id)"
             >{{ item.name }}</label>
-            <li class="font14" v-for="subChild in item.children" :key="subChild.id" v-if="(!subChild.show)||subChild.show == true" @click="linkServiceListPage(subChild.id)">
+            <li class="font16" v-for="subChild in item.children" :key="subChild.id" v-if="(!subChild.show)||subChild.show == true" @click="linkServiceListPage(subChild.id)">
               {{ subChild.name }}  
             </li>
           </ul>
@@ -134,7 +134,7 @@ export default {
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          margin-top: 8px;
+          margin-top: 12px;
           color: #9d9a96;
           cursor:pointer;
           &:hover{

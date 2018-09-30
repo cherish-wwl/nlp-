@@ -7,7 +7,7 @@
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             权威专家学者
           </label>
-          <p class="font14">
+          <p class="font16">
             国内大部分自然语言专家学者入驻
           </p>
         </div>
@@ -18,7 +18,7 @@
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             合作创新科研机构
           </label>
-          <p class="font14">
+          <p class="font16">
            20+合作创新院校及科研机构
           </p>
         </div>
@@ -29,7 +29,7 @@
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             中国中文信息学会
           </label>
-          <p class="font14">
+          <p class="font16">
            中国权威学术性群众团体指导
           </p>
         </div>
@@ -40,7 +40,7 @@
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
              神州泰岳
           </label>
-          <p class="font14">
+          <p class="font16">
             技术落地实施团队
           </p>
         </div>

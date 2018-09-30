@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex'
 export default {
   data(){
     return{
-      getUserInfo:false
+      getUserInfo:true
     }
   },
   computed: {

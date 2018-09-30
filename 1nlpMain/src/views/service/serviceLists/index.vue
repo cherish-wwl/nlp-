@@ -7,7 +7,7 @@
       :service_bg_img = "service_bg_img"
     ></service-top-panel>
     <el-container class='service_class'>
-      <el-aside width="200px" class='aside_style hidden-md-and-down'>
+      <el-aside width="230px" class='aside_style hidden-md-and-down'>
         <!-- 基础服务左侧组件 -->
         <base-service-left-panel 
           v-if="rootId == '001'"

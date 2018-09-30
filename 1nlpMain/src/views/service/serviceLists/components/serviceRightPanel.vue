@@ -2,8 +2,8 @@
   <el-main class='service_content' >
     <el-row class='service_tools hidden-md-and-down' >
       <el-col :span='12' class='font16 nowarp'>
-        <i class="fa fa-paper-plane" aria-hidden="true"></i>
-        <span class="font16">{{ serviceInfo.service_title | noMoreThenFonts}}</span>
+        <i class="fa fa-paper-plane font18" aria-hidden="true"></i>
+        <span class="font18">{{ serviceInfo.service_title | noMoreThenFonts}}</span>
         &nbsp;&nbsp;
         <span>  
           <el-input placeholder="请输入内容" size="mini" v-model="search_key" v-on:change="searchThirdList" class="search_input font14" suffix-icon="el-icon-search"></el-input>

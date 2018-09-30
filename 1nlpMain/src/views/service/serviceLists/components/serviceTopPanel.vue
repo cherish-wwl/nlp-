@@ -46,7 +46,7 @@ export default {
 @media screen  and (min-width: 1280px){
   .service_info{
     .service_bg_img{     
-      height: 30rem;
+      height: 26rem;
     } 
   }
 }

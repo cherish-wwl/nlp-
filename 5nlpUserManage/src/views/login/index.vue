@@ -97,7 +97,7 @@ export default {
               password:md5(this.loginForm.password)
           }
           this.$store.dispatch('Login', params).then((res) => {
-            window.location.href = this.consoleBaseUrl
+            // window.location.href = this.consoleBaseUrl
             this.loading = false
           }).catch((e) => {
             this.loading = false

@@ -176,7 +176,7 @@ export default {
       right: 20%;   
     }
     .service_bg_img{
-      height: 30rem;
+      height: 26rem;
     }
     .contant_Panel{
       text-align: center;

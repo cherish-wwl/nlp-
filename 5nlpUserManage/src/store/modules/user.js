@@ -38,6 +38,7 @@ const user = {
           setToken(data.token)
           setExpires_in(data.expires_in)
           commit('SET_TOKEN', data.token)
+          console.log(getToken())
           commit('SET_expires_in', data.expires_in)
           resolve(response)
         }).catch(error => {

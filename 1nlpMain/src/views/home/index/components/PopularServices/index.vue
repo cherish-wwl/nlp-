@@ -25,7 +25,8 @@
         <ul>
           <li v-for="child in item.children" class="font16" 
           :key='child.id' 
-          @click="linkServiceDetialPage(child)">{{ child.serviceName }}</li>
+          :title="child.serviceName"
+          @click="linkServiceDetialPage(child)">{{ child.serviceName | subStringNoMore15 }}</li>
         </ul>
       </div>      
     </el-row>
@@ -55,7 +56,7 @@
                 @click="linkServiceDetialPage(child2)"
                 v-for="child2 in child.children" 
                 :key="child2.id">
-                  {{ child2.serviceName }}
+                  {{ child2.serviceName | subStringNoMore15}}
                 </li>
               </ul>
             </li>
@@ -86,7 +87,11 @@
     filters:{
       subStringNoMore3line (str){
         return subStringNoMore3line(str,35)
+      },
+      subStringNoMore15(str) {
+        return subStringNoMore3line(str,15)
       }
+
     },
     
     methods:{

@@ -14,7 +14,7 @@
               <p class="item_name font18" v-if="item.title && item.title !=''" >{{ item.title }}</p>
             </div>
             <div class="down_panel">
-              <p class="smaller font_color_grey" v-for="(child,index) in item.desrc" :key="index">
+              <p class="font16 font_color_grey" v-for="(child,index) in item.desrc" :key="index">
                 {{ child }}
               </p>
             </div>
