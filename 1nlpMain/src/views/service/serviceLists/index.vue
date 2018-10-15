@@ -1,6 +1,6 @@
 <template>
   <div class="serviceLists-container">
-    <!-- 服务列表页面-top简介组件---->
+    <!-- 服务列表页面-top简介组件-->
     <service-top-panel 
       :service_title = "serviceInfo.service_title" 
       :service_desc = "serviceInfo.service_desc"
@@ -8,23 +8,8 @@
     ></service-top-panel>
     <el-container class='service_class'>
       <el-aside width="230px" class='aside_style hidden-md-and-down'>
-        <!-- 基础服务左侧组件 -->
-        <base-service-left-panel 
-          v-if="rootId == '001'"
-          :collapse-data = "collapseData"
-          :active-names = "activeNames"
-          :current-service-id = "currentServiceId"
-          @chooseServiceItem = "chooseServiceItem">
-        </base-service-left-panel>
-
-        <!-- 应用服务左侧组件 -->
-        <applicate-service-left-panel
-          v-if="rootId == '002'"
-          :collapse-data = "collapseData"
-          :active-names = "activeNames"
-          :current-service-id = "currentServiceId"
-          @chooseServiceItem = "chooseServiceItem">
-        </applicate-service-left-panel>
+        <!-- 左侧组件 --> 
+        <left-mnue :menuData="collapseData" :defaultActive="currentServiceId" @handleSelect="chooseServiceItem"/>
       </el-aside>
       <!-- 服务列表组件 -->
       <service-right-panel
@@ -43,13 +28,15 @@ import { serviceTopPanel, baseServiceLeftPanel, serviceRightPanel, applicateServ
 import { getMenus } from '@/api/header'
 import { isMobile } from '@/utils/index'
 import { getThirdServiceList } from '@/api/serviceLists'
+import  LeftMnue  from '@/components/LeftMnue'
 import Cookies from 'js-cookie'
 export default {
   components:{
     serviceTopPanel,
     baseServiceLeftPanel,
     serviceRightPanel,
-    applicateServiceLeftPanel
+    applicateServiceLeftPanel,
+    LeftMnue
   },
   data (){
     return {
@@ -70,16 +57,25 @@ export default {
   },
   methods:{
     // 点击左侧，刷新右侧列表
-    chooseServiceItem(child) {
-      Cookies.set("service_id",child.id)
-      this.currentServiceId = child.id
+    chooseServiceItem(id) {
+      Cookies.set("service_id", id)
+      this.currentServiceId = id
       // 获取当前服务分类信息
       this.getCurrentServiceInfoById()
-      // 更换页面背景图片
-      if (child.img != "null" && child.img && child.img != null){
-        this.service_bg_img = child.img
+      this.getInfoById(id, this.collapseData)    
+    },
+    getInfoById(id, data) {
+      for(let i = 0; i<data.length;i++){
+        if(data[i].children){
+          this.getInfoById(id, data[i].children)
+        }else{
+          if(data[i].id == id){
+            console.log(data[i].img)
+            this.service_bg_img= data[i].img
+            break
+          }
+        }
       }
-      
     },
     // 初始化
     init(){
@@ -89,10 +85,11 @@ export default {
       }else{
         this.showFreeCharge = ""
       }
+      console.log(Cookies.get("service_id"))
       // 获取服务id
         // 从路径中获取服务id
       if(this.$route.query.sid){
-        this.currentServiceId = this.$route.query.sid
+        // this.currentServiceId = this.$route.query.sid
         this.rootId = this.currentServiceId.substring(0,3)
       }
         // 从cookies中获取服务id
@@ -160,8 +157,8 @@ export default {
     },
     // 获取当前服务的基础信息
     getCurrentServiceInfoById () {
-      console.log("123=================")
-      console.log(this.currentServiceId)
+      // console.log("123=================")
+      // console.log(this.currentServiceId)
       var secondId = this.currentServiceId.substring(0,6)
       for( let i=0; i < this.collapseData.length; i++ ){
         if(secondId === this.collapseData[i].id){
