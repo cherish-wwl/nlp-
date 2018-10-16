@@ -1,23 +1,23 @@
 <template>
   <div class="menu-wrapper">
-    <el-submenu v-if="menuData.children" :index="menuData.id" :key="menuData.id"  >
-      <template slot="title">
-        <svg-icon class="font16" :icon-class="menuData.icon" ></svg-icon>
-        <span class="font16">{{ menuData.name }}</span>
-      </template>
-      <child-item :menuData="menuData.children"/>
-    </el-submenu>
-    
-    <template v-else-if="menuData.length>0">
-      <el-menu-item v-for="child in menuData" :index="child.id" :key="child.id">
-        <svg-icon class="font16" :icon-class="child.icon" ></svg-icon>
-        <span class="font16" slot="title">{{ child.name }}</span>
-      </el-menu-item>
+    <template v-if="menuData.children || (showService && menuData.serviceList) ">
+      <el-submenu :index="menuData.id" :key="menuData.id"  >
+        <template slot="title">
+          <svg-icon class="font16" :icon-class="menuData.icon" ></svg-icon>
+          <span class="font16" :title="menuData.name">{{ menuData.name }}</span>
+        </template>
+        <template v-if ="showService && menuData.serviceList">
+          <child-item :showService="showService" v-for="item in menuData.serviceList" :key="item.id" :menuData="item"/>
+        </template>
+        <template v-else>
+          <child-item v-for="item in menuData.children" :showService="showService" :key="item.id" :menuData="item"/>
+        </template>
+      </el-submenu>
     </template>
     <template v-else>
       <el-menu-item :index="menuData.id" >
-        <svg-icon class="font16" :icon-class="menuData.icon" ></svg-icon>
-        <span class="font16" slot="title">{{ menuData.name }}</span>
+        <svg-icon class="font16" :icon-class="menuData.icon || ''" ></svg-icon>
+        <span class="font16" slot="title" :title="menuData.name || menuData.serviceName">{{ menuData.name || menuData.serviceName }}</span>
       </el-menu-item>
     </template>
   </div>
@@ -25,6 +25,6 @@
 <script>
 export default {
   name:'ChildItem',
-  props: ['menuData'],
+  props: ['menuData','showService'],
 }
 </script>

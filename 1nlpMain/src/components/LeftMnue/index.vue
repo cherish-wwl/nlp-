@@ -6,14 +6,17 @@
     @select="handleSelect"
     @open="handleOpen"
     @close="handleClose"
-    class="el-menu-vertical-demo">
-    <child-item v-for="item in menuData" :menuData="item" :key="item.id"></child-item>
+    class="el-menu-vertical-demo"
+    :background-color="backgroundColor"
+    :text-color="textColor"
+    :active-text-color="activeTextColor">
+    <child-item v-for="item in menuData" :menuData="item" :key="item.id" :showService="showService"></child-item>
   </el-menu>
 </template>
 <script>
 import ChildItem from './ChildItem'
 export default {
-  props: ['menuData', 'defaultActive'],
+  props: ['menuData', 'defaultActive', 'showService', 'backgroundColor', 'textColor', 'activeTextColor'],
   components: {
     ChildItem
   },
@@ -43,3 +46,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.el-menu{
+  overflow: hidden;
+}
+</style>
