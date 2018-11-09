@@ -23,13 +23,13 @@
               <el-input v-model="joinUs.phoneNumber"></el-input>
             </el-form-item>
             <el-form-item label="研究方向" prop="researchDirectionArray" width="80px">
-              <el-checkbox-group class="checkboxPanel" v-model="joinUs.researchDirectionArray"  @change="changeDirection">
+              <el-checkbox-group class="checkboxPanel" v-model="joinUs.researchDirectionArray">
                 <template v-for="item in getValueByDictCode">
                   <el-col :span="item.dictCode == '024013'?24:11" :key="item.dictCode">
                     <el-checkbox :label="item.dictCode">
                       {{ item.dictName }}
                     </el-checkbox>
-                    <el-input class="otherInput" v-model="joinUs.others" v-if="item.dictCode == '024013'" />
+                    <el-input @input="vaildOther" class="otherInput" v-model="joinUs.others" v-if="item.dictCode == '024013'" />                             
                   </el-col>
                 </template>   
               </el-checkbox-group>
@@ -60,28 +60,38 @@
 <script>
 import { mapGetters } from 'vuex'
 import { addInfo, getValueByDictCode } from '@/api/home'
+// var validateResearchDirection
 export default {
   name: 'plnformation',
   data() {
-    var validateResearchDirection = (rule, value, callback) => {
-      if(value.length ===  1&& value[0] === "024013"){
-        if ( this.joinUs.others === '') {
-          callback(new Error('请输入其他研究方向'));
-        } else { 
+      var validateResearchDirection = (rule, value, callback) => {
+      if(this.joinUs.researchDirectionArray.length == 0) {
+        callback(new Error('请选择其他研究方向'));
+      }else{
+        if( this.joinUs.researchDirectionArray.indexOf("024013") !== -1){
+          if ( this.joinUs.others === '') {
+            callback(new Error('请输入其他研究方向'));
+          } else { 
+            callback();
+          }
+        } else {
           callback();
         }
-      } else {
-        callback();
       }
     };
     var validatePhoneNumber = (rule, value, callback) => {
       console.log(value)
       var patrn = /^[0-9]*$/;
-      if (patrn.exec(value) == null || value == "") {
-        callback(new Error('请输入正确手机号码'));
-      } else {
+      if(value != '') {
+        if (patrn.exec(value) == null || value == "") {
+          callback(new Error('请输入正确电话号码'));
+        } else {
+          callback();
+        }
+      }else{
         callback();
       }
+      
     };
     return {
       joinUs: {
@@ -103,8 +113,8 @@ export default {
           { required: true, message: '请输入单位名称', trigger: 'blur' },
         ],
         researchDirectionArray: [
-          { required: true, message: '请输入研究方向', trigger: 'blur' },
-          { validator: validateResearchDirection, trigger: 'change' }
+          { validator: validateResearchDirection, trigger: ['blur', 'change'] },
+          { required: true, message: '请选择研究方向', trigger: 'blur' }
         ],
         mail: [
           { required: true, message: '请输入邮箱地址', trigger: 'blur' },
@@ -131,14 +141,22 @@ export default {
     onSubmit(formName) {
       this.$refs[formName].validate((valid) => {
         if(valid){
+          if(this.joinUs.researchDirectionArray.length == 0){
+            this.vaildOther()
+            return false
+          }
+          if(this.joinUs.researchDirectionArray.indexOf("024013") !== -1){
+            if(this.joinUs.others == ""){
+              this.vaildOther()
+              return false
+            }
+          }
           let result  = this.joinUs
           result.researchDirection = result.researchDirectionArray.join(',')
-          if(this.joinUs.researchDirectionArray.length ===  1&& this.joinUs.researchDirectionArray[0] === "024013"){
-            result.researchDirection = null
-          }else{
+          if(this.joinUs.researchDirectionArray.indexOf("024013") === -1){
             result.others = null
           }
-          addInfo(this.joinUs).then(res=>{
+          addInfo(this.joinUs).then(res => {
             this.sucessSubmit = true
           })
          
@@ -148,16 +166,9 @@ export default {
         }
       })
     },
-    changeDirection(val) {
-      console.log(val)
-      if(val[val.length-1] == "024013"){
-        this.joinUs.researchDirectionArray =  ["024013"]
-        return
-      } 
-      if(val.indexOf("024013") !== -1 ){
-       
-        this.joinUs.researchDirectionArray.splice(val.indexOf("024013"), 1); 
-      }
+    vaildOther(){
+      // researchDirectionArray
+      this.$refs.formName.validateField('researchDirectionArray');
     }
   }
 }

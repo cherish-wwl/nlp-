@@ -14,8 +14,7 @@
     <about-platform></about-platform>
     <cooperation-platform></cooperation-platform>
     <div class="join" @click="join">
-      加 入 我 们
-       
+      加 入 平 台
     </div>
   </div>
 </template>
