@@ -40,3 +40,24 @@ export function getAllDataOfHome() {
     method: 'post'
   })
 }
+// 获取个人信息
+export function addInfo(params) {
+  return request({
+    url: '/joinUs/addInfo',
+    method: 'post',
+    data: params
+  })
+}
+// 获取个人信息里的研究方向
+// export function getValueByDictCode() {
+//   return request({
+//     url: 'joinUs/getValueByDictCode',
+//     method: 'get'
+//   })
+// }
+export function getValueByDictCode() {
+  return request({
+    url: 'joinUs/getValueByDictCode',
+    method: 'get'
+  })
+}

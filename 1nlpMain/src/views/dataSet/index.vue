@@ -85,10 +85,8 @@
         </el-row>
       </el-main>
     </el-container>
- 
   </div>
 </template>
-
 <script>
 import { getOneLevelList, getTwoLevelListById, getThirdServiceList, addToMySolution } from '@/api/dataset'
 import { getToken } from '@/utils/auth'

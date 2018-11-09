@@ -22,18 +22,16 @@
         <div class="activeBoxDiv">
           <span class="activeBox">China-NLP@ultrapower.com.cn</span>
         </div>
-        
       </div>
       <div class="email-line linebox" >
         <span id="email-line">         
         </span>
       </div>
     </div>
-    
-
   </div>
 </template>
 <script>
+import { isMobile } from '@/utils/index'
 export default {
   mounted () {
     setTimeout( ()=>{
@@ -43,7 +41,7 @@ export default {
       let width = dom.offsetWidth
       let height = dom.offsetHeight
       let backgroundColor = dom.style.backgroundColor 
-      // console.log(backgroundColor)
+      // console.log(dom)
 
       document.getElementById("contact-email").style.width = width + "px"
       document.getElementById("contact-email").style.height = height + "px"
@@ -54,14 +52,18 @@ export default {
 
       document.getElementById("contact-phone").style.backgroundColor = backgroundColor
       document.getElementById("contact-email").style.backgroundColor = backgroundColor
+      // 判断是否为手机端
+      if (isMobile()) {
+        dom.style.display = 'none'
+      } else {
+        dom.style.display = 'block'
+      }
 
-      
       setInterval( ()=>{
         let time = 1
         let activeColor = bg3()
         changeColor(time, activeColor)
       },5000)
-
       function changeColor(time,activeColor){
         let changbg = setTimeout( ()=>{
           var bgcolor = bg3()    
@@ -79,7 +81,6 @@ export default {
          
         },300)
       }
-      
       function bg3(){
         var r=Math.floor(Math.random()*256);
         var g=Math.floor(Math.random()*256);
@@ -91,7 +92,6 @@ export default {
       document.getElementById("contactUS").style.bottom = bottom + height+"px"
       
     },1000)
-  
   }
 }
 </script>
@@ -170,10 +170,10 @@ export default {
   animation:rotating 1.2s linear infinite
 }
  
-  @keyframes rotating{
-    from{transform:rotate(0)}
-    to{transform:rotate(360deg)}
-  }
+@keyframes rotating{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
   
 
 
